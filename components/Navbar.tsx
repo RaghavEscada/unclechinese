@@ -67,7 +67,7 @@ export default function Navbar() {
             {/* Uncle's Chinese Logo */}
             <Link href="/" className="flex items-center gap-2">
               <img
-                src="/ucnav.png"
+                src="/uclogo.png"
                 alt="Uncle's Chinese Kitchen Logo"
                 style={{ height: '36px', width: 'auto' }}
               />

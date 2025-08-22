@@ -76,9 +76,9 @@ export default function Home() {
 							className="mb-8"
 						>
 							<img 
-								src="/uc.png" 
+								src="/uclogo.png" 
 								alt="Uncle&apos;s Chinese Logo" 
-								className="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto"
+								className="w-32 h-24 md:w-40 md:h-30 lg:w-48 lg:h-36 object-contain mx-auto"
 							/>
 						</motion.div>
 						

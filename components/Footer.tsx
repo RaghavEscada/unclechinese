@@ -197,7 +197,7 @@ export default function Footer() {
           <div className="mb-8 lg:mb-0">
             <div className="mb-6">
               <img
-                src="/ucnav.png"
+                src="/uclogo.png"
                 alt="Uncle's Chinese"
                 className="w-48 h-36 md:w-56 md:h-42 lg:w-64 lg:h-48 object-contain filter drop-shadow-2xl"
               />

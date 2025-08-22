@@ -28,7 +28,7 @@ export default function Preloader() {
           className="mb-8"
         >
           <motion.img
-            src="/ucnav.png"
+            src="/uclogo.png"
             alt="Uncle's Chinese"
             className="w-32 h-24 md:w-40 md:h-30 lg:w-48 lg:h-36 object-contain mx-auto"
             animate={{ 
