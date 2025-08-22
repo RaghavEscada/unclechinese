@@ -164,7 +164,7 @@ export default function Footer() {
   ];
 
   const socialItems = [
-    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncle_chinese/" },
+    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/" },
     { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese" },
     { id: 3, title: "Zomato", href: "https://www.zomato.com/uncle-chinese" },
     { id: 4, title: "Swiggy", href: "https://www.swiggy.com/uncle-chinese" },

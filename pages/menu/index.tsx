@@ -513,122 +513,100 @@ const EnhancedMenuPage = () => {
         </div>
       </div>
 
-      {/* Enhanced Category Navigation */}
-      <div className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center gap-3">
-              <span className="text-2xl">🥢</span>
-              Categories
-            </h2>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setShowSearch(!showSearch)}
-                className="p-3 hover:bg-gray-800 rounded-xl transition-all duration-300 group"
-              >
-                <Search className="w-5 h-5 text-gray-400 group-hover:text-red-400 transition-colors" />
-              </button>
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-3 hover:bg-gray-800 rounded-xl transition-all duration-300"
-              >
-                <Menu className="w-5 h-5 text-gray-400" />
-              </button>
+      {/* Full Menu Image Section */}
+      <div className="relative w-full bg-black">
+        <div className="w-full max-w-5xl mx-auto px-4 py-8">
+          <div className="relative">
+            {/* Decorative border - mobile optimized */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 to-red-500/20 rounded-lg md:rounded-xl p-1 md:p-2">
+              <div className="w-full h-full bg-black rounded-lg md:rounded-xl"></div>
             </div>
+            {/* Image with enhanced mobile styling */}
+            <img
+              src="/menu.jpeg"
+              alt="Uncle's Chinese Menu"
+              className="relative z-10 w-full h-auto object-contain mx-auto shadow-2xl rounded-lg md:rounded-xl border-2 border-gradient-to-r from-red-500/30 to-orange-500/30 
+                         /* Mobile specific adjustments */
+                         sm:max-w-full sm:object-cover sm:rounded-xl
+                         /* Desktop unchanged */
+                         md:object-contain"
+              style={{
+                filter: 'brightness(1.05) contrast(1.1)',
+                boxShadow: '0 0 50px rgba(236, 50, 55, 0.3), 0 0 100px rgba(255, 165, 0, 0.2)'
+              }}
+            />
+            {/* Decorative corner elements */}
+            <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-red-500 rounded-tl-lg md:hidden"></div>
+            <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-red-500 rounded-tr-lg md:hidden"></div>
+            <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-red-500 rounded-bl-lg md:hidden"></div>
+            <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-red-500 rounded-br-lg md:hidden"></div>
           </div>
-          
-          <AnimatePresence>
-            {showSearch && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mb-6"
-              >
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Search delicious dishes..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-all duration-300"
-                  />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            {filteredCategories.map((category, index) => (
-              <motion.button
-                key={category.id}
-                onClick={() => scrollToCategory(category.id)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className={`flex-shrink-0 flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition-all duration-300 group ${
-                  activeCategory === category.id
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/30'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
-                }`}
-              >
-                <span className="text-lg group-hover:animate-bounce">{category.icon}</span>
-                <span className="whitespace-nowrap">{category.name}</span>
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {showMobileMenu && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden mt-4"
-              >
-                <div className="grid grid-cols-2 gap-3">
-                  {filteredCategories.map((category) => (
-                    <button
-                      key={category.id}
-                      onClick={() => scrollToCategory(category.id)}
-                      className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all text-sm ${
-                        activeCategory === category.id
-                          ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
-                          : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                      }`}
-                    >
-                      <span>{category.icon}</span>
-                      <span className="truncate">{category.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        </div>
+        {/* Optional overlay with download buttons */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+          <button 
+            onClick={() => window.open('/ucmenu1.pdf', '_blank')}
+            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
+          >
+            <Download className="w-5 h-5" />
+            Quick Menu PDF
+          </button>
+          <button 
+            onClick={() => window.open('/uncmenu2.pdf', '_blank')}
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-2"
+          >
+            <Download className="w-5 h-5" />
+            Full Menu PDF
+          </button>
         </div>
       </div>
 
-      {/* Enhanced Menu Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {filteredCategories.map((category, index) => {
-          const items = menuData[category.id as keyof typeof menuData] || [];
-          return (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <CategorySection
-                category={category}
-                items={items}
-              />
-            </motion.div>
-          );
-        })}
+      {/* Full Menu Image Section */}
+      <div className="relative w-full bg-black">
+        <div className="w-full max-w-5xl mx-auto px-4 py-8">
+          <div className="relative">
+            {/* Decorative border - mobile optimized */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 to-red-500/20 rounded-lg md:rounded-xl p-1 md:p-2">
+              <div className="w-full h-full bg-black rounded-lg md:rounded-xl"></div>
+            </div>
+            {/* Image with enhanced mobile styling */}
+            <img
+              src="/menu.jpeg"
+              alt="Uncle's Chinese Menu"
+              className="relative z-10 w-full h-auto object-contain mx-auto shadow-2xl rounded-lg md:rounded-xl border-2 border-gradient-to-r from-red-500/30 to-orange-500/30 
+                         /* Mobile specific adjustments */
+                         sm:max-w-full sm:object-cover sm:rounded-xl
+                         /* Desktop unchanged */
+                         md:object-contain"
+              style={{
+                filter: 'brightness(1.05) contrast(1.1)',
+                boxShadow: '0 0 50px rgba(236, 50, 55, 0.3), 0 0 100px rgba(255, 165, 0, 0.2)'
+              }}
+            />
+            {/* Decorative corner elements */}
+            <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-red-500 rounded-tl-lg md:hidden"></div>
+            <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-red-500 rounded-tr-lg md:hidden"></div>
+            <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-red-500 rounded-bl-lg md:hidden"></div>
+            <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-red-500 rounded-br-lg md:hidden"></div>
+          </div>
+        </div>
+        {/* Optional overlay with download buttons */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+          <button 
+            onClick={() => window.open('/ucmenu1.pdf', '_blank')}
+            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
+          >
+            <Download className="w-5 h-5" />
+            Quick Menu PDF
+          </button>
+          <button 
+            onClick={() => window.open('/uncmenu2.pdf', '_blank')}
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-2"
+          >
+            <Download className="w-5 h-5" />
+            Full Menu PDF
+          </button>
+        </div>
       </div>
 
       {/* Enhanced Happy Hours Banner */}

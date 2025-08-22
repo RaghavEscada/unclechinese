@@ -56,7 +56,7 @@ const LocationCard = ({
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <div className="flex items-center gap-2">
             <MapPin className="w-5 h-5" style={{ color: '#EC3237' }} />
-            <h3 className="text-xl font-black text-white drop-shadow-lg uppercase tracking-wide font-brice">{name}</h3>
+            <h3 className="text-2xl md:text-3xl font-black text-white drop-shadow-lg uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>{name}</h3>
           </div>
         </div>
       </div>
@@ -65,25 +65,25 @@ const LocationCard = ({
       <div className="space-y-4">
         <div className="flex items-start gap-3">
           <MapPin className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: '#EC3237' }} />
-          <p className="text-white/70 font-semibold leading-relaxed font-brice">{address}</p>
+          <p className="text-lg text-white/70 font-medium leading-relaxed" style={{ fontFamily: 'NeueMontreal' }}>{address}</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Phone className="w-5 h-5" style={{ color: '#EC3237' }} />
-          <a href={`tel:${phone}`} className="text-white/70 font-semibold hover:text-red-600 transition-colors font-brice">
+          <a href={`tel:${phone}`} className="text-lg text-white/70 font-medium hover:text-red-600 transition-colors" style={{ fontFamily: 'NeueMontreal' }}>
             {phone}
           </a>
         </div>
 
         <div className="flex items-center gap-3">
           <Clock className="w-5 h-5" style={{ color: '#EC3237' }} />
-          <p className="text-white/70 font-semibold font-brice">{hours}</p>
+          <p className="text-lg text-white/70 font-medium" style={{ fontFamily: 'NeueMontreal' }}>{hours}</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Star className="w-5 h-5" style={{ color: '#F5DF19' }} />
           <div className="flex items-center gap-1">
-            <span className="text-white/70 font-semibold font-brice">{rating}</span>
+            <span className="text-lg text-white/70 font-medium" style={{ fontFamily: 'NeueMontreal' }}>{rating}</span>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star 
@@ -98,9 +98,11 @@ const LocationCard = ({
 
         {/* Action Buttons */}
         <div className="flex gap-3 pt-4">
-          <button 
-            className="flex-1 py-2 px-4 rounded-lg font-black transition-colors flex items-center justify-center gap-2 uppercase tracking-wide font-brice"
+          <a 
+            href={`tel:${phone.replace(/[^0-9+]/g, '').split('/')[0].trim()}`}
+            className="flex-1 py-3 px-6 rounded-lg font-bold transition-colors flex items-center justify-center gap-2 uppercase tracking-wide hover:scale-105 transform duration-200 text-base"
             style={{ 
+              fontFamily: 'Brice',
               backgroundColor: '#EC3237', 
               color: '#F8F8F8',
               border: '2px solid #F5DF19'
@@ -108,10 +110,14 @@ const LocationCard = ({
           >
             <Phone className="w-4 h-4" />
             Call Now
-          </button>
-          <button 
-            className="flex-1 py-2 px-4 rounded-lg font-black transition-colors flex items-center justify-center gap-2 uppercase tracking-wide font-brice"
+          </a>
+          <a 
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 py-3 px-6 rounded-lg font-bold transition-colors flex items-center justify-center gap-2 uppercase tracking-wide hover:scale-105 transform duration-200 text-base"
             style={{ 
+              fontFamily: 'Brice',
               backgroundColor: '#F8F8F8', 
               color: '#EC3237',
               border: '2px solid #F5DF19'
@@ -119,7 +125,7 @@ const LocationCard = ({
           >
             <Navigation className="w-4 h-4" />
             Directions
-          </button>
+          </a>
         </div>
       </div>
     </motion.div>
@@ -136,7 +142,8 @@ const LocationsHero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter mb-8 font-brice"
+          className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter mb-8"
+          style={{ fontFamily: 'Brice' }}
         >
           <span className="block bg-gradient-to-r from-pink-300 to-orange-300 bg-clip-text text-transparent">LOCATIONS</span>
         </motion.h1>
@@ -145,7 +152,8 @@ const LocationsHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl font-medium mb-8 text-white font-brice"
+          className="text-xl md:text-2xl font-medium mb-8 text-white"
+          style={{ fontFamily: 'NeueMontreal' }}
         >
           6 locations across Pune serving authentic Chinese & Thai cuisine
         </motion.p>
@@ -158,12 +166,12 @@ const LocationsHero = () => {
         >
           <div className="flex items-center gap-2 text-white/70">
             <Clock className="w-5 h-5" style={{ color: '#EC3237' }} />
-            <span className="font-medium font-brice">Open Daily 11 AM - 11 PM</span>
+            <span className="font-medium text-lg" style={{ fontFamily: 'NeueMontreal' }}>Open Daily 11 AM - 11 PM</span>
           </div>
           <div className="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></div>
           <div className="flex items-center gap-2 text-white/70">
             <Star className="w-5 h-5" style={{ color: '#F5DF19' }} />
-            <span className="font-medium font-brice">24 Years of Excellence</span>
+            <span className="font-medium text-lg" style={{ fontFamily: 'NeueMontreal' }}>24 Years of Excellence</span>
           </div>
         </motion.div>
       </div>
@@ -187,52 +195,52 @@ const LocationsHero = () => {
 const LocationsGrid = () => {
   const locations = [
     {
-      name: "Sanjay Park",
-      address: "Shop No. 1, Sanjay Park, Pune - 411001",
-      phone: "+91 20 2615 2970",
-      hours: "11:00 AM - 11:00 PM",
-      rating: 4.8,
-      image: "/s1.webp"
-    },
-    {
-      name: "Bavdhan",
-      address: "Ground Floor, Bavdhan Plaza, Pune - 411021",
-      phone: "+91 20 2615 2971",
-      hours: "11:00 AM - 11:00 PM",
-      rating: 4.7,
-      image: "/s2.webp"
-    },
-    {
       name: "Koregaon Park",
-      address: "North Main Road, Koregaon Park, Pune - 411001",
-      phone: "+91 20 2615 2972",
+      address: "Shop No C 3 & 5, Meera Garden, Soc., Bldg A 170, North Main Road, Koregaon Park, Pune - 411001",
+      phone: "020 2615 2970 / 96374 96513",
       hours: "11:00 AM - 11:00 PM",
       rating: 4.9,
-      image: "/s3.webp"
+      image: "/kp.jpeg"
     },
     {
       name: "Camp",
-      address: "MG Road, Camp Area, Pune - 411001",
-      phone: "+91 20 2615 2973",
+      address: "T7B, 9th D 20 & 7 / 7,9B 9B 980 1400, Camp - 601, Sachapir Street, Camp - Pune - 01",
+      phone: "8605200092 & 61800567500",
       hours: "11:00 AM - 11:00 PM",
       rating: 4.6,
-      image: "/s4.webp"
-    },
-    {
-      name: "Hinjewadi",
-      address: "Phase 1, Hinjewadi, Pune - 411057",
-      phone: "+91 20 2615 2974",
-      hours: "11:00 AM - 11:00 PM",
-      rating: 4.8,
-      image: "/s5.webp"
+      image: "/camp.jpeg"
     },
     {
       name: "Lulla Nagar",
-      address: "Lulla Nagar, Pune - 411001",
-      phone: "+91 20 2615 2975",
+      address: "Sai Park Road, Borate Chowk, Vimannagar, Pune - 32",
+      phone: "020 2615 2970 / 9637496513",
       hours: "11:00 AM - 11:00 PM",
       rating: 4.7,
-      image: "/s6.webp"
+      image: "/lullanagar.jpeg"
+    },
+    {
+      name: "Viman Nagar",
+      address: "Rushab Dot, Near Ganga Soc, Bavdhan, Pune - 21",
+      phone: "8485258618 / 9272433373",
+      hours: "11:00 AM - 11:00 PM",
+      rating: 4.8,
+      image: "/vimnagar.jpeg"
+    },
+    {
+      name: "Bavdhan",
+      address: "Plot no 7, Sagar Co-op Hsg Soc, Bavdhan, Pune - 21",
+      phone: "9896616146",
+      hours: "11:00 AM - 11:00 PM",
+      rating: 4.7,
+      image: "/bavdan.jpeg"
+    },
+    {
+      name: "Hinjewadi",
+      address: "above KFC, Hinjawadi, Pune - 41067",
+      phone: "8484358618 / 9272433373",
+      hours: "11:00 AM - 11:00 PM",
+      rating: 4.8,
+      image: "/hinjewadi.jpeg"
     }
   ];
 
@@ -247,10 +255,10 @@ const LocationsGrid = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6 text-white font-brice">
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6 text-white" style={{ fontFamily: 'Brice' }}>
             Our <span style={{ color: '#F5DF19' }}>Locations</span>
           </h2>
-          <p className="text-xl font-medium max-w-3xl mx-auto leading-relaxed text-white/70 font-brice">
+          <p className="text-xl font-medium max-w-3xl mx-auto leading-relaxed text-white/70" style={{ fontFamily: 'NeueMontreal' }}>
             Visit any of our 6 locations across Pune to experience authentic Chinese & Thai cuisine in a warm, family-friendly atmosphere.
           </p>
           <div className="w-24 h-1 mx-auto mt-8 rounded-full" style={{ backgroundColor: '#EC3237' }}></div>
@@ -286,11 +294,12 @@ const LocationsGrid = () => {
               borderColor: '#F5DF19'
             }}
           >
-            <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-wide font-brice">Can&apos;t decide which location?</h3>
-            <p className="text-white/70 mb-6 font-semibold font-brice">Call us and we&rsquo;ll recommend the best location for you!</p>
+            <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>Can&apos;t decide which location?</h3>
+            <p className="text-white/70 mb-6 font-medium text-lg" style={{ fontFamily: 'NeueMontreal' }}>Call us and we&rsquo;ll recommend the best location for you!</p>
             <button 
-              className="px-8 py-4 rounded-xl font-black hover:scale-105 transition-all duration-300 uppercase tracking-wide shadow-lg border-2 font-brice"
+              className="px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300 uppercase tracking-wide shadow-lg border-2 text-lg"
               style={{ 
+                fontFamily: 'Brice',
                 backgroundColor: '#EC3237', 
                 color: '#F8F8F8',
                 borderColor: '#F5DF19'

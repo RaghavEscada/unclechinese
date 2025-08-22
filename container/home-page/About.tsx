@@ -221,7 +221,7 @@ const ServicesSection = () => {
 };
 
 const socialLinks = [
-  { id: 1, title: "Instagram", href: "https://www.instagram.com/uncle_chinese/", icon: <Instagram size={24} /> },
+  { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={24} /> },
   { id: 2, title: "WhatsApp", href: "https://wa.me/919789985132", icon: <MessageCircle size={24} /> },
 ];
 

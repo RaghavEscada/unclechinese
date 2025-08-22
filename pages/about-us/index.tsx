@@ -19,7 +19,7 @@ const outlets = [
 ];
 
 const socialLinks = [
-  { id: 1, title: "Instagram", href: "https://www.instagram.com/uncle_chinese/", icon: <Instagram size={20} /> },
+  { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={20} /> },
   { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese", icon: <MessageCircle size={20} /> },
   { id: 3, title: "WhatsApp", href: "https://wa.me/916385751370?text=Hi%20Uncle's%20Chinese%2C%20I%20would%20like%20to%20know%20more%20about%20your%20restaurant%20and%20menu.", icon: <MessageCircle size={20} /> },
 ];
