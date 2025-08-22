@@ -1,5 +1,6 @@
-import OptimizedVideo from "@/components/OptimizedVideo";
+import Video from 'next-video';
+import herobg from '/videos/herobg.mp4';
 
-export default function Video() {
-	return <OptimizedVideo videosrc="/herobg.mp4" priority={true} autoPlay={false} />;
+export default function VideoSection() {
+	return <Video src={herobg} />;
 }

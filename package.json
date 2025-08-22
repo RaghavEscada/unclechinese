@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev & npx next-video sync -w",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"
@@ -33,6 +33,7 @@
 		"motion": "^12.5.0",
 		"next": "^15.2.4",
 		"next-sanity": "^9.12.0",
+		"next-video": "^2.2.3",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"react-icons": "^5.1.0",

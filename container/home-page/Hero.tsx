@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { ArrowDown, Play, Star, Users, MapPin, ChefHat, Utensils, Heart } from 'lucide-react';
+import Video from 'next-video';
+import herobg from '/videos/herobg.mp4';
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,17 +18,15 @@ export default function Hero() {
     >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
+        <Video
+          src={herobg}
           autoPlay
           loop
           muted
           playsInline
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.5) contrast(1.1)' }}
-        >
-          <source src="/herobg.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        />
         
         {/* Subtle overlay */}
         <div 
