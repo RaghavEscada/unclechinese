@@ -1,5 +1,5 @@
-import { PlayVideo } from "@/components";
+import { OptimizedVideo } from "@/components/OptimizedVideo";
 
 export default function Video() {
-	return <PlayVideo videosrc="/herobg.mp4" />;
+	return <OptimizedVideo videosrc="/herobg.mp4" priority={true} autoPlay={false} />;
 }
