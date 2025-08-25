@@ -155,23 +155,74 @@ const RamenBowl3D = () => {
 };
 
 export default function Footer() {
-  const navItems = [
+  const quickLinks = [
     { id: 1, title: "Menu", href: "/menu" },
-    { id: 2, title: "About", href: "/about-us" },
-    { id: 3, title: "Locations", href: "/locations" },
+    { id: 2, title: "About Us", href: "/about-us" },
+    { id: 3, title: "Our Locations", href: "/locations" },
     { id: 4, title: "Contact", href: "/contact" },
     { id: 5, title: "Careers", href: "/careers" },
+    { id: 6, title: "Privacy Policy", href: "/privacy" },
+    { id: 7, title: "Terms & Conditions", href: "/terms" },
   ];
 
-  const socialItems = [
-    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/" },
-    { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese" },
-    { id: 3, title: "Zomato", href: "https://www.zomato.com/uncle-chinese" },
-    { id: 4, title: "Swiggy", href: "https://www.swiggy.com/uncle-chinese" },
+  const branchLocations = [
+    {
+      id: 1,
+      area: "Koregaon Park",
+      address: "Shop No C 3 & 5, Meera Garden, North Main Road",
+      phone: "020 2615 2970",
+      mobile: "96374 96513"
+    },
+    {
+      id: 2,
+      area: "Camp",
+      address: "T7B, 9th D 20 & 7/7, Sachapir Street",
+      phone: "8605200092",
+      mobile: "61800567500"
+    },
+    {
+      id: 3,
+      area: "Lulla Nagar",
+      address: "Sai Park Road, Borate Chowk, Vimannagar",
+      phone: "020 2615 2970",
+      mobile: "9637496513"
+    },
+    {
+      id: 4,
+      area: "Viman Nagar",
+      address: "Rushab Dot, Near Ganga Soc, Bavdhan",
+      phone: "8485258618",
+      mobile: "9272433373"
+    },
+    {
+      id: 5,
+      area: "Bavdhan",
+      address: "Plot no 7, Sagar Co-op Hsg Soc",
+      phone: "9896616146"
+    },
+    {
+      id: 6,
+      area: "Hinjewadi",
+      address: "Above KFC, Hinjawadi Phase 1",
+      phone: "8484358618",
+      mobile: "9272433373"
+    }
+  ];
+
+  const socialLinks = [
+    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: "instagram" },
+    { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese", icon: "facebook" },
+    { id: 3, title: "Twitter", href: "https://twitter.com/uncles_chinese", icon: "twitter" },
+    { id: 4, title: "YouTube", href: "https://youtube.com/uncles_chinese", icon: "youtube" },
+  ];
+
+  const deliveryPartners = [
+    { id: 1, title: "Zomato", href: "https://www.zomato.com/uncle-chinese", icon: "/Zomato_Logo.svg" },
+    { id: 2, title: "Swiggy", href: "https://www.swiggy.com/uncle-chinese", icon: "/Swiggy_Logo_2024.webp" },
   ];
 
   return (
-    <footer className="w-full bg-black text-white px-6 md:px-20 pt-20 pb-12 relative overflow-hidden font-brice">
+    <footer className="w-full min-h-screen bg-black text-white px-6 md:px-20 pt-20 pb-0 relative overflow-hidden font-brice flex flex-col justify-between gap-8">
       {/* 3D Animation Background */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
         <div className="w-full h-full flex items-center justify-center">
@@ -188,169 +239,213 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto relative z-10 flex-1 flex flex-col justify-between">
         
-        {/* Top Section - Brand + Newsletter */}
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-12">
-          
-          {/* Left - Brand Logo */}
-          <div className="mb-8 lg:mb-0">
-            <div className="mb-6">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+          {/* Column 1 - Brand & About */}
+          <div className="lg:col-span-6">
+            <div className="mb-12">
               <img
                 src="/uclogo.png"
                 alt="Uncle's Chinese"
-                className="w-48 h-36 md:w-56 md:h-42 lg:w-64 lg:h-48 object-contain filter drop-shadow-2xl"
+                className="w-48 h-36 md:w-56 md:h-42 lg:w-64 lg:h-48 object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                style={{ 
+                  filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.15)) drop-shadow(0 0 60px rgba(236,50,55,0.2))'
+                }}
               />
             </div>
-          </div>
-
-          {/* Right - Navigation */}
-          <div className="lg:pt-8">
-            <div className="space-y-1 mb-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="block text-white hover:text-red-500 transition-colors text-lg md:text-xl font-light"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Locations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          
-          {/* Pune North */}
-          <div>
-            <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-6 font-medium">Pune North</h3>
-            <div className="space-y-4">
-              <div className="text-white text-lg font-light">
-                Sanjay Park, Aundh<br/>
-                Pune, MH 411007
-              </div>
-              <div className="text-white text-lg font-light">
-                Bavdhan, Near Metro<br/>
-                Pune, MH 411021
-              </div>
-            </div>
-          </div>
-
-          {/* Pune Central */}
-          <div>
-            <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-6 font-medium">Pune Central</h3>
-            <div className="space-y-4">
-              <div className="text-white text-lg font-light">
-                Koregaon Park<br/>
-                Pune, MH 411001
-              </div>
-              <div className="text-white text-lg font-light">
-                Camp Area<br/>
-                Pune, MH 411001
-              </div>
-            </div>
-          </div>
-
-          {/* Pune West */}
-          <div>
-            <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-6 font-medium">Pune West</h3>
-            <div className="space-y-4">
-              <div className="text-white text-lg font-light">
-                Hinjewadi Phase 1<br/>
-                Pune, MH 411057
-              </div>
-              <div className="text-white text-lg font-light">
-                Lulla Nagar<br/>
-                Pune, MH 411040
-              </div>
-            </div>
-          </div>
-
-          {/* Socials */}
-          <div>
-            <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-6 font-medium">Socials</h3>
-            <div className="space-y-4">
-              {socialItems.map((item) => (
-                <Link
+            <p className="text-gray-400 text-base font-light mb-6">
+              Authentic Chinese & Thai cuisine served with love since 2000. Experience the finest Asian flavors at our 6 locations across Pune.
+            </p>
+            <div className="flex gap-4">
+              {socialLinks.map((item) => (
+                <a
                   key={item.id}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-white hover:text-red-500 transition-colors text-lg font-light"
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-colors"
+                >
+                  <span className="sr-only">{item.title}</span>
+                  <i className={`fab fa-${item.icon} text-white text-xl`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 2 - Quick Links */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-light text-white mb-6">Quick Links</h3>
+            <div className="grid grid-cols-1 gap-3">
+              {quickLinks.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="text-gray-400 hover:text-red-500 transition-colors text-base font-light"
                 >
                   {item.title}
                 </Link>
               ))}
+            </div>
+          </div>
+
+          {/* Column 3 - Branch Locations */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-light text-white mb-6">Our Branches</h3>
+            <div className="space-y-4">
+              {branchLocations.slice(0, 3).map((branch) => (
+                <div key={branch.id} className="text-gray-400">
+                  <h4 className="text-white font-light mb-1">{branch.area}</h4>
+                  <p className="text-sm font-light mb-1">{branch.address}</p>
+                  <div className="flex gap-3 text-sm">
+                    {branch.phone && (
+                      <a href={`tel:${branch.phone}`} className="hover:text-red-500 transition-colors">
+                        {branch.phone}
+                      </a>
+                    )}
+                    {branch.mobile && (
+                      <a href={`tel:${branch.mobile}`} className="hover:text-red-500 transition-colors">
+                        {branch.mobile}
+                      </a>
+                    )}
+              </div>
+            </div>
+              ))}
+              <Link 
+                href="/locations" 
+                className="inline-block text-red-500 hover:text-red-400 transition-colors text-sm font-light mt-2"
+              >
+                View All Locations →
+              </Link>
+            </div>
+          </div>
+
+          {/* Column 4 - Newsletter & Delivery */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-light text-white mb-6">Scan & Order</h3>
+            <div className="mb-8">
+              <div className="flex flex-col items-center p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+                <img
+                  src="/qr-code.svg"
+                  alt="Scan for menu"
+                  className="w-32 h-32 mb-4 p-2 bg-white rounded-lg"
+                />
+                <p className="text-gray-300 text-sm font-light text-center">
+                  Scan to view our menu & exclusive offers
+                </p>
+              </div>
+            </div>
+          <div>
+              <h4 className="text-white font-light mb-4">Order Online</h4>
+              <div className="flex flex-col gap-6">
+                <a
+                  href="https://www.zomato.com/uncle-chinese"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-fit hover:scale-105 transition-transform"
+                >
+                  <img
+                    src="/Zomato_Logo.svg"
+                    alt="Order on Zomato"
+                    className="h-6 md:h-8 lg:h-9 w-auto"
+                    style={{ filter: 'brightness(1) contrast(1) saturate(1.2)', opacity: 0.95 }}
+                  />
+                </a>
+                <a
+                  href="https://www.swiggy.com/uncle-chinese"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-fit hover:scale-105 transition-transform"
+                >
+                  <img
+                    src="/Swiggy_Logo_2024.webp"
+                    alt="Order on Swiggy"
+                    className="h-6 md:h-8 lg:h-10 w-auto"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end pt-12 pb-8 border-t border-gray-800">
-          
-          {/* Left - Copyright */}
-          <div className="mb-8 lg:mb-0">
-            <div className="text-gray-500 text-lg mb-2">© Uncle&apos;s Chinese 2025</div>
-            <div className="text-white text-lg mb-1">
-              <a href="tel:02026152970" className="hover:text-red-500 transition-colors">
-                020 2615 2970
-              </a>
+        <div className="border-t border-gray-800 pt-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {/* Opening Hours */}
+            <div>
+              <h4 className="text-white font-light mb-4">Opening Hours</h4>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <p>Monday - Sunday</p>
+                <p className="font-light">11:00 AM - 11:00 PM</p>
+                <p className="text-red-500">Happy Hours: 3:30 PM - 6:30 PM</p>
+              </div>
             </div>
-            <div className="text-white text-lg">
-              <a href="mailto:uncleskitchen@gmail.com" className="hover:text-red-500 transition-colors">
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-white font-light mb-4">Contact Us</h4>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <a href="tel:02026152970" className="block hover:text-red-500 transition-colors">
+                  Main: 020 2615 2970
+                </a>
+                <a href="tel:9637496513" className="block hover:text-red-500 transition-colors">
+                  Mobile: 96374 96513
+                </a>
+                <a href="mailto:uncleskitchen@gmail.com" className="block hover:text-red-500 transition-colors">
                 uncleskitchen@gmail.com
               </a>
             </div>
           </div>
 
-          {/* Right - Credits & Logo */}
-          <div className="flex items-end gap-8">
-            <div className="text-right">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-gray-500 text-sm">Website by Raghav</span>
-                <div className="flex gap-2">
-                  <a 
-                    href="https://www.linkedin.com/in/raghav-krishna-m-6357bb290/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded transition-colors"
-                  >
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd"/>
-                    </svg>
-                  </a>
+            {/* Awards & Recognition */}
+            <div>
+              <h4 className="text-white font-light mb-4">Awards & Recognition</h4>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <p>🏆 Best Chinese Restaurant 2023</p>
+                <p>⭐ Zomato Gold Partner</p>
+                <p>🌟 24 Years of Excellence</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright & Credits */}
+                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-8 pb-6 border-t border-gray-800 text-sm text-gray-400">
+            <span>© {new Date().getFullYear()} Uncle&apos;s Chinese. All rights reserved.</span>
+            <div className="flex items-center gap-6">
+              <a href="/privacy" className="hover:text-red-500 transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-red-500 transition-colors">Terms of Service</a>
+                            <div className="flex items-center gap-2">
+                <span>Designed & Developed by</span>
                   <a 
                     href="https://www.instagram.com/_raaghaavvvv_/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-7 h-7 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded transition-colors"
-                  >
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.613 4.614a1.49 1.49 0 01.431 1.05v8.672c0 .4-.156.784-.431 1.05a1.49 1.49 0 01-1.05.431H6.437c-.4 0-.784-.156-1.05-.431a1.49 1.49 0 01-.431-1.05V5.664c0-.4.156-.784.431-1.05a1.49 1.49 0 011.05-.431h7.126c.4 0 .784.156 1.05.431zM10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm3.5-1.5a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" clipRule="evenodd"/>
-                    </svg>
-                  </a>
-                  <a 
-                    href="https://wa.me/916385751370?text=Hi%20Raghav%2C%20I%20found%20your%20contact%20through%20the%20Uncle&apos;s%20Chinese%20website.%20I%27m%20interested%20in%20discussing%20website%20development%20services.%20Could%20we%20schedule%20a%20time%20to%20talk%3F"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded transition-colors"
-                  >
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                    </svg>
-                  </a>
-                </div>
+                  className="group flex items-center gap-1.5 font-medium"
+                >
+                  <span className="text-white group-hover:text-red-500 transition-colors">Raghav</span>
+                  <span className="flex gap-1">
+                    <div className="w-5 h-5 rounded bg-gradient-to-r from-[#fd5949] via-[#d6249f] to-[#285AEB] p-1 group-hover:opacity-90">
+                      <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                      </svg>
+                    </div>
+                    <div className="w-5 h-5 rounded overflow-hidden">
+                      <div className="w-full h-1/3 bg-[#FF9933]"></div>
+                      <div className="w-full h-1/3 bg-white flex items-center justify-center">
+                        <div className="w-[8px] h-[8px] rounded-full border-[1px] border-[#000080]"></div>
+                      </div>
+                      <div className="w-full h-1/3 bg-[#138808]"></div>
+                    </div>
+                  </span>
+                </a>
               </div>
             </div>
-
            </div>
         </div>
       </div>
       
-      {/* Full width black rectangle at bottom */}
-      <div className="w-screen h-16 bg-black absolute bottom-0 left-0 z-50"></div>
+      {/* Removed the black overlay that was hiding content */}
     </footer>
   );
 }

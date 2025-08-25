@@ -116,6 +116,34 @@ export default function Hero() {
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent mx-auto mt-6"></div>
         </div>
 
+        {/* Social Icons */}
+        <div className="flex items-center gap-4 mb-10">
+          <a
+            href="https://www.facebook.com/uncleschinese"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 hover:scale-110 transition-transform duration-300 shadow-lg"
+          ></a>
+          <a
+            href="https://www.instagram.com/uncles_chinese"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-3 h-3 rounded-full bg-gradient-to-r from-[#fd5949] via-[#d6249f] to-[#285AEB] hover:scale-110 transition-transform duration-300 shadow-lg"
+          ></a>
+          <a
+            href="https://www.zomato.com/uncle-chinese"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-3 h-3 rounded-full bg-gradient-to-r from-red-500 to-red-600 hover:scale-110 transition-transform duration-300 shadow-lg"
+          ></a>
+          <a
+            href="https://www.swiggy.com/uncle-chinese"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:scale-110 transition-transform duration-300 shadow-lg"
+          ></a>
+        </div>
+
         {/* Locations Bar - Full Width */}
         <div className={`w-full max-w-5xl transform transition-all duration-1800 delay-700 ease-out ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div className="flex flex-wrap items-center justify-center gap-3 px-4 py-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-2xl">

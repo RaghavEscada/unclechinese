@@ -56,7 +56,7 @@ const LocationCard = ({
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <div className="flex items-center gap-2">
             <MapPin className="w-5 h-5" style={{ color: '#EC3237' }} />
-            <h3 className="text-2xl md:text-3xl font-black text-white drop-shadow-lg uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>{name}</h3>
+            <h3 className="text-2xl md:text-3xl font-light text-white drop-shadow-lg uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>{name}</h3>
           </div>
         </div>
       </div>
@@ -65,25 +65,25 @@ const LocationCard = ({
       <div className="space-y-4">
         <div className="flex items-start gap-3">
           <MapPin className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: '#EC3237' }} />
-          <p className="text-lg text-white/70 font-medium leading-relaxed" style={{ fontFamily: 'NeueMontreal' }}>{address}</p>
+          <p className="text-lg text-white/70 font-light leading-relaxed" style={{ fontFamily: 'NeueMontreal' }}>{address}</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Phone className="w-5 h-5" style={{ color: '#EC3237' }} />
-          <a href={`tel:${phone}`} className="text-lg text-white/70 font-medium hover:text-red-600 transition-colors" style={{ fontFamily: 'NeueMontreal' }}>
+          <a href={`tel:${phone}`} className="text-lg text-white/70 font-light hover:text-red-600 transition-colors" style={{ fontFamily: 'NeueMontreal' }}>
             {phone}
           </a>
         </div>
 
         <div className="flex items-center gap-3">
           <Clock className="w-5 h-5" style={{ color: '#EC3237' }} />
-          <p className="text-lg text-white/70 font-medium" style={{ fontFamily: 'NeueMontreal' }}>{hours}</p>
+          <p className="text-lg text-white/70 font-light" style={{ fontFamily: 'NeueMontreal' }}>{hours}</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Star className="w-5 h-5" style={{ color: '#F5DF19' }} />
           <div className="flex items-center gap-1">
-            <span className="text-lg text-white/70 font-medium" style={{ fontFamily: 'NeueMontreal' }}>{rating}</span>
+            <span className="text-lg text-white/70 font-light" style={{ fontFamily: 'NeueMontreal' }}>{rating}</span>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star 
@@ -142,7 +142,7 @@ const LocationsHero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter mb-8"
+          className="text-6xl md:text-8xl lg:text-9xl font-light leading-tight tracking-tighter mb-8"
           style={{ fontFamily: 'Brice' }}
         >
           <span className="block bg-gradient-to-r from-pink-300 to-orange-300 bg-clip-text text-transparent">LOCATIONS</span>
@@ -255,10 +255,10 @@ const LocationsGrid = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6 text-white" style={{ fontFamily: 'Brice' }}>
+          <h2 className="text-5xl md:text-7xl font-light uppercase tracking-tight mb-6 text-white" style={{ fontFamily: 'Brice' }}>
             Our <span style={{ color: '#F5DF19' }}>Locations</span>
           </h2>
-          <p className="text-xl font-medium max-w-3xl mx-auto leading-relaxed text-white/70" style={{ fontFamily: 'NeueMontreal' }}>
+          <p className="text-xl font-light max-w-3xl mx-auto leading-relaxed text-white/70" style={{ fontFamily: 'NeueMontreal' }}>
             Visit any of our 6 locations across Pune to experience authentic Chinese & Thai cuisine in a warm, family-friendly atmosphere.
           </p>
           <div className="w-24 h-1 mx-auto mt-8 rounded-full" style={{ backgroundColor: '#EC3237' }}></div>
@@ -294,8 +294,8 @@ const LocationsGrid = () => {
               borderColor: '#F5DF19'
             }}
           >
-            <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>Can&apos;t decide which location?</h3>
-            <p className="text-white/70 mb-6 font-medium text-lg" style={{ fontFamily: 'NeueMontreal' }}>Call us and we&rsquo;ll recommend the best location for you!</p>
+            <h3 className="text-2xl font-light text-white mb-4 uppercase tracking-wide" style={{ fontFamily: 'Brice' }}>Can&apos;t decide which location?</h3>
+            <p className="text-white/70 mb-6 font-light text-lg" style={{ fontFamily: 'NeueMontreal' }}>Call us and we&rsquo;ll recommend the best location for you!</p>
             <button 
               className="px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300 uppercase tracking-wide shadow-lg border-2 text-lg"
               style={{ 
