@@ -15,10 +15,10 @@ export default function MobileNav() {
 			<div className="w-full flex justify-between items-center h-16 px-4 md:hidden">
 				<Link href="/">
 					<Image
-						src="/logo.svg"
-						alt="nukemarketinggg"
-						width={70}
-						height={70}
+						src="/uclogo.png"
+						alt="Uncle's Chinese Kitchen"
+						width={100}
+						height={100}
 					/>
 				</Link>
 				<HiOutlineMenuAlt4
@@ -54,10 +54,10 @@ export default function MobileNav() {
 						<div className="w-1/3 flex flex-col justify-between items-center py-8 border-l border-white/10">
 							<Link href="/" className="mt-4">
 								<Image
-									src="/nuke.png"
-									alt="nuke marketing"
-									width={80}
-									height={80}
+									src="/uclogo.png"
+									alt="Uncle's Chinese Kitchen"
+									width={120}
+									height={120}
 									className="opacity-90"
 								/>
 							</Link>
