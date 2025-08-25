@@ -331,7 +331,7 @@ const MenuItem = ({ item }: MenuItemProps) => {
       {/* Content */}
       <div className="relative z-10">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-white leading-tight group-hover:text-red-300 transition-colors">
+          <h3 className="text-xl font-normal text-white leading-tight group-hover:text-red-300 transition-colors">
             {item.name}
           </h3>
           <div className="ml-4 text-right">
@@ -365,7 +365,7 @@ const CategorySection = ({ category, items }: CategorySectionProps) => (
     <div className="flex items-center gap-6 mb-12">
       <div className="text-5xl animate-pulse">{category.icon}</div>
       <div className="flex-1">
-        <h2 className="text-5xl font-black text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-2">
+        <h2 className="text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-2">
           {category.name}
         </h2>
         <div className="h-1 bg-gradient-to-r from-red-500 via-orange-500 to-transparent rounded-full"></div>
@@ -419,7 +419,7 @@ const EnhancedMenuPage = () => {
           >
             <div className="mb-4 lg:mb-8">
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-2 lg:mb-4"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-2 lg:mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -629,10 +629,10 @@ const EnhancedMenuPage = () => {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            <h3 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
               🎊 HAPPY HOURS 🎊
             </h3>
-            <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2 animate-pulse">
+            <div className="text-3xl md:text-4xl font-medium text-yellow-300 mb-2 animate-pulse">
               20% OFF
             </div>
             <p className="text-xl text-red-100 mb-2">
