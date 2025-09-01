@@ -105,7 +105,7 @@ export default function About() {
             viewport={{ once: true }}
             className="text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto font-brice"
           >
-            For over two decades, Uncle&apos;s Chinese has been serving the most authentic Chinese and Pan-Asian cuisine in Pune. Our journey began with a simple mission: to bring the true flavors of Asia to your table, creating a warm and welcoming space where every guest feels like family.
+            Since 2000, we've been serving authentic Chinese cuisine with a modern twist, bringing the flavors of the Far East to your table.
           </motion.p>
 
           <motion.div 
@@ -118,18 +118,14 @@ export default function About() {
             <div className="rounded-2xl p-8 text-left border-4 font-brice" style={{ backgroundColor: '#EC3237', color: '#F8F8F8', borderColor: '#F5DF19' }}>
               <h3 className="text-3xl font-black mb-4 uppercase font-brice">Our Mission</h3>
               <p className="leading-relaxed font-semibold font-brice">
-                To serve authentic, high-quality Asian flavors in a welcoming and casual dining space, 
-                creating a memorable experience for every guest while preserving the traditional recipes 
-                passed down through generations.
+                To serve authentic, high-quality Asian flavors in a welcoming and casual dining space, creating a memorable experience for every guest.
               </p>
             </div>
 
             <div className="rounded-2xl p-8 text-left border-4 font-brice" style={{ backgroundColor: '#F8F8F8', borderColor: '#EC3237', color: '#3C3637' }}>
               <h3 className="text-3xl font-black mb-4 uppercase font-brice">Our Vision</h3>
               <p className="leading-relaxed font-semibold font-brice">
-                To be the most loved neighborhood Chinese & Pan-Asian restaurant, expanding across multiple 
-                locations while staying true to our signature flavors and the warmth of family hospitality 
-                that makes every visit special.
+                To become the most loved Chinese restaurant, known for our authentic flavors, warm hospitality, and commitment to culinary excellence.
               </p>
             </div>
           </motion.div>

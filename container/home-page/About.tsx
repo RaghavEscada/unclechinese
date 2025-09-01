@@ -281,316 +281,7 @@ const thirdRow = testimonials.slice(4, 6);
 export default function UnclesChineseWebsite() {
   return (
     <div style={{ fontFamily: 'NeueMontreal, sans-serif' }} className="bg-white text-gray-900">
-      {/* About Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#3C3637' }}>
-        {/* Background Chinese Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 text-6xl">🥢</div>
-          <div className="absolute top-40 right-20 text-5xl">🍜</div>
-          <div className="absolute bottom-20 left-20 text-7xl">🥢</div>
-          <div className="absolute bottom-40 right-10 text-4xl">🍜</div>
-          <div className="absolute top-1/2 left-1/4 text-5xl">🥢</div>
-          <div className="absolute top-1/3 right-1/3 text-6xl">🍜</div>
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span className="text-2xl">🏮</span>
-              <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'NeueMontreal' }}>
-                About Uncle's Chinese
-              </span>
-              <span className="text-2xl">🏮</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-light leading-tight mb-6" 
-                style={{ color: '#F8F8F8', fontFamily: 'Brice' }}>
-              Our <span style={{ color: '#F5DF19' }}>Story 🥢</span>
-            </h2>
-            <p className="text-lg font-medium max-w-3xl mx-auto" 
-               style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>
-              Since 2000, we've been serving authentic Chinese cuisine with a modern twist, 
-              bringing the flavors of the Far East to your table. 🍜
-            </p>
-          </div>
-
-          {/* Stats Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2" style={{ color: '#F5DF19', fontFamily: 'Brice' }}>24+</div>
-              <div className="text-lg font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2" style={{ color: '#F5DF19', fontFamily: 'Brice' }}>6</div>
-              <div className="text-lg font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Locations in Pune</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2" style={{ color: '#F5DF19', fontFamily: 'Brice' }}>100+</div>
-              <div className="text-lg font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Signature Dishes</div>
-            </div>
-          </div>
-
-          {/* Mission and Vision Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Mission Card */}
-            <div className="rounded-2xl p-8 text-left border relative overflow-hidden group hover:scale-105 transition-all duration-500"
-                 style={{ backgroundColor: 'rgba(248, 248, 248, 0.95)', color: '#3C3637', borderColor: '#F5DF19', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-              {/* Background Chinese Elements */}
-              <div className="absolute top-4 right-4 text-5xl opacity-5 group-hover:opacity-10 transition-opacity">🥢</div>
-              <div className="absolute bottom-4 left-4 text-4xl opacity-5 group-hover:opacity-10 transition-opacity">🏮</div>
-              <div className="absolute top-1/2 right-6 text-3xl opacity-5 group-hover:opacity-10 transition-opacity">🍜</div>
-              {/* Icon and Title */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <h3 className="text-2xl font-semibold" style={{ fontFamily: 'Brice' }}>Our Mission 🥢</h3>
-              </div>
-              <p className="leading-relaxed font-medium text-lg" style={{ fontFamily: 'NeueMontreal', color: '#666666' }}>
-                To serve authentic, high-quality Asian flavors in a welcoming and casual dining space,
-                creating a memorable experience for every guest. 🍜🏮
-              </p>
-              {/* Decorative Elements */}
-              <div className="flex items-center gap-2 mt-6 pt-4 border-t border-gray-200">
-                <span className="text-sm font-medium" style={{ color: '#EC3237', fontFamily: 'NeueMontreal' }}>Authentic • Family • Tradition</span>
-                <span className="text-lg">🥢</span>
-              </div>
-            </div>
-
-            {/* Vision Card */}
-            <div className="rounded-2xl p-8 text-left border relative overflow-hidden group hover:scale-105 transition-all duration-500"
-                 style={{ backgroundColor: 'rgba(248, 248, 248, 0.95)', color: '#3C3637', borderColor: '#F5DF19', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-              {/* Background Chinese Elements */}
-              <div className="absolute top-4 right-4 text-5xl opacity-5 group-hover:opacity-10 transition-opacity">🏮</div>
-              <div className="absolute bottom-4 left-4 text-4xl opacity-5 group-hover:opacity-10 transition-opacity">🍜</div>
-              <div className="absolute top-1/2 right-6 text-3xl opacity-5 group-hover:opacity-10 transition-opacity">🥢</div>
-              {/* Icon and Title */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                  <span className="text-2xl">🌟</span>
-                </div>
-                <h3 className="text-2xl font-semibold" style={{ fontFamily: 'Brice' }}>Our Vision 🏮</h3>
-              </div>
-              <p className="leading-relaxed font-medium text-lg" style={{ fontFamily: 'NeueMontreal', color: '#666666' }}>
-                To become the most loved Chinese restaurant, known for our authentic flavors,
-                warm hospitality, and commitment to culinary excellence. 🥢🍜
-              </p>
-              {/* Decorative Elements */}
-              <div className="flex items-center gap-2 mt-6 pt-4 border-t border-gray-200">
-                <span className="text-sm font-medium" style={{ color: '#EC3237', fontFamily: 'NeueMontreal' }}>Excellence • Innovation • Heritage</span>
-                <span className="text-lg">🏛️</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Culinary Excellence Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#3C3637' }}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 text-8xl">🥢</div>
-          <div className="absolute top-40 right-40 text-6xl">🍜</div>
-          <div className="absolute bottom-40 left-40 text-7xl">🏮</div>
-          <div className="absolute bottom-20 right-20 text-5xl">🥢</div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Hero Section */}
-          <div className="text-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                  <span className="text-2xl">👨‍🍳</span>
-                </div>
-                <span className="text-lg font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'NeueMontreal' }}>
-                  Master Chef's Selection
-                </span>
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                  <span className="text-2xl">🥢</span>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-light leading-tight mb-8" 
-              style={{ color: '#F8F8F8', fontFamily: 'Brice' }}
-            >
-              Culinary <span style={{ color: '#F5DF19' }}>Excellence</span>
-            </motion.h2>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-xl font-medium max-w-4xl mx-auto leading-relaxed" 
-              style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}
-            >
-              Experience the pinnacle of Asian cuisine with our signature dishes, 
-              crafted by master chefs using traditional techniques and premium ingredients.
-            </motion.p>
-          </div>
-
-          {/* Remove the entire Hakka Noodles section */}
-        </div>
-      </section>
-
-      {/* Our Environment Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#FDFCF8' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-light leading-tight mb-8" 
-                style={{ 
-                  color: '#3C3637', 
-                  fontFamily: 'Brice',
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
-                }}>
-              OUR ENVIRONMENT
-            </h2>
-            <p className="text-lg md:text-xl font-medium max-w-4xl mx-auto leading-relaxed" 
-               style={{ 
-                 color: '#666666', 
-                 fontFamily: 'NeueMontreal',
-                 lineHeight: '1.8'
-               }}>
-              Experience the perfect blend of elegant décor and warm hospitality. Our restaurants feature 
-              stunning interiors with traditional Chinese elements, creating an inviting atmosphere for 
-              memorable dining experiences. 🏮🥢
-            </p>
-          </div>
-
-          {/* Atmosphere Gallery */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { src: '/a1.jpg', alt: 'Restaurant Interior - Main Dining Area' },
-                { src: '/a2.JPG', alt: 'Restaurant Interior - Cozy Corner' },
-                { src: '/a3.JPG', alt: 'Restaurant Interior - Bar Area' },
-                { src: '/a4.JPG', alt: 'Restaurant Interior - Private Dining' },
-                { src: '/a5.PNG', alt: 'Restaurant Interior - Lounge Area' },
-                { src: '/a6.PNG', alt: 'Restaurant Interior - Outdoor Seating' }
-              ].map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500"
-                  style={{ 
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(60, 54, 55, 0.1)'
-                  }}
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-lg">
-                      <span className="text-lg font-semibold" style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-                        View Details
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 left-4 text-2xl opacity-20 group-hover:opacity-40 transition-opacity">🏮</div>
-                  <div className="absolute top-4 right-4 text-2xl opacity-20 group-hover:opacity-40 transition-opacity">🥢</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Environment Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center p-8 rounded-2xl group hover:scale-105 transition-all duration-500"
-              style={{ 
-                backgroundColor: 'rgba(60, 54, 55, 0.05)',
-                border: '1px solid rgba(60, 54, 55, 0.1)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
-              }}
-            >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌟</div>
-              <h3 className="text-2xl font-semibold mb-4" style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-                Elegant Décor
-              </h3>
-              <p className="text-base font-medium leading-relaxed" style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-                Sophisticated interiors with traditional Chinese elements, modern comfort, and carefully curated lighting to create the perfect dining ambiance.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-center p-8 rounded-2xl group hover:scale-105 transition-all duration-500"
-              style={{ 
-                backgroundColor: 'rgba(60, 54, 55, 0.05)',
-                border: '1px solid rgba(60, 54, 55, 0.1)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
-              }}
-            >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🏮</div>
-              <h3 className="text-2xl font-semibold mb-4" style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-                Warm Hospitality
-              </h3>
-              <p className="text-base font-medium leading-relaxed" style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-                Our dedicated staff ensures every guest feels welcome and comfortable, providing attentive service in a family-friendly atmosphere.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center p-8 rounded-2xl group hover:scale-105 transition-all duration-500"
-              style={{ 
-                backgroundColor: 'rgba(60, 54, 55, 0.05)',
-                border: '1px solid rgba(60, 54, 55, 0.1)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
-              }}
-            >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🥢</div>
-              <h3 className="text-2xl font-semibold mb-4" style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-                Perfect Setting
-              </h3>
-              <p className="text-base font-medium leading-relaxed" style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-                From intimate family dinners to large celebrations, our versatile spaces accommodate all occasions with style and comfort.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Removed About Section */}
 
       {/* Services Section */}
       <ServicesSection />
@@ -598,72 +289,7 @@ export default function UnclesChineseWebsite() {
       {/* Locations Section */}
       <LocationsSection />
 
-      {/* Contact Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#4A4445' }}>
-        {/* Background Elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-4xl">📞</div>
-          <div className="absolute top-40 right-20 text-3xl">📧</div>
-          <div className="absolute bottom-20 left-20 text-5xl">💬</div>
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-light leading-tight" style={{ color: '#F8F8F8', fontFamily: 'Brice' }}>
-            Ready to
-            <br />
-            <span className="font-normal" style={{ color: '#F5DF19' }}>Taste Tradition?</span>
-          </h2>
-
-          <p className="text-lg font-medium max-w-2xl mx-auto tracking-wide" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>
-            Experience the authentic flavors that have made us Pune's favorite Asian restaurant for over two decades.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <div className="flex items-center gap-3 p-4 rounded-xl transition-all duration-300 hover:scale-105" 
-                 style={{ backgroundColor: 'rgba(60, 54, 55, 0.9)', borderColor: '#F5DF19', border: '1px solid', boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }}>
-              <Phone className="w-5 h-5" style={{ color: '#EC3237' }} />
-              <span className="font-medium text-base" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>020 2615 2970</span>
-            </div>
-            <div className="flex items-center gap-3 p-4 rounded-xl transition-all duration-300 hover:scale-105" 
-                 style={{ backgroundColor: 'rgba(60, 54, 55, 0.9)', borderColor: '#F5DF19', border: '1px solid', boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }}>
-              <Mail className="w-5 h-5" style={{ color: '#EC3237' }} />
-              <span className="font-medium text-base" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>uncleskitchen@gmail.com</span>
-            </div>
-          </div>
-
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 border transform hover:scale-110 hover:shadow-lg"
-                style={{ 
-                  backgroundColor: 'rgba(60, 54, 55, 0.9)', 
-                  borderColor: '#F5DF19',
-                  color: '#EC3237',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
-                }}
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
-
-          <button 
-            className="px-8 py-4 rounded-xl font-medium text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-            style={{ 
-              backgroundColor: '#EC3237', 
-              color: '#FFFFFF', 
-              fontFamily: 'NeueMontreal',
-              boxShadow: '0 4px 20px rgba(236,50,55,0.3)'
-            }}
-          >
-            Visit Us Today
-          </button>
-        </div>
-      </section>
+      {/* Contact Section - removed duplicate above testimonials */}
 
       {/* Testimonials Section */}
       <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#3C3637' }}>
@@ -709,6 +335,51 @@ export default function UnclesChineseWebsite() {
         </div>
       </section>
 
+      {/* Taste Tradition Section */}
+      <section className="py-20 px-4 relative" style={{ backgroundColor: '#EC3237' }}>
+        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
+          <h2 className="text-4xl md:text-6xl font-light leading-tight text-white" style={{ fontFamily: 'Brice' }}>
+            Ready to
+            <br />
+            <span className="font-normal" style={{ color: '#F5DF19' }}>Taste Tradition?</span>
+          </h2>
+
+          <p className="text-lg font-medium max-w-2xl mx-auto tracking-wide text-white" style={{ fontFamily: 'NeueMontreal' }}>
+            Experience the authentic flavors that have made us Pune's favorite Asian restaurant for over two decades.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5DF19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span className="font-bold text-lg text-white" style={{ fontFamily: 'NeueMontreal' }}>020 2615 2970</span>
+            </div>
+            <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5DF19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span className="font-bold text-lg text-white" style={{ fontFamily: 'NeueMontreal' }}>uncleskitchen@gmail.com</span>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <button 
+              className="px-12 py-4 rounded-xl text-xl font-bold transition-all duration-300 transform hover:scale-105 uppercase tracking-wide shadow-2xl"
+              style={{ 
+                backgroundColor: '#F8F8F8', 
+                color: '#EC3237', 
+                boxShadow: '0 10px 30px rgba(248,248,248,0.3)',
+                border: '3px solid #F5DF19',
+                fontFamily: 'Brice'
+              }}
+            >
+              Visit Us Today
+            </button>
+          </div>
+        </div>
+      </section>
       <style jsx>{`
         @keyframes marquee {
           from { transform: translateX(0); }
