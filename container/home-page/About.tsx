@@ -336,47 +336,91 @@ export default function UnclesChineseWebsite() {
       </section>
 
       {/* Taste Tradition Section */}
-      <section className="py-20 px-4 relative" style={{ backgroundColor: '#EC3237' }}>
+      <section className="py-20 px-4 relative" style={{ backgroundColor: '#000000' }}>
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-light leading-tight text-white" style={{ fontFamily: 'Brice' }}>
-            Ready to
+          <h2 className="text-5xl md:text-7xl font-bold leading-tight text-white uppercase tracking-wider" style={{ fontFamily: 'Brice' }}>
+            READY TO
             <br />
-            <span className="font-normal" style={{ color: '#F5DF19' }}>Taste Tradition?</span>
+            TASTE
+            <br />
+            <span className="font-bold" style={{ color: '#FFFFFF' }}>TRADITION?</span>
           </h2>
 
-          <p className="text-lg font-medium max-w-2xl mx-auto tracking-wide text-white" style={{ fontFamily: 'NeueMontreal' }}>
-            Experience the authentic flavors that have made us Pune's favorite Asian restaurant for over two decades.
+          <p className="text-lg md:text-xl font-medium max-w-3xl mx-auto tracking-wide text-gray-300" style={{ fontFamily: 'NeueMontreal' }}>
+            Experience authentic Chinese and Pan-Asian flavors that have been perfected over 24 years. Order now and taste the difference that tradition makes.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5DF19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span className="font-bold text-lg text-white" style={{ fontFamily: 'NeueMontreal' }}>020 2615 2970</span>
-            </div>
-            <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5DF19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span className="font-bold text-lg text-white" style={{ fontFamily: 'NeueMontreal' }}>uncleskitchen@gmail.com</span>
+          {/* QR Code Section */}
+          <div className="flex justify-center">
+            <div className="flex flex-col items-center p-6 bg-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700">
+              <img
+                src="/qr-code.svg"
+                alt="Scan for menu"
+                className="w-32 h-32 mb-4 p-3 bg-white rounded-xl"
+              />
+              <p className="text-gray-300 text-sm font-medium text-center mb-6" style={{ fontFamily: 'NeueMontreal' }}>
+                Scan to view our menu & exclusive offers
+              </p>
+              
+              {/* Delivery Partners */}
+              <div className="flex flex-col gap-4 items-center">
+                <p className="text-white text-sm font-medium" style={{ fontFamily: 'NeueMontreal' }}>
+                  Order Online
+                </p>
+                <div className="flex gap-6 items-center">
+                  <a
+                    href="https://www.zomato.com/uncle-chinese"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:scale-105 transition-transform"
+                  >
+                    <img
+                      src="/Zomato_Logo.svg"
+                      alt="Order on Zomato"
+                      className="h-8 w-auto"
+                    />
+                  </a>
+                  <a
+                    href="https://www.swiggy.com/uncle-chinese"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:scale-105 transition-transform"
+                  >
+                    <img
+                      src="/Swiggy_Logo_2024.webp"
+                      alt="Order on Swiggy"
+                      className="h-8 w-auto"
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="mt-8">
             <button 
-              className="px-12 py-4 rounded-xl text-xl font-bold transition-all duration-300 transform hover:scale-105 uppercase tracking-wide shadow-2xl"
+              className="px-16 py-4 rounded-full text-xl font-bold transition-all duration-300 transform hover:scale-105 uppercase tracking-wide shadow-2xl"
               style={{ 
-                backgroundColor: '#F8F8F8', 
-                color: '#EC3237', 
-                boxShadow: '0 10px 30px rgba(248,248,248,0.3)',
-                border: '3px solid #F5DF19',
+                backgroundColor: '#FFFFFF', 
+                color: '#000000', 
+                boxShadow: '0 10px 30px rgba(255,255,255,0.3)',
                 fontFamily: 'Brice'
               }}
             >
-              Visit Us Today
+              ORDER NOW →
             </button>
+          </div>
+
+          {/* Stats Section */}
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-center text-gray-400 text-sm font-medium" style={{ fontFamily: 'NeueMontreal' }}>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+              <span>6 LOCATIONS ACROSS PUNE</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span>24 YEARS OF TRADITION</span>
+            </div>
           </div>
         </div>
       </section>

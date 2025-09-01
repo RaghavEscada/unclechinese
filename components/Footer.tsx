@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef, Suspense } from "react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
 // 3D Ramen Bowl Component
 const RamenBowl3D = () => {
@@ -159,15 +160,14 @@ export default function Footer() {
     { id: 1, title: "Menu", href: "/menu" },
     { id: 2, title: "About Us", href: "/about-us" },
     { id: 3, title: "Our Locations", href: "/locations" },
-    { id: 4, title: "Contact", href: "/contact" },
-    { id: 5, title: "Careers", href: "/careers" }
+    { id: 4, title: "Contact", href: "/contact" }
   ];
 
   const socialLinks = [
-    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: "instagram" },
-    { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese", icon: "facebook" },
-    { id: 3, title: "Twitter", href: "https://twitter.com/uncles_chinese", icon: "twitter" },
-    { id: 4, title: "YouTube", href: "https://youtube.com/uncles_chinese", icon: "youtube" },
+    { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={20} /> },
+    { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese", icon: <Facebook size={20} /> },
+    { id: 3, title: "Twitter", href: "https://twitter.com/uncles_chinese", icon: <Twitter size={20} /> },
+    { id: 4, title: "YouTube", href: "https://youtube.com/uncles_chinese", icon: <Youtube size={20} /> },
   ];
 
   const deliveryPartners = [
@@ -222,14 +222,14 @@ export default function Footer() {
                   className="w-10 h-10 rounded-full bg-gray-800 hover:bg-red-600 flex items-center justify-center transition-colors"
                 >
                   <span className="sr-only">{item.title}</span>
-                  <i className={`fab fa-${item.icon} text-white text-xl`}></i>
+                  <span className="text-white">{item.icon}</span>
                 </a>
               ))}
             </div>
           </div>
 
           {/* Column 2 - Quick Links */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <h3 className="text-xl font-light text-white mb-6">Quick Links</h3>
             <div className="grid grid-cols-1 gap-3">
               {quickLinks.map((item) => (
@@ -245,7 +245,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3 - Contact Info */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <h3 className="text-xl font-light text-white mb-6">Contact Us</h3>
             <div className="space-y-2 text-gray-400 text-sm">
               <a href="tel:02026152970" className="block hover:text-red-500 transition-colors">
@@ -257,43 +257,6 @@ export default function Footer() {
               <a href="mailto:uncleskitchen@gmail.com" className="block hover:text-red-500 transition-colors">
                 uncleskitchen@gmail.com
               </a>
-            </div>
-          </div>
-
-          {/* Column 4 - Scan & Order */}
-          <div className="lg:col-span-2">
-            <h3 className="text-xl font-light text-white mb-6">Scan & Order</h3>
-            <div className="mb-8">
-              <div className="flex flex-col items-center p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-                <img
-                  src="/qr-code.svg"
-                  alt="Scan for menu"
-                  className="w-32 h-32 mb-4 p-2 bg-white rounded-lg"
-                />
-                <p className="text-gray-300 text-sm font-light text-center">
-                  Scan to view our menu & exclusive offers
-                </p>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-white font-light mb-4">Order Online</h4>
-              <div className="flex flex-col gap-6">
-                {deliveryPartners.map((partner) => (
-                  <a
-                    key={partner.id}
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-fit hover:scale-105 transition-transform"
-                  >
-                    <img
-                      src={partner.icon}
-                      alt={`Order on ${partner.title}`}
-                      className="h-6 md:h-8 lg:h-9 w-auto"
-                    />
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>
