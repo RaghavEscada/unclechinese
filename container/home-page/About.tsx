@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, Instagram, MessageCircle, Target, Star, MapPin, Phone, Mail, ChefHat, Clock, Users, Utensils, Heart, Award, Users2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LocationsSection from './LocationsSection';
 
 
 declare global {
@@ -120,14 +121,6 @@ const ServicesSection = () => {
       description: "Immerse yourself in our warm, family-friendly atmosphere across 6 locations in Pune. Enjoy authentic Chinese and Thai cuisine with exceptional hospitality.",
       image: "🍜",
       highlight: "Family Atmosphere"
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: "Bentogrods",
-      subtitle: "Premium Service",
-      description: "Experience our exclusive Bentogrods service - beautifully crafted bento boxes with authentic Asian flavors, perfect for corporate events, parties, and special occasions.",
-      image: "🍱",
-      highlight: "Premium Bento"
     },
     {
       icon: <Users className="w-8 h-8" />,
@@ -448,103 +441,7 @@ export default function UnclesChineseWebsite() {
             </motion.p>
           </div>
 
-          {/* Featured Dish Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="relative mb-20"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Large Image */}
-              <div className="relative group">
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                  <img
-                    src="/7.jpg"
-                    alt="Signature Hakka Noodles"
-                    className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                  
-                  {/* Floating Badge */}
-                  <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">⭐</span>
-                      <span className="font-bold text-lg" style={{ color: '#EC3237', fontFamily: 'Brice' }}>₹289</span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-[#F5DF19] to-[#FFD700] rounded-full opacity-20 blur-xl"></div>
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-[#EC3237] to-[#d42a2f] rounded-full opacity-20 blur-xl"></div>
-              </div>
-
-              {/* Content */}
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#F8F8F8', fontFamily: 'Brice' }}>
-                    Hakka <span style={{ color: '#F5DF19' }}>Noodles</span>
-                  </h3>
-                  <p className="text-lg font-medium leading-relaxed mb-6" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>
-                    Our signature Hakka noodles are stir-fried to perfection with fresh vegetables, 
-                    authentic Chinese spices, and our secret sauce blend. Each bite delivers the perfect 
-                    balance of texture and flavor that has made this dish a customer favorite for 24 years.
-                  </p>
-                  
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#F5DF19] flex items-center justify-center">
-                        <span className="text-sm">🌱</span>
-                      </div>
-                      <span className="font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Vegetarian</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#F5DF19] flex items-center justify-center">
-                        <span className="text-sm">🔥</span>
-                      </div>
-                      <span className="font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Wok-Fried</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#F5DF19] flex items-center justify-center">
-                        <span className="text-sm">⭐</span>
-                      </div>
-                      <span className="font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Popular</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#F5DF19] flex items-center justify-center">
-                        <span className="text-sm">⚡</span>
-                      </div>
-                      <span className="font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>Quick</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <button 
-                  className="group relative px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 overflow-hidden"
-                  style={{ 
-                    backgroundColor: '#EC3237', 
-                    color: '#FFFFFF', 
-                    fontFamily: 'NeueMontreal',
-                    boxShadow: '0 8px 32px rgba(236,50,55,0.3)'
-                  }}
-                >
-                  <span className="relative z-10 flex items-center gap-3">
-                    <span>Order Now</span>
-                    <span className="group-hover:translate-x-1 transition-transform">🍜</span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#F5DF19] to-[#FFD700] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-
-
-
+          {/* Remove the entire Hakka Noodles section */}
         </div>
       </section>
 
@@ -695,194 +592,11 @@ export default function UnclesChineseWebsite() {
         </div>
       </section>
 
-      {/* Food Gallery Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#FDFCF8' }}>
-        {/* Background Decorative Elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-8xl">🍜</div>
-          <div className="absolute top-40 right-20 text-6xl">🥢</div>
-          <div className="absolute bottom-20 left-20 text-7xl">🏮</div>
-          <div className="absolute bottom-40 right-10 text-5xl">🍜</div>
-          <div className="absolute top-1/2 left-1/4 text-6xl">🥢</div>
-          <div className="absolute top-1/3 right-1/3 text-7xl">🏮</div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                <span className="text-2xl">🍜</span>
-              </div>
-              <span className="text-lg font-medium uppercase tracking-wider" style={{ color: '#EC3237', fontFamily: 'NeueMontreal' }}>
-                Our Signature Dishes
-              </span>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#EC3237] to-[#d42a2f] flex items-center justify-center">
-                <span className="text-2xl">🥢</span>
-              </div>
-            </div>
-            
-            <h2 className="text-5xl md:text-7xl font-light leading-tight mb-8" 
-                style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-              Taste of <span style={{ color: '#EC3237' }}>Excellence</span>
-            </h2>
-            
-            <p className="text-xl font-medium max-w-4xl mx-auto leading-relaxed" 
-               style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-              Discover our most beloved dishes, each crafted with authentic recipes and premium ingredients 
-              that have delighted customers for over two decades.
-            </p>
-          </motion.div>
-
-          {/* Food Gallery Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-              {(() => {
-                // Use a carefully selected set of unique images to ensure no repetition
-                const uniqueImageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-                
-                return uniqueImageNumbers.map((imageNumber, index) => {
-                  const imageSrc = `/${imageNumber}.jpg`;
-                  const dishNames = [
-                    "Hakka Noodles", "Manchurian", "Dim Sum", "Fried Rice", "Spring Rolls",
-                    "Sweet & Sour", "Kung Pao", "Mapo Tofu", "Wonton Soup", "Peking Duck",
-                    "General Tso's", "Orange Chicken"
-                  ];
-                
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                    style={{ 
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                      border: '1px solid rgba(60, 54, 55, 0.1)'
-                    }}
-                  >
-                    <div className="aspect-square overflow-hidden">
-                      <img
-                        src={imageSrc}
-                        alt={dishNames[index]}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white/95 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
-                        <span className="text-sm font-semibold" style={{ color: '#3C3637', fontFamily: 'Brice' }}>
-                          {dishNames[index]}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    {/* Decorative Elements */}
-                    <div className="absolute top-3 left-3 text-lg opacity-20 group-hover:opacity-40 transition-opacity">🏮</div>
-                  </motion.div>
-                );
-              });
-            })()}
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="inline-flex items-center gap-4 mb-6">
-              <div className="w-16 h-1 bg-gradient-to-r from-[#EC3237] to-[#F5DF19] rounded-full"></div>
-              <span className="text-lg font-medium" style={{ color: '#EC3237', fontFamily: 'NeueMontreal' }}>
-                Hungry for More?
-              </span>
-              <div className="w-16 h-1 bg-gradient-to-r from-[#F5DF19] to-[#EC3237] rounded-full"></div>
-            </div>
-            
-            <p className="text-lg font-medium mb-8" style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-              Explore our complete menu featuring over 100 authentic Chinese and Asian dishes
-            </p>
-            
-            <button className="group relative px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 overflow-hidden"
-                    style={{ 
-                      backgroundColor: '#EC3237', 
-                      color: '#FFFFFF' 
-                    }}>
-              <span className="relative z-10">View Full Menu</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F5DF19] to-[#FFD700] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <ServicesSection />
 
       {/* Locations Section */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#2A2526' }}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 text-4xl">📍</div>
-          <div className="absolute top-30 right-20 text-3xl">🏪</div>
-          <div className="absolute bottom-20 left-20 text-5xl">🎯</div>
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <MapPin className="w-6 h-6" style={{ color: '#F5DF19' }} />
-            <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'NeueMontreal' }}>
-              Find Us
-            </span>
-            <MapPin className="w-6 h-6" style={{ color: '#F5DF19' }} />
-          </div>
-
-          <h2 className="text-4xl md:text-6xl font-light leading-tight" style={{ color: '#F8F8F8', fontFamily: 'Brice' }}>
-            Visit Our
-            <br />
-            <span className="font-normal" style={{ color: '#F5DF19' }}>Locations</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {outlets.map((outlet, index) => (
-              <div key={index} className="p-6 rounded-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden" 
-                   style={{ borderColor: '#F5DF19', backgroundColor: 'rgba(60, 54, 55, 0.8)' }}>
-                <div className="absolute top-3 right-3 text-2xl opacity-10">🏪</div>
-                <MapPin className="w-6 h-6 mb-3 mx-auto" style={{ color: '#F5DF19' }} />
-                <h3 className="text-lg font-semibold tracking-wide mb-2" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>
-                  {outlet.name}
-                </h3>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Star className="w-4 h-4" style={{ color: '#F5DF19' }} />
-                  <span className="text-sm font-medium" style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>
-                    {outlet.rating}
-                  </span>
-                </div>
-                <p className="text-xs font-medium" style={{ color: '#EC3237', fontFamily: 'NeueMontreal' }}>
-                  Popular: {outlet.popular}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LocationsSection />
 
       {/* Contact Section */}
       <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#4A4445' }}>

@@ -19,18 +19,18 @@ export default function Preloader() {
       className="fixed inset-0 z-50 flex items-center justify-center"
       style={{ backgroundColor: '#FDFCF8' }}
     >
-      <div className="text-center">
+      <div className="text-center flex flex-col items-center justify-center">
         {/* Logo Animation */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-8"
+          className="mb-0"
         >
           <motion.img
             src="/uclogo.png"
             alt="Uncle's Chinese"
-            className="w-32 h-24 md:w-40 md:h-30 lg:w-48 lg:h-36 object-contain mx-auto"
+            className="w-64 h-48 md:w-80 md:h-60 lg:w-96 lg:h-72 object-contain mx-auto"
             animate={{ 
               y: [0, -10, 0],
               scale: [1, 1.05, 1]
@@ -41,21 +41,6 @@ export default function Preloader() {
               ease: "easeInOut" 
             }}
           />
-        </motion.div>
-        
-        {/* Text Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          style={{ color: '#2C2C2C' }}
-        >
-          <h1 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: 'Brice' }}>
-            UNCLE&apos;S <span style={{ color: '#EC3237' }}>CHINESE</span>
-          </h1>
-          <p className="text-base md:text-lg" style={{ color: '#666666', fontFamily: 'NeueMontreal' }}>
-            Loading authentic flavors...
-          </p>
         </motion.div>
         
         {/* Progress Bar */}

@@ -1,6 +1,5 @@
-"use client";
+import React, { useRef } from "react";
 import Link from "next/link";
-import { useRef } from "react";
 import { TextMask } from "@/animation";
 import { ArrowUpRight } from "lucide-react";
 import { Rounded } from "@/components";
@@ -36,7 +35,7 @@ export default function Ready() {
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-7xl mx-auto w-full">
         
-                {/* Animated Text */}
+        {/* Animated Text */}
         <div className="mb-8 md:mb-12 lg:mb-16">
           <TextMask>
             {phrase}
