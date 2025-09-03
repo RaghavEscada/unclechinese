@@ -300,7 +300,7 @@ export default function UnclesChineseWebsite() {
           <div className="absolute bottom-20 left-20 text-5xl">❤️</div>
         </div>
 
-        <div className="relative flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-lg relative z-10">
+        <div className="relative flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-lg z-10">
           <div className="mx-auto max-w-4xl p-4 text-center sm:py-14">
             <h1 className="mb-4 text-4xl md:text-6xl font-light leading-tight" style={{ color: '#F8F8F8', fontFamily: 'Brice' }}>
               What Our
@@ -336,38 +336,40 @@ export default function UnclesChineseWebsite() {
       </section>
 
       {/* Taste Tradition Section */}
-      <section className="py-20 px-4 relative" style={{ backgroundColor: '#000000' }}>
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold leading-tight text-yellow-400 uppercase tracking-wider" style={{ fontFamily: 'Brice' }}>
+            <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: '#000000' }}>
+        <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10 md:space-y-12 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight text-yellow-400 uppercase tracking-wider px-2" style={{ fontFamily: 'Brice' }}>
             READY TO
-            <br />
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>
             TASTE
-            <br />
-            <span className="font-bold" style={{ color: '#F5DF19' }}>TRADITION?</span>
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>
+            <span className="font-black" style={{ color: '#F5DF19' }}>TRADITION?</span>
           </h2>
 
-          <p className="text-lg md:text-xl font-medium max-w-3xl mx-auto tracking-wide text-yellow-300" style={{ fontFamily: 'NeueMontreal' }}>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold max-w-3xl sm:max-w-4xl mx-auto tracking-wide text-yellow-300 px-4 sm:px-6" style={{ fontFamily: 'NeueMontreal' }}>
             Experience authentic Chinese and Pan-Asian flavors that have been perfected over 24 years. Order now and taste the difference that tradition makes.
           </p>
 
           {/* QR Code Section */}
-          <div className="flex justify-center">
-            <div className="flex flex-col items-center p-6 bg-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700">
+          <div className="flex justify-center px-4">
+            <div className="flex flex-col items-center p-4 sm:p-6 bg-gray-900/50 rounded-xl sm:rounded-2xl backdrop-blur-sm border border-gray-700 w-full max-w-sm">
               <img
                 src="/qr-code.svg"
                 alt="Scan for menu"
-                className="w-32 h-32 mb-4 p-3 bg-white rounded-xl"
+                className="w-24 h-24 sm:w-32 sm:h-32 mb-3 sm:mb-4 p-2 sm:p-3 bg-white rounded-lg sm:rounded-xl"
               />
-              <p className="text-gray-300 text-sm font-medium text-center mb-6" style={{ fontFamily: 'NeueMontreal' }}>
+              <p className="text-gray-300 text-xs sm:text-sm font-medium text-center mb-4 sm:mb-6 px-2" style={{ fontFamily: 'NeueMontreal' }}>
                 Scan to view our menu & exclusive offers
               </p>
               
               {/* Delivery Partners */}
-              <div className="flex flex-col gap-4 items-center">
-                <p className="text-white text-sm font-medium" style={{ fontFamily: 'NeueMontreal' }}>
+              <div className="flex flex-col gap-3 sm:gap-4 items-center">
+                <p className="text-white text-xs sm:text-sm font-medium" style={{ fontFamily: 'NeueMontreal' }}>
                   Order Online
                 </p>
-                <div className="flex gap-6 items-center">
+                <div className="flex gap-4 sm:gap-6 items-center">
                   <a
                     href="https://www.zomato.com/uncle-chinese"
                     target="_blank"
@@ -377,7 +379,7 @@ export default function UnclesChineseWebsite() {
                     <img
                       src="/Zomato_Logo.svg"
                       alt="Order on Zomato"
-                      className="h-8 w-auto"
+                      className="h-6 sm:h-8 w-auto"
                     />
                   </a>
                   <a
@@ -388,8 +390,7 @@ export default function UnclesChineseWebsite() {
                   >
                     <img
                       src="/Swiggy_Logo_2024.webp"
-                      alt="Order on Swiggy"
-                      className="h-8 w-auto"
+                      className="h-6 sm:h-8 w-auto"
                     />
                   </a>
                 </div>
@@ -397,9 +398,9 @@ export default function UnclesChineseWebsite() {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <button 
-              className="px-16 py-4 rounded-full text-xl font-bold transition-all duration-300 transform hover:scale-105 uppercase tracking-wide shadow-2xl"
+              className="px-8 sm:px-12 md:px-16 py-3 sm:py-4 rounded-full text-lg sm:text-xl font-bold transition-all duration-300 transform hover:scale-105 uppercase tracking-wide shadow-2xl"
               style={{ 
                 backgroundColor: '#FFFFFF', 
                 color: '#000000', 
@@ -412,18 +413,19 @@ export default function UnclesChineseWebsite() {
           </div>
 
           {/* Stats Section */}
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center text-gray-400 text-sm font-medium" style={{ fontFamily: 'NeueMontreal' }}>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center text-gray-400 text-xs sm:text-sm font-medium px-4" style={{ fontFamily: 'NeueMontreal' }}>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-              <span>6 LOCATIONS ACROSS PUNE</span>
+              <span className="text-center">6 LOCATIONS ACROSS PUNE</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>24 YEARS OF TRADITION</span>
+              <span className="text-center">24 YEARS OF TRADITION</span>
             </div>
           </div>
         </div>
       </section>
+
       <style jsx>{`
         @keyframes marquee {
           from { transform: translateX(0); }

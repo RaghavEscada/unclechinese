@@ -15,10 +15,7 @@ const LocationsGrid = dynamic(() => import('@/container/locations-page/Locations
   ssr: false
 });
 
-const Ready = dynamic(() => import('@/components/Ready'), {
-  loading: () => <div className="h-screen bg-black flex items-center justify-center text-white">Loading...</div>,
-  ssr: false
-});
+
 
 // Error Fallback Component with improved typing
 const ErrorFallback: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
@@ -98,7 +95,6 @@ export default function LocationsPage() {
         >
       <LocationsHero />
       <LocationsGrid />
-      <Ready />
     </div>
       </Suspense>
     </ErrorBoundary>

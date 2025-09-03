@@ -64,8 +64,8 @@ export default function Hero() {
 
           {/* Plain tagline */}
           <div className="mb-12 sm:mb-16">
-            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-center text-white" style={{ fontFamily: 'Brice' }}>
-              LOVED BY GENERATIONS, CRAFTED BY UNCLE'S
+            <p className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl mb-10 max-w-3xl mx-auto text-center text-white font-bold" style={{ fontFamily: 'Brice' }}>
+              LOVED BY GENERATIONS, CRAFTED BY UNCLE'S.
             </p>
           </div>
 

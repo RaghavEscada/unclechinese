@@ -1,4 +1,4 @@
-export { default as Ready } from "./Ready";
+
 export { default as Rounded } from "./Rounded";
 
 export { default as Navbar } from "./Navbar";

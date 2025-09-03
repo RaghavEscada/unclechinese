@@ -16,7 +16,7 @@ const outlets = [
     name: "Bavdhan", 
     rating: "4.7", 
     popular: "Manchurian", 
-    locationImage: "/a2.JPG",
+    locationImage: "/bavdan.png",
     address: "Near Bavdhan Khind, Bavdhan, Pune",
     phone: "020 2615 2971",
     googleMapsLink: "https://goo.gl/maps/example-bavdhan"
@@ -25,7 +25,7 @@ const outlets = [
     name: "Koregaon Park", 
     rating: "4.9", 
     popular: "Dim Sum", 
-    locationImage: "/a3.JPG",
+    locationImage: "/kp.png",
     address: "Lane 6, Koregaon Park, Pune",
     phone: "020 2615 2972",
     googleMapsLink: "https://goo.gl/maps/example-koregaon-park"
@@ -34,7 +34,7 @@ const outlets = [
     name: "Camp", 
     rating: "4.6", 
     popular: "Fried Rice", 
-    locationImage: "/a4.JPG",
+    locationImage: "/camp.png",
     address: "MG Road, Camp Area, Pune",
     phone: "020 2615 2973",
     googleMapsLink: "https://goo.gl/maps/example-camp"
@@ -43,7 +43,7 @@ const outlets = [
     name: "Hinjewadi", 
     rating: "4.8", 
     popular: "Spring Rolls", 
-    locationImage: "/a5.PNG",
+    locationImage: "/hinjenwad.png",
     address: "Phase 1, Hinjewadi, Pune",
     phone: "020 2615 2974",
     googleMapsLink: "https://goo.gl/maps/example-hinjewadi"
@@ -52,7 +52,7 @@ const outlets = [
     name: "Lulla Nagar", 
     rating: "4.7", 
     popular: "Sweet & Sour", 
-    locationImage: "/a6.PNG",
+    locationImage: "/lullanagar.png",
     address: "Lulla Nagar, Pune",
     phone: "020 2615 2975",
     googleMapsLink: "https://goo.gl/maps/example-lulla-nagar"
