@@ -70,7 +70,7 @@ export default function Navbar() {
               <img
                 src="/uclogo.png"
                 alt="Uncle's Chinese Kitchen Logo"
-                style={{ height: '48px', width: 'auto' }}
+                style={{ height: '64px', width: 'auto' }}
               />
             </Link>
             

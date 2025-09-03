@@ -107,11 +107,7 @@ export default function LocationsSection() {
                     </span>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm text-[#EC3237]">
-                    Popular: {outlet.popular}
-                  </p>
-                </div>
+
               </div>
 
               {/* Location Card Middle (Image) */}
