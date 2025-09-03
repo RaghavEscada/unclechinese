@@ -62,14 +62,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Enhanced tagline with better typography */}
-          <div className="mb-12 sm:mb-16 relative">
-            <div className="absolute -inset-1 bg-[#EC3237] rounded-lg opacity-50 blur-xl group-hover:opacity-100 transition duration-500"></div>
-            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-center" style={{ fontFamily: 'Brice' }}>
+          {/* Plain tagline */}
+          <div className="mb-12 sm:mb-16">
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-center text-white" style={{ fontFamily: 'Brice' }}>
               LOVED BY GENERATIONS, CRAFTED BY UNCLE'S
             </p>
-            {/* Decorative line with enhanced effect */}
-            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#EC3237] to-transparent mx-auto mt-4 animate-pulse"></div>
           </div>
 
           {/* Enhanced Navigation Buttons with more interactive design */}

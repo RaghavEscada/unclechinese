@@ -338,15 +338,15 @@ export default function UnclesChineseWebsite() {
       {/* Taste Tradition Section */}
       <section className="py-20 px-4 relative" style={{ backgroundColor: '#000000' }}>
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold leading-tight text-white uppercase tracking-wider" style={{ fontFamily: 'Brice' }}>
+          <h2 className="text-5xl md:text-7xl font-bold leading-tight text-yellow-400 uppercase tracking-wider" style={{ fontFamily: 'Brice' }}>
             READY TO
             <br />
             TASTE
             <br />
-            <span className="font-bold" style={{ color: '#FFFFFF' }}>TRADITION?</span>
+            <span className="font-bold" style={{ color: '#F5DF19' }}>TRADITION?</span>
           </h2>
 
-          <p className="text-lg md:text-xl font-medium max-w-3xl mx-auto tracking-wide text-gray-300" style={{ fontFamily: 'NeueMontreal' }}>
+          <p className="text-lg md:text-xl font-medium max-w-3xl mx-auto tracking-wide text-yellow-300" style={{ fontFamily: 'NeueMontreal' }}>
             Experience authentic Chinese and Pan-Asian flavors that have been perfected over 24 years. Order now and taste the difference that tradition makes.
           </p>
 
