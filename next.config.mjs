@@ -1,4 +1,6 @@
-import { withNextVideo } from "next-video/process";
+// Temporarily commented out next-video
+// import { withNextVideo } from "next-video/process";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	// Video optimization
@@ -41,4 +43,6 @@ const nextConfig = {
 	},
 };
 
-export default withNextVideo(nextConfig);
+// Temporarily commented out next-video
+// export default withNextVideo(nextConfig);
+export default nextConfig;
