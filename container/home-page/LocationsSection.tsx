@@ -4,58 +4,58 @@ import Image from 'next/image';
 
 const outlets = [
   { 
-    name: "Sanjay Park", 
+    name: "Koregaon Park", 
+    rating: "4.9", 
+    popular: "Dim Sum", 
+    locationImage: "/kp.png",
+    address: "Meera Garden Soc., Bldg. A/10, Shop No. 3 & 5, Meera Nagar, Koregaon Park, Pune - 411 001",
+    phone: "020-2615 2970, 97637 93513",
+    googleMapsLink: "https://goo.gl/maps/example-koregaon-park"
+  },
+  { 
+    name: "Viman Nagar", 
     rating: "4.8", 
     popular: "Hakka Noodles", 
-    locationImage: "/a1.jpg",
-    address: "Survey No. 23/2A, Sanjay Park, Pune",
-    phone: "020 2615 2970",
-    googleMapsLink: "https://goo.gl/maps/example-sanjay-park"
+    locationImage: "/vimannagar.png",
+    address: "Rushab Apartment, Near Ganga Truno Building, Sanjay Park road, Dorabjee Chowk, Viman Nagar, Pune - 411 032",
+    phone: "8888 277 429, 8888 277 958",
+    googleMapsLink: "https://goo.gl/maps/example-viman-nagar"
   },
   { 
     name: "Bavdhan", 
     rating: "4.7", 
     popular: "Manchurian", 
     locationImage: "/bavdan.png",
-    address: "Near Bavdhan Khind, Bavdhan, Pune",
-    phone: "020 2615 2971",
+    address: "Plot No.7, Building, Vidnya Rd, next to Fortune Plaza, Opp. Sagar Co-Op. Hsg. Soc., Bavdhan, Pune 411 021",
+    phone: "9850 666 146",
     googleMapsLink: "https://goo.gl/maps/example-bavdhan"
-  },
-  { 
-    name: "Koregaon Park", 
-    rating: "4.9", 
-    popular: "Dim Sum", 
-    locationImage: "/kp.png",
-    address: "Lane 6, Koregaon Park, Pune",
-    phone: "020 2615 2972",
-    googleMapsLink: "https://goo.gl/maps/example-koregaon-park"
-  },
-  { 
-    name: "Camp", 
-    rating: "4.6", 
-    popular: "Fried Rice", 
-    locationImage: "/camp.png",
-    address: "MG Road, Camp Area, Pune",
-    phone: "020 2615 2973",
-    googleMapsLink: "https://goo.gl/maps/example-camp"
   },
   { 
     name: "Hinjewadi", 
     rating: "4.8", 
     popular: "Spring Rolls", 
     locationImage: "/hinjenwad.png",
-    address: "Phase 1, Hinjewadi, Pune",
-    phone: "020 2615 2974",
+    address: "Hinjewadi Highstreet, above KFC, Hinjawadi, Pune - 411057",
+    phone: "84848 58418, 92721 33323",
     googleMapsLink: "https://goo.gl/maps/example-hinjewadi"
   },
   { 
-    name: "Lulla Nagar", 
+    name: "Lullanagar", 
     rating: "4.7", 
     popular: "Sweet & Sour", 
     locationImage: "/lullanagar.png",
-    address: "Lulla Nagar, Pune",
-    phone: "020 2615 2975",
-    googleMapsLink: "https://goo.gl/maps/example-lulla-nagar"
+    address: "Mohit Towers, Sahaney Sujan Park, Ahead Signature Bar & Restaurant, Lullanagar, Pune - 411 040",
+    phone: "7798 980 200, 7798 980 400",
+    googleMapsLink: "https://goo.gl/maps/example-lullanagar"
+  },
+  { 
+    name: "Camp", 
+    rating: "4.6", 
+    popular: "Fried Rice", 
+    locationImage: "/camp.png",
+    address: "601, Sachapir Street, Camp, Pune - 411001",
+    phone: "8605240092, 81800 52400",
+    googleMapsLink: "https://goo.gl/maps/example-camp"
   }
 ];
 
