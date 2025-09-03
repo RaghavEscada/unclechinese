@@ -105,7 +105,7 @@ export default function About() {
             viewport={{ once: true }}
             className="text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto font-brice"
           >
-            Since 2000, we've been serving authentic Chinese cuisine with a modern twist, bringing the flavors of the Far East to your table.
+            Since 2000, we&apos;ve been serving authentic Chinese cuisine with a modern twist, bringing the flavors of the Far East to your table.
           </motion.p>
 
           <motion.div 
