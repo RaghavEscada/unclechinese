@@ -62,6 +62,13 @@ const outlets = [
 export default function LocationsSection() {
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
 
+  // Function to open Google Maps with specific address
+  const openGoogleMaps = (address: string) => {
+    const encodedAddress = encodeURIComponent(address);
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    window.open(googleMapsUrl, '_blank');
+  };
+
   return (
     <section 
       className="py-20 px-4 relative bg-black text-white"
@@ -148,15 +155,13 @@ export default function LocationsSection() {
                     </span>
                   </div>
                 </div>
-                <a 
-                  href={outlet.googleMapsLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={() => openGoogleMaps(outlet.address)}
                   className="flex items-center gap-2 px-4 py-2 bg-[#EC3237] text-white rounded-full text-sm hover:bg-opacity-90 transition-all"
                 >
                   <Navigation className="w-4 h-4" />
                   View on Map
-                </a>
+                </button>
               </div>
             </div>
           ))}

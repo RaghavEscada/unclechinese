@@ -22,7 +22,7 @@ export default function Hero() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.5) contrast(1.1)' }}
+          style={{ filter: 'brightness(1.0) contrast(1.1)' }}
         />
         
         {/* Enhanced overlay with better gradient */}
@@ -79,13 +79,13 @@ export default function Hero() {
                 bgClass: "from-red-600 via-red-500 to-red-700"
               },
               { 
-                href: "/about-us", 
+                href: "/menu", 
                 icon: Info, 
                 label: "About Us",
                 bgClass: "from-red-700 via-red-600 to-red-800"
               },
               { 
-                href: "/locations", 
+                href: "/menu", 
                 icon: MapPin, 
                 label: "Visit Us",
                 bgClass: "from-red-800 via-red-700 to-red-900"

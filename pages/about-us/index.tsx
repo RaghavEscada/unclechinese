@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Instagram, MessageCircle } from "lucide-react";
+import LocationsSection from "@/container/home-page/LocationsSection";
 
 const stats = [
   { number: "24", label: "Years of Experience" },
@@ -9,14 +10,6 @@ const stats = [
   { number: "100+", label: "Authentic Dishes" }
 ];
 
-const outlets = [
-  "Sanjay Park",
-  "Bavdhan", 
-  "Koregaon Park",
-  "Camp",
-  "Hinjewadi",
-  "Lulla Nagar"
-];
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={20} /> },
@@ -28,60 +21,61 @@ export default function About() {
   return (
     <div className="bg-black text-white min-h-screen font-brice">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col justify-center items-center py-20">
-        <div className="flex flex-col items-center justify-center px-4 text-center w-full max-w-6xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter mb-8 font-brice"
-          >
-            <span className="block bg-gradient-to-r from-pink-300 to-orange-300 bg-clip-text text-transparent">ABOUT</span>
-            <span className="block bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">US</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl font-medium mb-12 text-white font-brice"
-          >
-            Authentic Thai & Chinese Cuisine
-          </motion.p>
+      <section className="relative w-full min-h-screen flex items-center py-20" style={{ backgroundColor: '#000000' }}>
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-center text-center">
+            {/* Centered Content */}
+            <div className="space-y-8 max-w-4xl">
+              <motion.h1 
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight font-brice"
+              >
+                <span className="bg-gradient-to-r from-white to-orange-300 bg-clip-text text-transparent">ABOUT</span>
+                <br />
+                <span className="bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">US</span>
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl font-medium text-white font-brice"
+              >
+                Authentic Thai & Chinese Cuisine
+              </motion.p>
 
-          {/* Stats Grid */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full max-w-4xl"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                  className="text-center p-6 rounded-xl font-brice"
-                  style={{ 
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid #333'
-                  }}
-                >
-                  <div 
-                    className="text-3xl md:text-4xl font-black mb-2 font-brice" 
-                    style={{ color: '#ff6b6b' }}
-                  >
-                    {stat.number}
+              {/* Stats with Icons */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="space-y-4"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                    <span className="text-white text-xs">🕐</span>
                   </div>
-                  <div className="text-sm font-medium text-gray-300 font-brice">
-                    {stat.label}
+                  <span className="text-white font-medium font-brice">Since 2000</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                    <span className="text-white text-xs">📍</span>
                   </div>
-                </motion.div>
-              ))}
+                  <span className="text-white font-medium font-brice">6 Locations in Pune</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center">
+                    <span className="text-white text-xs">⭐</span>
+                  </div>
+                  <span className="text-white font-medium font-brice">24 Years of Excellence</span>
+                </div>
+              </motion.div>
+
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -133,44 +127,7 @@ export default function About() {
       </section>
 
       {/* Locations Section */}
-      <section className="py-20 px-4 font-brice" style={{ backgroundColor: '#3C3637' }}>
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black uppercase tracking-tight text-white font-brice"
-          >
-            Find Us
-            <br />
-            <span style={{ color: '#F5DF19' }}>Near You</span>
-          </motion.h2>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-6"
-          >
-            {outlets.map((outlet, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl border-4 transition-all duration-300 hover:scale-105 hover:shadow-xl font-brice" 
-                style={{ borderColor: '#F5DF19', backgroundColor: 'rgba(245, 223, 25, 0.1)' }}
-              >
-                <MapPin className="w-8 h-8 mb-3 mx-auto" style={{ color: '#F5DF19' }} />
-                <h3 className="text-xl font-black uppercase tracking-wide text-white font-brice">{outlet}</h3>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <LocationsSection />
 
       {/* Contact Section */}
       <section className="py-20 px-4 font-brice" style={{ backgroundColor: '#EC3237' }}>
