@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram, Facebook, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   const outlets = [
@@ -60,6 +60,12 @@ export default function Contact() {
       href: "https://wa.me/916385751370?text=Hi%20Uncle's%20Chinese%2C%20I%20would%20like%20to%20know%20more%20about%20your%20restaurant%20and%20menu.", 
       icon: <MessageCircle size={24} />,
       color: "hover:text-green-500"
+    },
+    { 
+      name: "Zomato", 
+      href: "https://www.zomato.com/pune/restaurants/uncles-chinese?subzone=3419", 
+      icon: <ExternalLink size={24} />,
+      color: "hover:text-red-500"
     }
   ];
 
@@ -119,7 +125,7 @@ export default function Contact() {
             >
               <Phone className="w-6 h-6 mb-4 mx-auto" style={{ color: '#EC3237' }} />
               <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Brice', color: '#F8F8F8' }}>Call Us 🥢</h3>
-              <p style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>020 2615 2970</p>
+              <p style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>+91 7709651313</p>
             </motion.div>
 
             <motion.div 
@@ -135,7 +141,7 @@ export default function Contact() {
             >
               <Mail className="w-6 h-6 mb-4 mx-auto" style={{ color: '#EC3237' }} />
               <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Brice', color: '#F8F8F8' }}>Email Us 🍜</h3>
-              <p style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>uncleskitchen@gmail.com</p>
+              <p style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}>ucviman21@gmail.com</p>
             </motion.div>
 
             <motion.div 

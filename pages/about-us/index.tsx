@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Instagram, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, MessageCircle, ExternalLink } from "lucide-react";
 import LocationsSection from "@/container/home-page/LocationsSection";
 
 const stats = [
@@ -15,6 +15,7 @@ const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={20} /> },
   { id: 2, title: "Facebook", href: "https://www.facebook.com/uncleschinese", icon: <MessageCircle size={20} /> },
   { id: 3, title: "WhatsApp", href: "https://wa.me/916385751370?text=Hi%20Uncle's%20Chinese%2C%20I%20would%20like%20to%20know%20more%20about%20your%20restaurant%20and%20menu.", icon: <MessageCircle size={20} /> },
+  { id: 4, title: "Zomato", href: "https://www.zomato.com/pune/restaurants/uncles-chinese?subzone=3419", icon: <ExternalLink size={20} /> },
 ];
 
 export default function About() {
@@ -163,11 +164,11 @@ export default function About() {
           >
             <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm font-brice" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
               <Phone className="w-6 h-6" style={{ color: '#F5DF19' }} />
-              <span className="font-bold text-lg text-white font-brice">020 2615 2970</span>
+              <span className="font-bold text-lg text-white font-brice">+91 7709651313</span>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-xl backdrop-blur-sm font-brice" style={{ backgroundColor: 'rgba(245, 223, 25, 0.1)' }}>
               <Mail className="w-6 h-6" style={{ color: '#F5DF19' }} />
-              <span className="font-bold text-lg text-white font-brice">uncleskitchen@gmail.com</span>
+              <span className="font-bold text-lg text-white font-brice">ucviman21@gmail.com</span>
             </div>
           </motion.div>
 

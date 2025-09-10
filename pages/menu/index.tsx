@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Search, Filter, Star, Clock, MapPin, Menu, Download } from "lucide-react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -273,83 +273,227 @@ const RamenBowl3D = () => {
   return <div ref={mountRef} className="w-full h-full" />;
 };
 
-// Menu Item Component with enhanced design
+// Enhanced Interactive Menu Item Component
 interface MenuItemProps {
   item: {
     name: string;
     price: number | { veg?: number; chicken?: number; prawns?: number };
     description: string;
-    image?: string; // Added image prop
+    image?: string;
   };
 }
 
 const MenuItem = ({ item }: MenuItemProps) => {
+  const [isHovered, setIsHovered] = useState(false);
   const renderPrice = (price: number | { veg?: number; chicken?: number; prawns?: number }) => {
     if (typeof price === 'number') {
       return (
-        <span className="text-2xl font-bold text-red-400">₹{price}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-3xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text">₹{price}</span>
+        </div>
       );
     }
     
     return (
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2">
         {price.veg && (
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
           <span className="text-lg font-semibold text-green-400">Veg: ₹{price.veg}</span>
+          </div>
         )}
         {price.chicken && (
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
           <span className="text-lg font-semibold text-orange-400">Chicken: ₹{price.chicken}</span>
+          </div>
         )}
         {price.prawns && (
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-red-400 rounded-full"></span>
           <span className="text-lg font-semibold text-red-400">Prawns: ₹{price.prawns}</span>
+          </div>
         )}
       </div>
     );
+  };
+
+  // Get appropriate emoji and Asian elements based on item name
+  const getItemEmoji = (name: string) => {
+    const nameLower = name.toLowerCase();
+    if (nameLower.includes('momo') || nameLower.includes('wonton')) return '🥟';
+    if (nameLower.includes('soup')) return '🍲';
+    if (nameLower.includes('rice')) return '🍚';
+    if (nameLower.includes('noodle')) return '🍜';
+    if (nameLower.includes('chicken')) return '🍗';
+    if (nameLower.includes('prawn') || nameLower.includes('seafood')) return '🦐';
+    if (nameLower.includes('curry')) return '🍛';
+    if (nameLower.includes('beverage') || nameLower.includes('soda') || nameLower.includes('tea')) return '🥤';
+    if (nameLower.includes('mocktail')) return '🍹';
+    if (nameLower.includes('boba')) return '🧋';
+    if (nameLower.includes('dessert') || nameLower.includes('brownie')) return '🍰';
+    if (nameLower.includes('tofu') || nameLower.includes('paneer') || nameLower.includes('veg')) return '🥗';
+    return '🍽️';
+  };
+
+  // Get Asian decorative elements
+  const getAsianElements = (name: string) => {
+    const nameLower = name.toLowerCase();
+    const elements = [];
+    
+    // Add pandas for special items
+    if (nameLower.includes('momo') || nameLower.includes('wonton') || nameLower.includes('curry')) {
+      elements.push('🐼');
+    }
+    
+    // Add bamboo for rice and noodle dishes
+    if (nameLower.includes('rice') || nameLower.includes('noodle')) {
+      elements.push('🎋');
+    }
+    
+    // Add chopsticks for main dishes
+    if (nameLower.includes('chicken') || nameLower.includes('prawn') || nameLower.includes('gravy')) {
+      elements.push('🥢');
+    }
+    
+    // Add lanterns for soups
+    if (nameLower.includes('soup')) {
+      elements.push('🏮');
+    }
+    
+    // Add fortune cookies for desserts
+    if (nameLower.includes('dessert') || nameLower.includes('brownie')) {
+      elements.push('🥠');
+    }
+    
+    // Add tea elements for beverages
+    if (nameLower.includes('tea') || nameLower.includes('beverage')) {
+      elements.push('🫖');
+    }
+    
+    return elements;
   };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 rounded-2xl p-6 hover:border-red-500 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20 group overflow-hidden"
+      whileHover={{ scale: 1.03, y: -8 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 border border-gray-600/40 rounded-3xl p-8 hover:border-red-400/70 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/30 group overflow-hidden backdrop-blur-md cursor-pointer"
     >
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Enhanced background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       
-      {/* Food Image */}
-      {item.image && (
-        <div className="relative mb-4 overflow-hidden rounded-xl">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      )}
+      {/* Decorative top accent */}
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      {/* Content */}
+      
+      {/* Enhanced Content */}
       <div className="relative z-10">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-normal text-white leading-tight group-hover:text-red-300 transition-colors">
-            {item.name}
-          </h3>
-          <div className="ml-4 text-right">
+        {/* Header with emoji and name */}
+        <div className="flex items-start justify-between mb-8">
+          <div className="flex items-center gap-5 flex-1">
+            <motion.div 
+              className="text-5xl group-hover:scale-110 transition-transform duration-300"
+              whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+              transition={{ duration: 0.5 }}
+            >
+              {getItemEmoji(item.name)}
+            </motion.div>
+            <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-300 group-hover:to-orange-300 group-hover:bg-clip-text transition-all duration-500">
+              {item.name}
+            </h3>
+          </div>
+          <div className="ml-6 text-right">
             {renderPrice(item.price)}
           </div>
         </div>
-        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+        
+        {/* Asian Decorative Elements */}
+        <motion.div 
+          className="flex items-center gap-4 mb-6 pl-20"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          {getAsianElements(item.name).map((element, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.4, rotate: 15 }}
+              transition={{ delay: index * 0.1, duration: 0.3 }}
+              className="text-2xl group-hover:scale-110 transition-transform duration-300 cursor-pointer"
+            >
+              {element}
+            </motion.span>
+          ))}
+        </motion.div>
+        
+        {/* Enhanced Description */}
+        <motion.p 
+          className="text-gray-300 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-500 pl-20 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           {item.description}
-        </p>
+        </motion.p>
+
+        {/* Enhanced Spice level indicator */}
+        {item.description.toLowerCase().includes('spicy') && (
+          <motion.div 
+            className="flex items-center gap-3 mt-6 pl-20"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <motion.span 
+              className="text-red-400 text-lg"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              🌶️
+            </motion.span>
+            <span className="text-red-400 text-base font-semibold">Spicy</span>
+          </motion.div>
+        )}
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Enhanced decorative corner elements */}
+      <motion.div 
+        className="absolute top-8 right-8 w-24 h-24 bg-gradient-to-br from-red-500/20 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        animate={{ 
+          scale: isHovered ? [1, 1.3, 1] : 1,
+          rotate: isHovered ? [0, 180, 360] : 0
+        }}
+        transition={{ duration: 3, repeat: isHovered ? Infinity : 0 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute bottom-8 left-8 w-20 h-20 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        animate={{ 
+          scale: isHovered ? [1, 1.4, 1] : 1,
+          rotate: isHovered ? [0, -180, -360] : 0
+        }}
+        transition={{ duration: 3.5, repeat: isHovered ? Infinity : 0 }}
+      ></motion.div>
+      
+      {/* Additional decorative elements */}
+      <motion.div 
+        className="absolute top-1/2 right-4 w-12 h-12 bg-gradient-to-br from-yellow-500/15 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        animate={{ 
+          y: isHovered ? [0, -10, 0] : 0,
+          rotate: isHovered ? [0, 90, 180, 270, 360] : 0
+        }}
+        transition={{ duration: 4, repeat: isHovered ? Infinity : 0 }}
+      ></motion.div>
     </motion.div>
   );
 };
 
-// Category Section with enhanced styling
+// Enhanced Category Section with better styling
 interface CategorySectionProps {
   category: { id: string; name: string; icon: string };
   items: any[];
@@ -357,24 +501,66 @@ interface CategorySectionProps {
 
 const CategorySection = ({ category, items }: CategorySectionProps) => (
   <motion.section
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="mb-20"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="relative group"
     id={category.id}
   >
-    <div className="flex items-center gap-6 mb-12">
-      <div className="text-5xl animate-pulse">{category.icon}</div>
+    {/* Section Background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-red-500/8 via-transparent to-orange-500/8 rounded-3xl -m-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    
+    {/* Category Header */}
+    <div className="relative z-10 flex items-center gap-8 mb-20">
+      <div className="relative">
+        <div className="text-7xl group-hover:scale-110 transition-transform duration-300">
+          {category.icon}
+        </div>
+        <div className="absolute inset-0 text-7xl opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300">
+          {category.icon}
+        </div>
+      </div>
       <div className="flex-1">
-        <h2 className="text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-2">
+        <div className="flex items-center gap-6 mb-4">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight">
           {category.name}
         </h2>
-        <div className="h-1 bg-gradient-to-r from-red-500 via-orange-500 to-transparent rounded-full"></div>
+          <div className="flex-1 h-px bg-gradient-to-r from-red-500/60 via-orange-500/60 to-transparent"></div>
+          <span className="text-sm text-gray-500 bg-gray-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
+            {items.length} items
+          </span>
       </div>
+        <div className="h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-transparent rounded-full"></div>
     </div>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    </div>
+
+    {/* Menu Items Grid */}
+    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
       {items.map((item, index) => (
-        <MenuItem key={index} item={item} />
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+        >
+          <MenuItem item={item} />
+        </motion.div>
       ))}
+    </div>
+
+    {/* Enhanced Asian Decorative Elements */}
+    <div className="absolute -top-6 -right-6 w-40 h-40 bg-gradient-to-br from-red-500/12 to-transparent rounded-full blur-2xl opacity-60"></div>
+    <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-orange-500/12 to-transparent rounded-full blur-xl opacity-60"></div>
+    
+    {/* Floating Asian Elements */}
+    <div className="absolute top-12 right-16 text-3xl opacity-20 group-hover:opacity-50 transition-opacity duration-500">
+      🐼
+    </div>
+    <div className="absolute bottom-16 left-20 text-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-500">
+      🎋
+    </div>
+    <div className="absolute top-1/2 right-12 text-xl opacity-15 group-hover:opacity-40 transition-opacity duration-500">
+      🥢
     </div>
   </motion.section>
 );
@@ -385,6 +571,20 @@ const EnhancedMenuPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 300], [0, -50]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToCategory = (categoryId: string) => {
     setActiveCategory(categoryId);
@@ -407,7 +607,58 @@ const EnhancedMenuPage = () => {
   return (
     <div className="min-h-screen bg-black text-white font-brice">
       {/* Enhanced Hero Section with 3D Bowl */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      <motion.div 
+        className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
+        style={{ y, opacity }}
+      >
+        {/* Interactive Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-20 left-20 text-6xl opacity-10"
+            animate={{ 
+              y: [0, -20, 0],
+              rotate: [0, 5, 0]
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          >
+            🐼
+          </motion.div>
+          <motion.div
+            className="absolute top-40 right-32 text-4xl opacity-10"
+            animate={{ 
+              y: [0, 15, 0],
+              rotate: [0, -5, 0]
+            }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 1
+            }}
+          >
+            🎋
+          </motion.div>
+          <motion.div
+            className="absolute bottom-32 left-1/4 text-5xl opacity-10"
+            animate={{ 
+              y: [0, -10, 0],
+              rotate: [0, 10, 0]
+            }}
+            transition={{ 
+              duration: 5, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 2
+            }}
+          >
+            🥢
+          </motion.div>
+        </div>
+
         {/* Content Layout */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left side - Text content */}
@@ -459,36 +710,57 @@ const EnhancedMenuPage = () => {
               </div>
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* Interactive CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
               className="mt-4 lg:mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToCategory('beverages')}
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-2"
               >
-                <span>🍜</span>
+                <motion.span
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  🍜
+                </motion.span>
                 Explore Menu
-              </button>
+              </motion.button>
               
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('/ucmenu1.pdf', '_blank')}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2"
+              >
+                <motion.div
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
               >
                 <Download className="w-5 h-5" />
+                </motion.div>
                 Quick Menu
-              </button>
+              </motion.button>
               
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('/uncmenu2.pdf', '_blank')}
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2"
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2"
+              >
+                <motion.div
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
               >
                 <Download className="w-5 h-5" />
+                </motion.div>
                 Full Menu
-              </button>
+              </motion.button>
             </motion.div>
           </motion.div>
 
@@ -511,101 +783,257 @@ const EnhancedMenuPage = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Full Menu Image Section */}
-      <div className="relative w-full bg-black">
-        <div className="w-full max-w-5xl mx-auto px-4 py-8">
-          <div className="relative">
-            {/* Decorative border - mobile optimized */}
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 to-red-500/20 rounded-lg md:rounded-xl p-1 md:p-2">
-              <div className="w-full h-full bg-black rounded-lg md:rounded-xl"></div>
+      {/* Enhanced Navigation & Search */}
+      <motion.div 
+        className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800 overflow-hidden"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Asian Background Elements */}
+        <div className="absolute top-2 left-4 text-lg opacity-10 animate-pulse">🐼</div>
+        <div className="absolute top-3 right-6 text-sm opacity-10 animate-bounce">🎋</div>
+        <div className="absolute bottom-2 left-1/4 text-base opacity-10 animate-pulse">🥢</div>
+        <div className="absolute bottom-1 right-1/3 text-sm opacity-10 animate-bounce">🏮</div>
+        
+        <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
+          {/* Search Bar */}
+          <div className="flex items-center gap-4 mb-4">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search menu items... 🔍"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
+              />
             </div>
-            {/* Image with enhanced mobile styling */}
-            <img
-              src="/menu.jpeg"
-              alt="Uncle's Chinese Menu"
-              className="relative z-10 w-full h-auto object-contain mx-auto shadow-2xl rounded-lg md:rounded-xl border-2 border-gradient-to-r from-red-500/30 to-orange-500/30 
-                         /* Mobile specific adjustments */
-                         sm:max-w-full sm:object-cover sm:rounded-xl
-                         /* Desktop unchanged */
-                         md:object-contain"
-              style={{
-                filter: 'brightness(1.05) contrast(1.1)',
-                boxShadow: '0 0 50px rgba(236, 50, 55, 0.3), 0 0 100px rgba(255, 165, 0, 0.2)'
-              }}
-            />
-            {/* Decorative corner elements */}
-            <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-red-500 rounded-tl-lg md:hidden"></div>
-            <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-red-500 rounded-tr-lg md:hidden"></div>
-            <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-red-500 rounded-bl-lg md:hidden"></div>
-            <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-red-500 rounded-br-lg md:hidden"></div>
+            
+            
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="lg:hidden p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Interactive Category Navigation */}
+          <div className="flex flex-wrap gap-2 lg:gap-4">
+            {categories.map((category, index) => (
+              <motion.button
+                key={category.id}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToCategory(category.id)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category.id
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/30'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                }`}
+              >
+                <motion.span 
+                  className="text-lg"
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {category.icon}
+                </motion.span>
+                <span className="hidden sm:inline">{category.name}</span>
+              </motion.button>
+            ))}
           </div>
         </div>
-        {/* Optional overlay with download buttons */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+      </motion.div>
+
+      {/* Enhanced Menu Items Section */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-4">
+            Explore Our Menu
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            From traditional momos to authentic Thai curries, discover flavors that tell a story
+          </p>
+        </motion.div>
+
+        {/* Menu Categories */}
+        <div className="space-y-24">
+          {filteredCategories.map((category) => {
+            const items = menuData[category.id as keyof typeof menuData] || [];
+            const filteredItems = items.filter((item: any) => 
+              !searchTerm || 
+              item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              item.description.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            if (filteredItems.length === 0) return null;
+
+            return (
+              <CategorySection key={category.id} category={category} items={filteredItems} />
+            );
+          })}
+        </div>
+
+        {filteredCategories.length === 0 && searchTerm && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-20"
+          >
+            <div className="text-6xl mb-6">🔍</div>
+            <h3 className="text-2xl font-light text-gray-300 mb-3">No items found</h3>
+            <p className="text-gray-500 mb-6">Try searching with different keywords</p>
+          <button 
+              onClick={() => setSearchTerm('')}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 rounded-full text-white font-medium transition-all duration-300 transform hover:scale-105"
+          >
+              Clear Search
+          </button>
+          </motion.div>
+        )}
+        </div>
+
+      {/* Enhanced Menu Summary Section */}
+      <div className="relative w-full bg-gradient-to-b from-black via-gray-900 to-black py-20">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-10 text-6xl opacity-5 animate-pulse">🐼</div>
+          <div className="absolute top-20 right-20 text-4xl opacity-5 animate-bounce">🎋</div>
+          <div className="absolute bottom-20 left-1/4 text-5xl opacity-5 animate-pulse">🥢</div>
+          <div className="absolute bottom-10 right-1/3 text-3xl opacity-5 animate-bounce">🏮</div>
+      </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-6">
+              Our Culinary Journey
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Discover the rich tapestry of flavors that have made Uncle's Chinese a beloved destination for authentic Asian cuisine
+            </p>
+          </motion.div>
+
+          {/* Menu Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            {[
+              { number: "15+", label: "Categories", icon: "🍽️" },
+              { number: "100+", label: "Dishes", icon: "🥟" },
+              { number: "24", label: "Years", icon: "⭐" },
+              { number: "6", label: "Locations", icon: "📍" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="text-center group"
+              >
+                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {stat.icon}
+            </div>
+                <div className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text mb-1">
+                  {stat.number}
+          </div>
+                <div className="text-gray-400 text-sm font-medium">
+                  {stat.label}
+        </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Featured Categories Preview */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          >
+            {[
+              { 
+                title: "Signature Momos", 
+                description: "Handcrafted dumplings with authentic flavors", 
+                icon: "🥟",
+                count: "5 varieties",
+                color: "from-red-500 to-red-600"
+              },
+              { 
+                title: "Thai Curries", 
+                description: "Aromatic curries with fresh coconut milk", 
+                icon: "🍛",
+                count: "3 styles",
+                color: "from-orange-500 to-orange-600"
+              },
+              { 
+                title: "Chinese Specialties", 
+                description: "Traditional wok-tossed dishes", 
+                icon: "🍜",
+                count: "20+ dishes",
+                color: "from-yellow-500 to-yellow-600"
+              }
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-2xl p-6 hover:border-red-500/50 transition-all duration-300 group backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white group-hover:text-red-300 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-gray-400">{feature.count}</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+                <div className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br ${feature.color} rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Download Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
           <button 
             onClick={() => window.open('/ucmenu1.pdf', '_blank')}
-            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-3"
           >
             <Download className="w-5 h-5" />
-            Quick Menu PDF
+              <span>Quick Menu PDF</span>
           </button>
           <button 
             onClick={() => window.open('/uncmenu2.pdf', '_blank')}
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-2"
+              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-3"
           >
             <Download className="w-5 h-5" />
-            Full Menu PDF
+              <span>Full Menu PDF</span>
           </button>
-        </div>
-      </div>
-
-      {/* Full Menu Image Section */}
-      <div className="relative w-full bg-black">
-        <div className="w-full max-w-5xl mx-auto px-4 py-8">
-          <div className="relative">
-            {/* Decorative border - mobile optimized */}
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 to-red-500/20 rounded-lg md:rounded-xl p-1 md:p-2">
-              <div className="w-full h-full bg-black rounded-lg md:rounded-xl"></div>
-            </div>
-            {/* Image with enhanced mobile styling */}
-            <img
-              src="/menu.jpeg"
-              alt="Uncle's Chinese Menu"
-              className="relative z-10 w-full h-auto object-contain mx-auto shadow-2xl rounded-lg md:rounded-xl border-2 border-gradient-to-r from-red-500/30 to-orange-500/30 
-                         /* Mobile specific adjustments */
-                         sm:max-w-full sm:object-cover sm:rounded-xl
-                         /* Desktop unchanged */
-                         md:object-contain"
-              style={{
-                filter: 'brightness(1.05) contrast(1.1)',
-                boxShadow: '0 0 50px rgba(236, 50, 55, 0.3), 0 0 100px rgba(255, 165, 0, 0.2)'
-              }}
-            />
-            {/* Decorative corner elements */}
-            <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-red-500 rounded-tl-lg md:hidden"></div>
-            <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-red-500 rounded-tr-lg md:hidden"></div>
-            <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-red-500 rounded-bl-lg md:hidden"></div>
-            <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-red-500 rounded-br-lg md:hidden"></div>
-          </div>
-        </div>
-        {/* Optional overlay with download buttons */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
-          <button 
-            onClick={() => window.open('/ucmenu1.pdf', '_blank')}
-            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
-          >
-            <Download className="w-5 h-5" />
-            Quick Menu PDF
-          </button>
-          <button 
-            onClick={() => window.open('/uncmenu2.pdf', '_blank')}
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-2"
-          >
-            <Download className="w-5 h-5" />
-            Full Menu PDF
-          </button>
+          </motion.div>
         </div>
       </div>
 
@@ -615,12 +1043,16 @@ const EnhancedMenuPage = () => {
         animate={{ opacity: 1, y: 0 }}
         className="relative bg-gradient-to-r from-red-600 via-red-700 to-orange-600 py-12 overflow-hidden"
       >
-        {/* Background decorations */}
+        {/* Asian Background decorations */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-4 left-4 text-6xl animate-bounce">🎉</div>
           <div className="absolute top-8 right-8 text-4xl animate-pulse">⏰</div>
           <div className="absolute bottom-4 left-1/4 text-5xl animate-spin">💰</div>
           <div className="absolute bottom-8 right-1/4 text-3xl animate-bounce">🍜</div>
+          <div className="absolute top-1/2 left-8 text-4xl animate-bounce">🐼</div>
+          <div className="absolute top-1/3 right-12 text-3xl animate-pulse">🎋</div>
+          <div className="absolute bottom-1/3 left-1/3 text-2xl animate-spin">🥢</div>
+          <div className="absolute top-2/3 right-1/4 text-3xl animate-bounce">🏮</div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -647,14 +1079,23 @@ const EnhancedMenuPage = () => {
       </motion.div>
 
       {/* Footer */}
-      <div className="bg-black border-t border-gray-800 py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-2 text-gray-400 mb-4">
+      <div className="bg-black border-t border-gray-800 py-8 relative overflow-hidden">
+        {/* Asian Footer Elements */}
+        <div className="absolute top-2 left-8 text-lg opacity-10 animate-pulse">🐼</div>
+        <div className="absolute top-4 right-12 text-base opacity-10 animate-bounce">🎋</div>
+        <div className="absolute bottom-3 left-1/4 text-sm opacity-10 animate-pulse">🥢</div>
+        <div className="absolute bottom-2 right-1/3 text-base opacity-10 animate-bounce">🏮</div>
+        
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+          <div className="flex items-center justify-center gap-3 text-gray-400 mb-4">
             <span className="text-2xl">🍜</span>
             <span className="text-lg font-semibold">Experience Authentic Asian Flavors</span>
+            <span className="text-2xl">🥢</span>
           </div>
-          <p className="text-gray-500 text-sm">
-            Crafted with love • Fresh ingredients • 24 years of culinary excellence
+          <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
+            <span>🐼</span>
+            <span>Crafted with love • Fresh ingredients • 24 years of culinary excellence</span>
+            <span>🎋</span>
           </p>
         </div>
       </div>

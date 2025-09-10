@@ -171,7 +171,7 @@ export default function Footer() {
   ];
 
   const deliveryPartners = [
-    { id: 1, title: "Zomato", href: "https://www.zomato.com/uncle-chinese", icon: "/Zomato_Logo.svg" },
+    { id: 1, title: "Zomato", href: "https://www.zomato.com/pune/restaurants/uncles-chinese?subzone=3419", icon: "/Zomato_Logo.svg" },
     { id: 2, title: "Swiggy", href: "https://www.swiggy.com/uncle-chinese", icon: "/Swiggy_Logo_2024.webp" },
   ];
 
@@ -248,14 +248,11 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h3 className="text-xl font-light text-white mb-6">Contact Us</h3>
             <div className="space-y-2 text-gray-400 text-sm">
-              <a href="tel:02026152970" className="block hover:text-red-500 transition-colors">
-                Main: 020 2615 2970
+              <a href="tel:+917709651313" className="block hover:text-red-500 transition-colors">
+                +91 7709651313
               </a>
-              <a href="tel:9637496513" className="block hover:text-red-500 transition-colors">
-                Mobile: 96374 96513
-              </a>
-              <a href="mailto:uncleskitchen@gmail.com" className="block hover:text-red-500 transition-colors">
-                uncleskitchen@gmail.com
+              <a href="mailto:ucviman21@gmail.com" className="block hover:text-red-500 transition-colors">
+                ucviman21@gmail.com
               </a>
             </div>
           </div>
