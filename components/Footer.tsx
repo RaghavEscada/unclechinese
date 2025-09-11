@@ -145,8 +145,9 @@ const RamenBowl3D = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      const currentMount = mountRef.current;
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
@@ -199,9 +200,11 @@ export default function Footer() {
           {/* Column 1 - Brand & About */}
           <div className="lg:col-span-6">
             <div className="mb-12">
-              <img
+              <Image
                 src="/uclogo.png"
                 alt="Uncle's Chinese"
+                width={400}
+                height={300}
                 className="w-64 h-48 md:w-80 md:h-60 lg:w-96 lg:h-72 object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 style={{ 
                   filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.15)) drop-shadow(0 0 60px rgba(236,50,55,0.2))'

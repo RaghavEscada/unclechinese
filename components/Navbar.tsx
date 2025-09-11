@@ -66,10 +66,13 @@ export default function Navbar() {
           <div className="relative z-10 h-full flex items-center justify-between">
             {/* Uncle's Chinese Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <img
+              <Image
                 src="/uclogo.png"
                 alt="Uncle's Chinese Kitchen Logo"
+                width={200}
+                height={64}
                 style={{ height: '64px', width: 'auto' }}
+                priority
               />
             </Link>
             

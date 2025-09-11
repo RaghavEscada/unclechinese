@@ -263,8 +263,9 @@ const RamenBowl3D = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      const currentMount = mountRef.current;
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
@@ -927,7 +928,7 @@ const EnhancedMenuPage = () => {
               Our Culinary Journey
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Discover the rich tapestry of flavors that have made Uncle's Chinese a beloved destination for authentic Asian cuisine
+              Discover the rich tapestry of flavors that have made Uncle&apos;s Chinese a beloved destination for authentic Asian cuisine
             </p>
           </motion.div>
 
