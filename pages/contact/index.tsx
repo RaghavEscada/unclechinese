@@ -88,11 +88,11 @@ export default function Contact() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight mb-8"
-            style={{ fontFamily: 'Brice', color: '#F8F8F8' }}
+            className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight mb-8 bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent"
+            style={{ fontFamily: 'Brice' }}
           >
-            <span className="block" style={{ color: '#F5DF19' }}>Get In</span>
-            <span className="block" style={{ color: '#F5DF19' }}>Touch 🥢</span>
+            <span className="block bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">Get In</span>
+            <span className="block bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">Touch 🥢</span>
           </motion.h1>
           
           <motion.p 

@@ -159,8 +159,7 @@ export default function Footer() {
   const quickLinks = [
     { id: 1, title: "Menu", href: "/menu" },
     { id: 2, title: "About Us", href: "/about-us" },
-    { id: 3, title: "Our Locations", href: "/locations" },
-    { id: 4, title: "Contact", href: "/contact" }
+    { id: 3, title: "Contact", href: "/contact" }
   ];
 
   const socialLinks = [
