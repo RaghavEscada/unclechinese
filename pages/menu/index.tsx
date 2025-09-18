@@ -523,7 +523,7 @@ const CategorySection = ({ category, items }: CategorySectionProps) => (
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-6 mb-4">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight font-brice uppercase">
           {category.name}
         </h2>
           <div className="flex-1 h-px bg-gradient-to-r from-red-500/60 via-orange-500/60 to-transparent"></div>
@@ -671,7 +671,7 @@ const EnhancedMenuPage = () => {
           >
             <div className="mb-4 lg:mb-8">
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-2 lg:mb-4"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight mb-2 lg:mb-4 font-brice"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -681,7 +681,7 @@ const EnhancedMenuPage = () => {
                 </span>
               </motion.h1>
               <motion.p 
-                className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-300 mb-4 lg:mb-8 font-light"
+                className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 lg:mb-8 font-light font-brice"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -861,7 +861,7 @@ const EnhancedMenuPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-4 font-brice uppercase">
             Explore Our Menu
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
@@ -924,7 +924,7 @@ const EnhancedMenuPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-6 font-brice uppercase">
               Our Culinary Journey
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">

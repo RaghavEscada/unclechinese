@@ -23,7 +23,17 @@ export default function About() {
     <div className="bg-black text-white min-h-screen font-brice">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex items-center py-20" style={{ backgroundColor: '#000000' }}>
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Restaurant background" 
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center justify-center text-center">
             {/* Centered Content */}
             <div className="space-y-8 max-w-4xl">
@@ -31,18 +41,16 @@ export default function About() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight font-brice"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight tracking-tight font-brice bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent uppercase"
               >
-                <span className="bg-gradient-to-r from-white to-orange-300 bg-clip-text text-transparent">ABOUT</span>
-                <br />
-                <span className="bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">US</span>
+                ABOUT US
               </motion.h1>
               
               <motion.p 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl font-medium text-white font-brice"
+                className="text-xl md:text-2xl lg:text-3xl font-light text-gray-300 font-brice"
               >
                 Authentic Thai & Chinese Cuisine
               </motion.p>
@@ -88,7 +96,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black uppercase tracking-tight text-black font-brice"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light uppercase tracking-tight text-black font-brice bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent"
           >
             Our Story
           </motion.h2>
@@ -138,11 +146,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black uppercase tracking-tight text-white font-brice"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light uppercase tracking-tight font-brice bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent"
           >
-            Ready to
-            <br />
-            <span style={{ color: '#F5DF19' }}>Taste Tradition?</span>
+            READY TO TASTE TRADITION?
           </motion.h2>
 
           <motion.p 

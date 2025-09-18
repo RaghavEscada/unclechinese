@@ -88,19 +88,16 @@ export default function Contact() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight mb-8 bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent"
-            style={{ fontFamily: 'Brice' }}
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight tracking-tight mb-8 bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent font-brice uppercase"
           >
-            <span className="block bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">Get In</span>
-            <span className="block bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">Touch 🥢</span>
+            GET IN TOUCH 🥢
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl font-medium mb-12"
-            style={{ color: '#F8F8F8', fontFamily: 'NeueMontreal' }}
+            className="text-xl md:text-2xl lg:text-3xl font-light mb-12 text-gray-300 font-brice"
           >
             We&apos;d love to hear from you 🍜
           </motion.p>
@@ -180,12 +177,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-center mb-16"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight tracking-tight text-center mb-16 font-brice"
             style={{ fontFamily: 'Brice', color: '#F8F8F8' }}
           >
-            Find Us
-            <br />
-            <span style={{ color: '#F5DF19' }}>Near You 🥢</span>
+            <span className="bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">FIND US NEAR YOU 🥢</span>
           </motion.h2>
 
           <motion.div 
@@ -241,12 +236,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight tracking-tight font-brice"
             style={{ fontFamily: 'Brice', color: '#F8F8F8' }}
           >
-            Send Us
-            <br />
-            <span style={{ color: '#F5DF19' }}>A Message 🥢</span>
+            <span className="bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">SEND US A MESSAGE 🥢</span>
           </motion.h2>
 
           <motion.div 
@@ -318,12 +311,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-tight tracking-tight font-brice"
             style={{ fontFamily: 'Brice', color: '#F8F8F8' }}
           >
-            Follow Us
-            <br />
-            <span style={{ color: '#F5DF19' }}>On Social 🥢</span>
+            <span className="bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">FOLLOW US ON SOCIAL 🥢</span>
           </motion.h2>
 
           <motion.p 

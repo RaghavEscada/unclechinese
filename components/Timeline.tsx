@@ -87,7 +87,7 @@ const Timeline = () => {
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center mb-16"
+          className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-center mb-16 bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent font-brice"
         >
           Your Journey to Success
         </motion.h1>

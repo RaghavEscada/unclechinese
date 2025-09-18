@@ -337,8 +337,18 @@ export default function UnclesChineseWebsite() {
 
       {/* Taste Tradition Section */}
             <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: '#000000' }}>
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1563379091339-03246963d96a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Chinese food background" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
         <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10 md:space-y-12 relative z-10">
-                          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight text-white uppercase tracking-wider px-2 text-center" style={{ fontFamily: 'Brice' }}>
+                          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight text-white uppercase tracking-wider px-2 text-center" style={{ fontFamily: 'Brice' }}>
                   WHERE FLAVOR MEETS
                   <br />
                   <span style={{ color: '#F5DF19' }}>24 YEARS</span> OF CRAFT.
