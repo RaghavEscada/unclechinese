@@ -175,10 +175,10 @@ const GalleryImage = ({ src, alt }: { src: string; alt: string }) => {
 
 // Services Section Component
 const ServicesSection = () => {
-  // Create arrays for each row with different images
-  const firstRowImages = Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`);
-  const secondRowImages = Array.from({ length: 10 }, (_, i) => `${i + 11}.jpg`);
-  const thirdRowImages = Array.from({ length: 9 }, (_, i) => `${i + 21}.jpg`);
+  // Create arrays for each row with savory dishes only, avoiding desserts
+  const firstRowImages = ['1.jpg', '3.jpg', '5.jpg', '9.jpg', '13.jpg', '17.jpg', '21.jpg', '25.jpg', '29.jpg', '2.jpg'];
+  const secondRowImages = ['4.jpg', '8.jpg', '12.jpg', '16.jpg', '20.jpg', '24.jpg', '28.jpg', '6.jpg', '10.jpg', '14.jpg'];
+  const thirdRowImages = ['7.jpg', '15.jpg', '19.jpg', '23.jpg', '27.jpg', '18.jpg', '22.jpg', '26.jpg', '11.jpg'];
 
   return (
     <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#5A5455' }}>
@@ -197,13 +197,13 @@ const ServicesSection = () => {
           <div className="inline-flex items-center gap-2 mb-4">
             <Utensils className="w-6 h-6" style={{ color: '#F5DF19' }} />
             <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'Poppins, sans-serif' }}>
-              Our Delicious Creations 🥢
+              OUR DELICIOUS CREATIONS 🥢
             </span>
             <Utensils className="w-6 h-6" style={{ color: '#F5DF19' }} />
           </div>
           <h2 className="text-4xl md:text-6xl font-light leading-tight mb-6" 
               style={{ color: '#F8F8F8', fontFamily: 'Playfair Display, serif' }}>
-            Taste Our <span style={{ color: '#F5DF19' }}>Signature Dishes 🍜</span>
+            TASTE OUR <span style={{ color: '#F5DF19' }}>SIGNATURE DISHES 🍜</span>
           </h2>
           <p className="text-lg font-medium max-w-2xl mx-auto" 
              style={{ color: '#F8F8F8', fontFamily: 'Poppins, sans-serif' }}>
@@ -346,11 +346,7 @@ export default function UnclesChineseWebsite() {
         <div className="relative flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-lg z-10">
           <div className="mx-auto max-w-4xl p-4 text-center sm:py-14">
             <h1 className="mb-4 text-4xl md:text-6xl font-light leading-tight" style={{ color: '#F8F8F8', fontFamily: 'Playfair Display, serif' }}>
-              What Our
-              <br />
-              <span style={{ color: '#F5DF19' }}>
-                Customers Say
-              </span>
+              WHAT OUR <span style={{ color: '#F5DF19' }}>CUSTOMERS SAY</span>
             </h1>
             <p className="text-lg p-7 font-medium" style={{ color: '#F8F8F8', fontFamily: 'Poppins, sans-serif' }}>
               "Ordinary doesn't live here. We craft extraordinary flavors, one authentic dish at a time."
@@ -383,11 +379,11 @@ export default function UnclesChineseWebsite() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1563379091339-03246963d96a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-            alt="Chinese food background" 
-            className="w-full h-full object-cover opacity-30"
+            src="/15.jpg" 
+            alt="Uncle's Chinese delicious dishes" 
+            className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
         
         <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10 md:space-y-12 relative z-10">
