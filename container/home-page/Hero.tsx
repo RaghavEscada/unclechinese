@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { MapPin, Utensils, Info } from 'lucide-react';
+import { Phone, Utensils, Info } from 'lucide-react';
 import Video from 'next-video';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -64,8 +64,10 @@ export default function Hero() {
 
           {/* Plain tagline */}
           <div className="mb-12 sm:mb-16">
-            <p className="text-4xl md:text-6xl mb-10 max-w-3xl mx-auto text-center font-extrabold bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent" style={{ fontFamily: 'Brice' }}>
-              LOVED BY GENERATIONS, CRAFTED BY UNCLE'S.
+            <p className="text-4xl md:text-5xl lg:text-6xl mb-10 max-w-4xl mx-auto text-center font-extrabold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+              LOVED BY GENERATIONS
+              <br />
+              CRAFTED BY <span style={{ color: '#F5DF19' }}>UNCLE'S</span>.
             </p>
           </div>
 
@@ -79,15 +81,15 @@ export default function Hero() {
                 bgClass: "from-red-600 via-red-500 to-red-700"
               },
               { 
-                href: "/menu", 
+                href: "/about-us", 
                 icon: Info, 
                 label: "About Us",
                 bgClass: "from-red-700 via-red-600 to-red-800"
               },
               { 
-                href: "/menu", 
-                icon: MapPin, 
-                label: "Visit Us",
+                href: "/contact", 
+                icon: Phone, 
+                label: "Contact Us",
                 bgClass: "from-red-800 via-red-700 to-red-900"
               }
             ].map(({ href, icon: Icon, label, bgClass }, index) => (
@@ -131,7 +133,7 @@ export default function Hero() {
                       whitespace-nowrap 
                       border border-white/10 
                       shadow-lg
-                    ">
+                    " style={{ fontFamily: 'Poppins, sans-serif' }}>
                       {label}
                       {/* Tooltip arrow */}
                       <div className="

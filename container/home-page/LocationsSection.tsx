@@ -78,13 +78,13 @@ export default function LocationsSection() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-4">
             <MapPin className="w-6 h-6" style={{ color: '#F5DF19' }} />
-            <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'NeueMontreal' }}>
+            <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'Poppins, sans-serif' }}>
               Find Us
             </span>
             <MapPin className="w-6 h-6" style={{ color: '#F5DF19' }} />
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-light leading-tight text-white" style={{ fontFamily: 'Brice' }}>
+          <h2 className="text-4xl md:text-6xl font-light leading-tight text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
             Visit Our
             <br />
             <span className="font-normal" style={{ color: '#F5DF19' }}>Locations</span>

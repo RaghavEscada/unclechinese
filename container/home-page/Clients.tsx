@@ -100,7 +100,7 @@ const testimonials = [
   {
     name: "Vikram Singh",
     email: "vikram.singh@gmail.com",
-    description: "24 years of excellence! Every dish tells a story of passion and authentic Asian cooking.",
+    description: "25 years of excellence! Every dish tells a story of passion and authentic Asian cooking.",
     img: "https://img.freepik.com/free-photo/brunette-girl-posing_23-2148108748.jpg",
   },
   {
