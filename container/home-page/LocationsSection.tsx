@@ -6,7 +6,6 @@ const outlets = [
   { 
     name: "Camp", 
     rating: "4.6", 
-    popular: "Fried Rice", 
     locationImage: "/camp.png",
     address: "601, Sachapir Street, Camp, Pune - 411001",
     phone: "8605240092, 81800 52400",
@@ -15,7 +14,6 @@ const outlets = [
   { 
     name: "Bavdhan", 
     rating: "4.5", 
-    popular: "Manchurian", 
     locationImage: "/bavdan.png",
     address: "Plot No.7, Building, Vidnya Rd, next to Fortune Plaza, Opp. Sagar Co-Op. Hsg. Soc., Bavdhan, Pune 411 021",
     phone: "9850 666 146",
@@ -24,7 +22,6 @@ const outlets = [
   { 
     name: "Koregaon Park", 
     rating: "4.3", 
-    popular: "Dim Sum", 
     locationImage: "/kp.png",
     address: "Meera Garden Soc., Bldg. A/10, Shop No. 3 & 5, Meera Nagar, Koregaon Park, Pune - 411 001",
     phone: "020-2615 2970, 97637 93513",
@@ -33,7 +30,6 @@ const outlets = [
   { 
     name: "Viman Nagar", 
     rating: "4.3", 
-    popular: "Hakka Noodles", 
     locationImage: "/vimannagar.png",
     address: "Rushab Apartment, Near Ganga Truno Building, Sanjay Park road, Dorabjee Chowk, Viman Nagar, Pune - 411 032",
     phone: "8888 277 429, 8888 277 958",
@@ -42,7 +38,6 @@ const outlets = [
   { 
     name: "Hinjewadi", 
     rating: "4.3", 
-    popular: "Spring Rolls", 
     locationImage: "/hinjenwad.png",
     address: "Hinjewadi Highstreet, above KFC, Hinjawadi, Pune - 411057",
     phone: "84848 58418, 92721 33323",
@@ -51,7 +46,6 @@ const outlets = [
   { 
     name: "Lullanagar", 
     rating: "4.1", 
-    popular: "Sweet & Sour", 
     locationImage: "/lullanagar.png",
     address: "Mohit Towers, Sahaney Sujan Park, Ahead Signature Bar & Restaurant, Lullanagar, Pune - 411 040",
     phone: "7798 980 200, 7798 980 400",
@@ -160,9 +154,6 @@ export default function LocationsSection() {
                     VIEW ON MAP
                   </button>
                   
-                  <div className="text-[#F5DF19] text-sm font-medium">
-                    Popular: {outlet.popular}
-                  </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Search, Filter, Star, Clock, MapPin, Menu, Download } from "lucide-react";
+import Image from "next/image";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
@@ -580,6 +581,23 @@ const EnhancedMenuPage = () => {
         className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
         style={{ y, opacity }}
       >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/a7.PNG"
+            alt="Uncle's Chinese menu background"
+            fill
+            className="object-cover"
+            priority
+            style={{ 
+              zIndex: -1,
+              opacity: 0.7,
+              filter: 'brightness(0.8)'
+            }}
+          />
+          <div className="absolute inset-0 bg-black/20" style={{ zIndex: 0 }}></div>
+        </div>
+        
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="absolute top-20 left-20 text-4xl opacity-5"
@@ -695,7 +713,7 @@ const EnhancedMenuPage = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center lg:justify-end order-1 lg:order-2"
           >
-            <div className="w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative">
+            <div className="w-[450px] h-[450px] lg:w-[500px] lg:h-[500px] relative">
               <Suspense fallback={
                 <div className="w-full h-full flex items-center justify-center">
                   <div className="text-6xl animate-spin">🍜</div>

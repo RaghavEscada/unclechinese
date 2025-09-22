@@ -12,3 +12,4 @@ export { default as Tags } from './Tags';
 export { default as PlayVideo } from './PlayVideo';
 export { default as Heading } from './Heading';
 export { default as MobileNav } from './MobileNav';
+export { default as ImageMarquee } from './ImageMarquee';

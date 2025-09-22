@@ -295,7 +295,7 @@ export default function Footer() {
               <div className="space-y-2 text-gray-400 text-sm">
                 <p>🏆 Best Chinese Restaurant 2023</p>
                 <p>⭐ Zomato Gold Partner</p>
-                <p>🌟 24 Years of Excellence</p>
+                <p>🌟 25 Years of Excellence</p>
               </div>
             </div>
           </div>

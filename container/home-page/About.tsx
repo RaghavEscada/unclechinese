@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowRight, Instagram, MessageCircle, Target, Star, MapPin, Phone, Mail, ChefHat, Clock, Users, Utensils, Heart, Award, Users2 } from 'lucide-react';
+import { ArrowRight, Instagram, MessageCircle, Target, Star, MapPin, Phone, Mail, ChefHat, Clock, Users, Heart, Award, Users2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import LocationsSection from './LocationsSection';
 
@@ -151,9 +151,9 @@ function GalleryMarquee({
             }}
           >
             {children}
-          </div>
-        ))}
-    </div>
+            </div>
+          ))}
+        </div>
   );
 }
 
@@ -167,116 +167,10 @@ const GalleryImage = ({ src, alt }: { src: string; alt: string }) => {
         alt={alt}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-    </div>
+      </div>
   );
 };
 
-// Services Section Component
-const ServicesSection = () => {
-  // Create arrays for each row with savory dishes only, avoiding desserts
-  const firstRowImages = ['1.jpg', '3.jpg', '5.jpg', '9.jpg', '13.jpg', '17.jpg', '21.jpg', '25.jpg', '29.jpg', '2.jpg'];
-  const secondRowImages = ['4.jpg', '8.jpg', '12.jpg', '16.jpg', '20.jpg', '24.jpg', '28.jpg', '6.jpg', '10.jpg', '14.jpg'];
-  const thirdRowImages = ['7.jpg', '15.jpg', '19.jpg', '23.jpg', '27.jpg', '18.jpg', '22.jpg', '26.jpg', '11.jpg'];
-
-  return (
-    <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#5A5455' }}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-7xl">🥢</div>
-        <div className="absolute top-20 right-20 text-6xl">🍜</div>
-        <div className="absolute bottom-20 left-20 text-8xl">🥢</div>
-        <div className="absolute bottom-10 right-10 text-5xl">🍜</div>
-        <div className="absolute top-1/2 left-1/3 text-6xl">🥢</div>
-        <div className="absolute top-1/4 right-1/4 text-7xl">🍜</div>
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Utensils className="w-6 h-6" style={{ color: '#F5DF19' }} />
-            <span className="text-sm font-medium uppercase tracking-wider" style={{ color: '#F5DF19', fontFamily: 'Poppins, sans-serif' }}>
-              OUR DELICIOUS CREATIONS 🥢
-            </span>
-            <Utensils className="w-6 h-6" style={{ color: '#F5DF19' }} />
-          </div>
-          <h2 className="text-4xl md:text-6xl font-light leading-tight mb-6" 
-              style={{ color: '#F8F8F8', fontFamily: 'Playfair Display, serif' }}>
-            TASTE OUR <span style={{ color: '#F5DF19' }}>SIGNATURE DISHES 🍜</span>
-          </h2>
-          <p className="text-lg font-medium max-w-2xl mx-auto" 
-             style={{ color: '#F8F8F8', fontFamily: 'Poppins, sans-serif' }}>
-            From traditional recipes to modern innovations, explore our gallery of authentic Asian flavors. 🥢🍜
-          </p>
-        </div>
-
-        {/* Three Row Gallery - Fixed Animation */}
-        <div className="relative flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-lg">
-          
-          {/* First Row - Left to Right */}
-          <div className="flex overflow-hidden w-full mb-4 group" style={{ '--duration': '30s' } as React.CSSProperties}>
-            <div 
-              className="flex shrink-0 gap-4 animate-scroll-left group-hover:[animation-play-state:paused]"
-              style={{ 
-                animation: 'gallery-marquee 30s linear infinite',
-                minWidth: '100%'
-              }}
-            >
-              {firstRowImages.concat(firstRowImages).map((image, index) => (
-                <GalleryImage 
-                  key={`row1-${index}`}
-                  src={`/${image}`} 
-                  alt={`Delicious dish ${index + 1}`} 
-                />
-              ))}
-            </div>
-          </div>
-          
-          {/* Second Row - Right to Left */}
-          <div className="flex overflow-hidden w-full mb-4 group" style={{ '--duration': '35s' } as React.CSSProperties}>
-            <div 
-              className="flex shrink-0 gap-4 animate-scroll-right group-hover:[animation-play-state:paused]"
-              style={{ 
-                animation: 'gallery-marquee-reverse 35s linear infinite',
-                minWidth: '100%'
-              }}
-            >
-              {secondRowImages.concat(secondRowImages).map((image, index) => (
-                <GalleryImage 
-                  key={`row2-${index}`}
-                  src={`/${image}`} 
-                  alt={`Delicious dish ${index + 11}`} 
-                />
-              ))}
-            </div>
-          </div>
-          
-          {/* Third Row - Left to Right */}
-          <div className="flex overflow-hidden w-full group" style={{ '--duration': '40s' } as React.CSSProperties}>
-            <div 
-              className="flex shrink-0 gap-4 animate-scroll-left group-hover:[animation-play-state:paused]"
-              style={{ 
-                animation: 'gallery-marquee 40s linear infinite',
-                minWidth: '100%'
-              }}
-            >
-              {thirdRowImages.concat(thirdRowImages).map((image, index) => (
-                <GalleryImage 
-                  key={`row3-${index}`}
-                  src={`/${image}`} 
-                  alt={`Delicious dish ${index + 21}`} 
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Gradient overlays for smooth edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#5A5455]"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#5A5455]"></div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/uncles_chinese/", icon: <Instagram size={24} /> },
@@ -343,13 +237,90 @@ const firstRow = testimonials.slice(0, 2);
 const secondRow = testimonials.slice(2, 4);
 const thirdRow = testimonials.slice(4, 6);
 
+// Gallery images data
+const galleryImages = [
+  { src: "/home1.webp", alt: "Authentic Chinese Noodles" },
+  { src: "/home2.webp", alt: "Delicious Manchurian" },
+  { src: "/a5.webp", alt: "Special Dish 5" },
+  { src: "/a6.webp", alt: "Special Dish 6" },
+  { src: "/home5.webp", alt: "Sweet & Sour Chicken" },
+  { src: "/home6.webp", alt: "Hakka Noodles Special" },
+  { src: "/a7.webp", alt: "Special Dish 7" },
+  { src: "/a8.webp", alt: "Special Dish 8" },
+  { src: "/home8.webp", alt: "Szechuan Special" },
+  { src: "/home9.webp", alt: "Traditional Wontons" },
+  { src: "/a9.webp", alt: "Special Dish 9" },
+  { src: "/a10.webp", alt: "Special Dish 10" },
+  { src: "/home10.webp", alt: "Spicy Schezwan Rice" },
+  { src: "/home11.webp", alt: "Crispy Chicken" },
+  { src: "/home13.webp", alt: "Honey Chilli Potato" },
+  { src: "/home14.webp", alt: "Chicken Lollipop" },
+  { src: "/home15.webp", alt: "Paneer Butter Masala" },
+  { src: "/s1.webp", alt: "Signature Dish 1" },
+  { src: "/s2.webp", alt: "Signature Dish 2" },
+  { src: "/s3.webp", alt: "Signature Dish 3" },
+  { src: "/s4.webp", alt: "Signature Dish 4" },
+  { src: "/s5.webp", alt: "Signature Dish 5" },
+  { src: "/s6.webp", alt: "Signature Dish 6" },
+  { src: "/s7.webp", alt: "Signature Dish 7" },
+  { src: "/s8.webp", alt: "Signature Dish 8" },
+  { src: "/s9.webp", alt: "Signature Dish 9" },
+  { src: "/s10.webp", alt: "Signature Dish 10" },
+  { src: "/s11.webp", alt: "Signature Dish 11" },
+  { src: "/s12.webp", alt: "Signature Dish 12" },
+  { src: "/r1.webp", alt: "Restaurant Interior 1" },
+  { src: "/r2.webp", alt: "Restaurant Interior 2" },
+  { src: "/r3.webp", alt: "Restaurant Interior 3" },
+  { src: "/r4.webp", alt: "Restaurant Interior 4" },
+  { src: "/r5.webp", alt: "Restaurant Interior 5" },
+  { src: "/r6.webp", alt: "Restaurant Interior 6" },
+  { src: "/r7.webp", alt: "Restaurant Interior 7" },
+  { src: "/r8.webp", alt: "Restaurant Interior 8" }
+];
+
 export default function UnclesChineseWebsite() {
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-gray-900">
       {/* Removed About Section */}
 
-      {/* Services Section */}
-      <ServicesSection />
+
+      {/* Image Gallery Section */}
+      <section className="py-20 px-4 relative overflow-hidden" style={{ backgroundColor: '#F8F8F8' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-light leading-tight mb-6" style={{ color: '#2C2C2C', fontFamily: 'Playfair Display, serif' }}>
+              OUR <span style={{ color: '#EC3237' }}>DELICIOUS</span> CREATIONS
+            </h2>
+            <p className="text-lg font-medium max-w-3xl mx-auto" style={{ color: '#666666', fontFamily: 'Poppins, sans-serif' }}>
+              Experience the authentic flavors of Uncle's Chinese through our signature dishes, crafted with 25 years of culinary expertise.
+            </p>
+          </div>
+
+          <div className="relative">
+            <GalleryMarquee pauseOnHover className="[--duration:30s] mb-8">
+              {galleryImages.slice(0, 4).map((image, index) => (
+                <GalleryImage key={index} src={image.src} alt={image.alt} />
+              ))}
+            </GalleryMarquee>
+            
+            <GalleryMarquee reverse pauseOnHover className="[--duration:35s] mb-8">
+              {galleryImages.slice(4, 8).map((image, index) => (
+                <GalleryImage key={index + 4} src={image.src} alt={image.alt} />
+              ))}
+            </GalleryMarquee>
+            
+            <GalleryMarquee pauseOnHover className="[--duration:40s]">
+              {galleryImages.slice(8, 12).map((image, index) => (
+                <GalleryImage key={index + 8} src={image.src} alt={image.alt} />
+              ))}
+            </GalleryMarquee>
+
+            {/* Gradient overlays */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#F8F8F8]"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#F8F8F8]"></div>
+          </div>
+        </div>
+      </section>
 
       {/* Locations Section */}
       <LocationsSection />
