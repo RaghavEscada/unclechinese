@@ -4,8 +4,26 @@ import { ChevronLeft, ChevronRight, Search, Filter, Star, Clock, MapPin, Menu, D
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-// Menu data with images from 1.jpg to 29.jpg
-const menuData = {
+// Type definitions
+interface MenuItem {
+  name: string;
+  price: number | { veg?: number; chicken?: number; prawns?: number };
+  description: string;
+  image: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  icon: string;
+}
+
+interface MenuData {
+  [key: string]: MenuItem[];
+}
+
+// Complete Uncle's Chinese Menu - Comprehensive Data
+const menuData: MenuData = {
   beverages: [
     { name: "Fresh Lime Soda", price: 129, description: "Refreshing lime with sparkling soda", image: "/1.jpg" },
     { name: "Ice Tea Lemon/Peach", price: 129, description: "Cool and refreshing iced tea varieties", image: "/2.jpg" },
@@ -15,112 +33,188 @@ const menuData = {
   mocktails: [
     { name: "Strawberry Passion", price: 159, description: "Sweet strawberry passion fruit blend", image: "/5.jpg" },
     { name: "Virgin Mojito", price: 159, description: "Classic mint and lime refresher", image: "/6.jpg" },
-    { name: "Ginger And Basil Mojito", price: 159, description: "Fresh ginger basil lime wedges with sugar & ice", image: "/7.jpg" },
-    { name: "Ruthless", price: 159, description: "Litchi cranberry juice, lemon slice mint leaves ice", image: "/8.jpg" },
-    { name: "Wild Cat Cooler", price: 159, description: "Blueberry & lime juice with light sugar & soda", image: "/9.jpg" },
-    { name: "Sweet Sunrise", price: 159, description: "Orange cranberry & lemon juice with ice cubes", image: "/10.jpg" }
+    { name: "Ginger And Basil Mojito", price: 159, description: "Fresh Ginger Basil lime wedges Muddled with Lime, Sugar & Ice", image: "/7.jpg" },
+    { name: "Ruthless", price: 159, description: "Litchi cranberry juice, lemon Slice mint leaves ice", image: "/8.jpg" },
+    { name: "Wild Cat Cooler", price: 159, description: "Blueberry & lime Juice with light Sugar & Soda added as per Taste", image: "/9.jpg" },
+    { name: "Sweet Sunrise", price: 159, description: "Orange Cranberry & lemon juice, added with icecubes", image: "/10.jpg" }
   ],
   boba: [
-    { name: "Mango Boba Tea", price: 189, description: "Tropical fusion of creamy milk and luscious mango flavor with popping boba", image: "/11.jpg" },
-    { name: "Strawberry Boba Tea", price: 189, description: "Refreshing fusion of creamy milk and vibrant strawberry flavor with popping boba", image: "/12.jpg" }
+    { name: "Mango Boba Tea", price: 189, description: "A tropical fusion of creamy milk and luscious mango flavor, complemented by the delightful burst of popping boba. Served chilled over ice for a refreshing and indulgent treat", image: "/11.jpg" },
+    { name: "Strawberry Boba Tea", price: 189, description: "A refreshing fusion of creamy milk and vibrant strawberry flavor, enhanced by the playful burst of popping boba. Served chilled over ice for a delightful treat", image: "/12.jpg" }
   ],
   soups: [
-    { name: "Spicy Tomyum Soup", price: { veg: 159, chicken: 169 }, description: "Tangy Thai clear soup with Thai herbs and lemony flavour", image: "/13.jpg" },
-    { name: "Laksa Ma Soup (Malaysian)", price: { veg: 179, chicken: 189 }, description: "Glorious aromatic curry soup with fried tofu and noodles", image: "/14.jpg" },
-    { name: "Tom Kha Soup (Thai)", price: { veg: 179, chicken: 189 }, description: "Thai coconut milk broth with zesty galangal and lemongrass", image: "/15.jpg" },
-    { name: "Hot & Sour Soup", price: { veg: 149, chicken: 159 }, description: "All time favourite medium spicy thick soup with shredded veg/chicken", image: "/16.jpg" },
-    { name: "Manchow Soup", price: { veg: 149, chicken: 159 }, description: "Medium spicy thick soup with minced veg/chicken and fresh green chillies", image: "/17.jpg" }
+    { name: "Spicy Tomyum Soup", price: { veg: 159, chicken: 169 }, description: "A Tangy Thai Clear Soup made Spicy With Thai Herbs And Lemony Flavoured", image: "/13.jpg" },
+    { name: "Laksa Ma Soup (Malaysian)", price: { veg: 179, chicken: 189 }, description: "A Glourious Aromatic Curry Soup With Fried Tofu And Noodles To Tatalise Your Taste Buds", image: "/14.jpg" },
+    { name: "Tom Kha Soup (Thai)", price: { veg: 179, chicken: 189 }, description: "Thai Coconut milk broth flavoured With Zesty Galangal And Lemongrass with Touch Of Lime", image: "/15.jpg" },
+    { name: "Spicy Garlic Coriander", price: { veg: 149, chicken: 159 }, description: "An Oriental thick preparation of chopped coriander with veggies/chicken/prawns, garlic and green chillies", image: "/16.jpg" },
+    { name: "Manchow Soup", price: { veg: 149, chicken: 159 }, description: "All Time Favourite Medium Spicy Thick Soup With Minced Veg/Chicken, Fresh Green Chillies And dash of Soya", image: "/17.jpg" },
+    { name: "Hot & Sour Soup", price: { veg: 149, chicken: 159 }, description: "All Time Favourite Medium Spicy Thick Soup With shredded Veg/Chicken, Fresh Green Chillies And dash of Soya", image: "/18.jpg" },
+    { name: "Sweetcorn Soup", price: { veg: 149, chicken: 159 }, description: "Dice mix veg/chicken And Egg With Creamy Corn Tastes Mild", image: "/19.jpg" },
+    { name: "Sotyam Soup", price: { veg: 159, chicken: 169 }, description: "Shredded Chicken In A Broth Soup Indo Style", image: "/20.jpg" },
+    { name: "Beijing Spicy Soup", price: { veg: 149, chicken: 159 }, description: "Thick Soup With Chopped Veg/chicken From Beijing, Tastes Medium Spicy", image: "/21.jpg" },
+    { name: "Garden Soup", price: { veg: 149, chicken: 159 }, description: "A Chinese Style Clear Stock With Veg/chicken, Mildly Flavoured", image: "/22.jpg" },
+    { name: "Phek Soup (Thai)", price: { veg: 179, chicken: 189 }, description: "Rich Stew Coconut milk Soup Flavoured with lemongrass and Thai Basil, Medium Spicy", image: "/23.jpg" },
+    { name: "Wanton Noodles Soup", price: { veg: 149, chicken: 159 }, description: "Wontons filled with mince Veg/Chicken serve in a clear soup with Noodles", image: "/24.jpg" },
+    { name: "Talumain Soup", price: { veg: 149, chicken: 159 }, description: "Classic non spicy thick soup prepared with chunks of veggies/chicken and topped with Soft Noodles", image: "/25.jpg" },
+    { name: "Momo's Soup", price: { veg: 149, chicken: 159 }, description: "Clear soup Immersed with momo and flavoured with sesame oil and celery leaf", image: "/26.jpg" },
+    { name: "Thukpa Soup", price: { veg: 149, chicken: 159 }, description: "A Speciality Soup From Tibet Along With Noodles And Shredded Veg/Chicken, Medium Spicy", image: "/27.jpg" },
+    { name: "Seafood Spicy Soup", price: 199, description: "Chef's Special soup with assorted seafood and vegetables", image: "/28.jpg" },
+    { name: "Chef Special Soup", price: 179, description: "Rich & Flavoured of Full Minced and Cube Chicken With Asparagus, Red Pepper, Fresh Red Chilli N Egg Drop", image: "/29.jpg" }
   ],
   momos: [
-    { name: "Classic Momos", price: { veg: 199, chicken: 209, prawns: 309 }, description: "All time favourite classic momos stuffed to satiation", image: "/18.jpg" },
-    { name: "Shanghai Momos", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Minced veg/chicken/seafood stuffed momos in Shanghai style with spicy sauce", image: "/19.jpg" },
-    { name: "Crispy Fried Momos", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Crispy fried classic momos served with sweet garlic sauce", image: "/20.jpg" },
-    { name: "Schezwan Momos", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Classic momos tossed in spicy Schezwan sauce", image: "/21.jpg" },
-    { name: "Steam / Fried Wonton", price: { veg: 179, chicken: 199, prawns: 309 }, description: "Minced veg/chicken wrapped in wonton, steamed/fried with sweet garlic sauce", image: "/22.jpg" }
+    { name: "Classic Momos (6 Pcs)", price: { veg: 199, chicken: 209, prawns: 309 }, description: "All Time Favourite Classic Momos Stuffed To Satiation, From Southern China, Enjoy...!!!", image: "/1.jpg" },
+    { name: "Shanghai Momos (6 Pcs)", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Minced Veg/Chicken/seafood Stuffed Momos Served In Shanghai Style With Spicy Sauce, Must Try...", image: "/2.jpg" },
+    { name: "Crispy Fried Momos (6 Pcs)", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Crispy fried Classic Momos Served along with Sweet Garlic Sauce", image: "/3.jpg" },
+    { name: "Schezwan Momos (6 Pcs)", price: { veg: 199, chicken: 209, prawns: 309 }, description: "Classic Momos tossed in spicy Schezwan sauce", image: "/4.jpg" },
+    { name: "Steam / Fried Wonton (6 Pcs)", price: { veg: 179, chicken: 199, prawns: 309 }, description: "A Glamorous Preparation Of Minced Veg/Chicken wrapped In Wanton, Steamed/Fried and Served With Sweet Garlic Sauce", image: "/5.jpg" },
+    { name: "Chicken Jhol Momo", price: { chicken: 249 }, description: "Delight in the spicy and savoury flavors of our dish, tender and juicy Chi-filled in momos served in a rich and aromatic jhol broth", image: "/6.jpg" },
+    { name: "Hot Basil Momos (6 Pcs)", price: { veg: 199, chicken: 209 }, description: "Classic Momos flavoured with hot Basil and Steamed Served with Momos Sauce", image: "/7.jpg" },
+    { name: "Burmese Chicken Dumpling", price: { chicken: 229 }, description: "A flavorful steamed dumpling inspired by regional spices and herbs, wrapped in a delicate handmade dough", image: "/8.jpg" },
+    { name: "Cheese Corn Spinach Momo", price: { veg: 229 }, description: "Creamy vegetarian dumpling sweet corn, spinach, and a touch of garlic, yet flavor in every bite", image: "/9.jpg" },
+    { name: "Thai Pattaya Dumpling", price: { chicken: 229 }, description: "Thai-inspired dumpling featuring tender chicken in a fragrant, coconut-based filling", image: "/10.jpg" }
+  ],
+  grill: [
+    { name: "Satay Chicken", price: { chicken: 299 }, description: "Grilled Marinated Chicken Served With Peanut Sauce", image: "/11.jpg" },
+    { name: "Satay Prawns", price: { prawns: 369 }, description: "Grilled Marinated Prawns Served With Peanut Sauce", image: "/12.jpg" },
+    { name: "Malaysian Grill Chicken", price: { chicken: 309 }, description: "Chicken Thigh Marinated in Malaysian sauce and Grilled to perfection..medium spicy", image: "/13.jpg" },
+    { name: "Grill Chicken in Barbeque sauce", price: { chicken: 309 }, description: "Grilled Boneless Chicken Leg Infused With barbeque sauce & served on bed of Bean sprouts", image: "/14.jpg" },
+    { name: "Char Grilled Chicken", price: { chicken: 309 }, description: "Grilled Boneless Chicken Infused With Chilly Garlic Sauce", image: "/15.jpg" },
+    { name: "Fish in Banana Leaf", price: 389, description: "Dice of Basa marinated in Exotic Thai Herbs, wrapped in Banana leaf and Grilled to perfection", image: "/16.jpg" },
+    { name: "Grilled Pomfret", price: 569, description: "A Whole Pomfret marinated with Garlic Ginger, Pepperika & spicy Red chilli Flavour, Medium Spicy", image: "/17.jpg" },
+    { name: "Grilled Fish in Barbeque Sauce", price: 359, description: "Marinated in a delicate sweet n spicy Tn Tangy Barbeque sauce and Grilled To Perfection", image: "/18.jpg" }
   ],
   vegStarters: [
-    { name: "Mongolian Tofu", price: 279, description: "Crispy tofu stir-fried with savory, sweet, and spicy sauce", image: "/23.jpg" },
-    { name: "Veg Spring Roll", price: 259, description: "Crispy vegetable spring rolls", image: "/24.jpg" },
-    { name: "Crispy Corn Garlicky", price: 239, description: "Crispy fried American corn tossed in sweet spicy chilli garlic sauce", image: "/25.jpg" },
-    { name: "Burmese Chilly Potato", price: 239, description: "Finger cut crispy potatoes wok tossed in medium spicy Burmese sauce", image: "/26.jpg" },
-    { name: "Honey Chilly Potato", price: 239, description: "Crispy fried finger potato tossed with honey & chilly soya", image: "/27.jpg" },
-    { name: "Paneer Chilly Dry", price: 289, description: "All time favorite preparation", image: "/28.jpg" }
+    { name: "Mongolian Tofu", price: 279, description: "Crispy tofu stir-fried Combines a Savory, Sweet, And Spicy Sauce. With Onion, Red Yellow Bell Pepper And Sesme Seed", image: "/19.jpg" },
+    { name: "Veg Spring Roll", price: 259, description: "Crispy vegetable spring rolls", image: "/20.jpg" },
+    { name: "Crispy Corn Garlicky", price: 239, description: "Crispy fried American corn tossed in sweet n spicy chilli garlic sauce", image: "/21.jpg" },
+    { name: "Burmese Chilly Potato", price: 239, description: "Finger Cut Crispy Potatoes Wok Tossed in Medium Spicy Burmese Sauce", image: "/22.jpg" },
+    { name: "Veg Manchurian Dry", price: 259, description: "Classic vegetable manchurian dry preparation", image: "/23.jpg" },
+    { name: "Honey Chilly Potato", price: 239, description: "Crispy Fried Finger Potato Tossed in A Wok with Honey & Chilly Soya, Tastes Yummice...", image: "/24.jpg" },
+    { name: "Mushroom Chilly Dry", price: 269, description: "Batter fried Button Mushroom tossed in soya chilli sauce", image: "/25.jpg" },
+    { name: "Crispy Chilly Veg", price: 239, description: "Assorted Mix Crispy Fried in Tangy Medium Spicy sauce", image: "/26.jpg" },
+    { name: "Paneer Chilly Dry", price: 289, description: "All Time Favorite", image: "/27.jpg" },
+    { name: "Kung Pao Potato", price: 239, description: "Crispy Fried Potato cubes Tossed In Wok with Kung Pao sauce and peanuts, Its Tangy...!!!", image: "/28.jpg" },
+    { name: "Cheese Chilli Mushroom", price: 289, description: "Fresh button Mushroom stuffed with Cheese, deep fried & Wok tossed with sweet and spicy Garlic sauce", image: "/29.jpg" },
+    { name: "Lotus Stem Chilli Basil", price: 259, description: "Crispy Fried Lotus Stem Tossed In A Tangy Tasty Medley Of Thai Bud Chilly and Basil", image: "/1.jpg" }
+  ],
+  salads: [
+    { name: "Sam jam Jhe", price: 229, description: "Finger cut Chinese cabbage, pokchoy, carrot, cucumber, glass noodles tossed in sweet n spicy tangy sauce", image: "/2.jpg" },
+    { name: "SomTom Salad", price: 239, description: "Macerated Raw Papaya Spaghetti, Fresh Chilli, lemon, tomato, crushed Peanuts & Dressed Up With Palm Jaggery", image: "/3.jpg" },
+    { name: "Gado - Gado", price: 239, description: "Indonesian Salad Of Slightly Boiled Or Steamed Vegetable And Hard Boiled Eggs, Served With Peanut Sauce", image: "/4.jpg" },
+    { name: "Stirred Fried Chinese Veg", price: 309, description: "Assorted Chinese Healthy Greens Stir Wok Tossed In Garlic And Sesami Oil", image: "/5.jpg" },
+    { name: "Kimchi Salad", price: 229, description: "Traditional Korean fermented cabbage salad", image: "/6.jpg" }
   ],
   nonVegStarters: [
-    { name: "Roast Chicken Pepper", price: 279, description: "Roasted chicken with bell pepper tossed in chilly style with crushed black pepper", image: "/29.jpg" },
-    { name: "Kung Pao Chicken", price: 279, description: "Diced glazed chicken with ginger, light chilly soya, Chinese vinegar, sesame seeds and nuts", image: "/1.jpg" },
-    { name: "Chicken Burnt Red Chilli Pepper", price: 279, description: "Glazed chicken tossed in burnt chilli flakes and veggies", image: "/2.jpg" },
-    { name: "Cilantro Chicken", price: 289, description: "Flavorful dish featuring chicken marinated in zesty blend of cilantro, lime juice, garlic, and spices", image: "/3.jpg" },
-    { name: "Sticky Korean Wings", price: 309, description: "Chicken wings coated in sweet and spicy sauce with gochujang soy sauce, honey, and garlic", image: "/4.jpg" }
+    { name: "Roast Chicken Pepper", price: 279, description: "Roasted Chicken with Bell Pepper Tossed in Chilly Style sprinkled with crushed black pepper", image: "/7.jpg" },
+    { name: "Kung Pao Chicken", price: 279, description: "Diced Glazed Chicken With Ginger, Light Chilly Soya, Chinese Vinegar, Sesame Seeds And Nuts, Flavourful but Not Spicy", image: "/8.jpg" },
+    { name: "Chicken Burnt Red Chilli Pepper", price: 279, description: "Glazed chicken tossed in burnt chilli flakes, and veggies... Its spicy", image: "/9.jpg" },
+    { name: "Cilantro Chicken", price: 289, description: "A flavorful dish featuring chicken marinated in a zesty blend of cilantro, lime juice, garlic, and spices", image: "/10.jpg" },
+    { name: "Crispy Crunchy Chicken", price: 269, description: "Shredded Finger Chicken Marinated with Paprika, Pepper, Chilly and Ginger Garlic deep fried... Very Crisp", image: "/11.jpg" },
+    { name: "Sticky Korean Wings", price: 309, description: "Chicken wings coated in a sweet and spicy sauce made with ingredients like gochujang soy sauce, honey, and garlic", image: "/12.jpg" },
+    { name: "Chicken Lollypop", price: 289, description: "All Time Favourite Classic Preparation", image: "/13.jpg" },
+    { name: "Chicken Lollypop Masala", price: 309, description: "All Time Favourite Classic Preparation, tastes Awesome When Served With Schezwan Sauce", image: "/14.jpg" },
+    { name: "Dragon Chicken", price: 269, description: "Indo-Chinese crispy fried chicken strips tossed in a spicy, Tangy, and savory sauce with bell peppers, cashews", image: "/15.jpg" },
+    { name: "Chicken Chilly Dry", price: 269, description: "All Time Favourite, Need No Introduction", image: "/16.jpg" }
   ],
   seafoodStarters: [
-    { name: "Roasted Thai Chilly Prawns", price: 399, description: "Roasted crispy fried prawns tossed in Thai style", image: "/5.jpg" },
-    { name: "Singapore Chilly Prawns", price: 399, description: "Fresh prawns cooked in Singaporean style", image: "/6.jpg" },
-    { name: "Kung Pao Prawns", price: 399, description: "Glazed prawns with ginger, dark light soya, Chinese vinegar, sesame seed and nuts", image: "/7.jpg" },
-    { name: "Ebi Tempura (6 PCS)", price: 399, description: "Japanese tempura crispy fried prawns with Japanese and ginger infusion/mayo", image: "/8.jpg" },
-    { name: "Basil Garlic Prawns", price: 399, description: "Fresh prawns prepared in tempting spicy basil sauce", image: "/9.jpg" }
+    { name: "Roasted Thai Chilly Prawns", price: 399, description: "Roasted Crispy fried prawns tossed in Thai style", image: "/17.jpg" },
+    { name: "Singapore Chilly Prawns", price: 399, description: "Fresh Prawns Cooked In Singaporean Style", image: "/18.jpg" },
+    { name: "Kung Pao Prawns", price: 399, description: "Glazed Prawns With Ginger, Dark Light Soya, Chinese Vinegar, Sesame seed and Nuts, Flavourful But Not Spicy", image: "/19.jpg" },
+    { name: "Ebi Tempura (6 PCS)", price: 399, description: "Japanese Tempura Crispy Fried Prawns With Japanese And Ginger Infusion/Mayo", image: "/20.jpg" },
+    { name: "Basil Garlic Prawns", price: 399, description: "Fresh Prawns Prepared In Tempting Spicy Basil Sauce", image: "/21.jpg" },
+    { name: "Dynamite Prawns", price: 399, description: "Golden Fried Crispy Prawns Coated With Sriracha Chilli Sauce N Mayo", image: "/22.jpg" },
+    { name: "Crackle Fried Prawns", price: 399, description: "Crumb fried Prawns served with side of sweet Chilli sauce or Mayo", image: "/23.jpg" },
+    { name: "Pepper Garlic Fish", price: 369, description: "Stir fry fish tossed with garlic, pepper maggie seasoning and cooking wine", image: "/24.jpg" },
+    { name: "Crispy Oyster Pomfret", price: 559, description: "Crispy Crumb Fried Pomfret topped with Oyster Sauce", image: "/25.jpg" }
   ],
   vegGravy: [
-    { name: "Veg Manchurian Gravy", price: 249, description: "Classic vegetable manchurian in rich gravy", image: "/10.jpg" },
-    { name: "Veg Ball Hot Garlic", price: 249, description: "English veggies with balls of vegetable wok tossed in garlic sauce", image: "/11.jpg" },
-    { name: "Mushroom Chilly Gravy", price: 269, description: "Light batter fried mushroom with shredded capsicum and onion in special chilly sauce", image: "/12.jpg" },
-    { name: "Sweet & Sour Veg", price: 249, description: "Dice mix vegetables and chunks of pineapple cooked in sweet sour sauce", image: "/13.jpg" },
-    { name: "Three Treasure Veg", price: 309, description: "Traditional Mongolian cuisine features straw mushroom, brocolli and pokchoy cooked in medium spicy blackbean sauce", image: "/14.jpg" }
+    { name: "Veg Manchurian Gravy", price: 249, description: "Classic vegetable manchurian in rich gravy", image: "/26.jpg" },
+    { name: "Veg Ball Hot Garlic", price: 249, description: "English Veggies with Balls of Vegetable Wok Tossed in Garlic Sauce", image: "/27.jpg" },
+    { name: "Veg Hongkong Gravy", price: 249, description: "Exotic Veggies, Onion, Capsicum tossed in Spicy Dark Soya Sauce", image: "/28.jpg" },
+    { name: "Mushroom Chilly Gravy", price: 269, description: "Light Batter Fried Mushroom along with Shredded Capsicum, Onion In special CHilly Sauce", image: "/29.jpg" },
+    { name: "Sweet & Sour Veg", price: 249, description: "Dice Mix Vegetables And Chunks of Pineapple Cooked In Sweet N Sour Sauce With Tangy Taste, Loved By Kids", image: "/1.jpg" },
+    { name: "Three Treasure Veg", price: 309, description: "Traditional Mangolian Cuisine Features Straw Mushroom, brocolli And Pokchoy Cooked In A Medium Spicy Blackbean Sauce", image: "/2.jpg" },
+    { name: "Paneer Chilly Peking Sauce", price: 289, description: "Cube Paneer, Bell Pepper Onion tossed with Chilly Peking Sauce Medium Spicy", image: "/3.jpg" },
+    { name: "Exotic Veg in Sambal Sauce", price: 309, description: "Assorted cube Veg, Zuccini, Mushroom, Peas, Carrot, Tomato, Onion, mixed up with Devil's spicy sauce", image: "/4.jpg" }
   ],
   nonVegGravy: [
-    { name: "Chicken Chilly Gravy", price: 289, description: "Classic chicken chilly in rich gravy", image: "/15.jpg" },
-    { name: "Chicken Hot Garlic/Manchurian", price: 289, description: "Popular chicken preparations in flavorful sauces", image: "/16.jpg" },
-    { name: "Chicken Madras Curry", price: 409, description: "Sliced chicken prepared in Madras curry paste with curry leaf and coconut milk", image: "/17.jpg" },
-    { name: "Mongolian Claypot Chicken", price: 299, description: "Diced glazed chicken with ginger, dark light soy, Chinese vinegar and nuts", image: "/18.jpg" },
-    { name: "Chicken in Black Bean Sauce", price: 309, description: "Classic Chinese preparation with chicken chunks cooked in fresh spicy bean sauce", image: "/19.jpg" }
+    { name: "Chicken Chilly Gravy", price: 289, description: "Classic chicken chilly in rich gravy", image: "/5.jpg" },
+    { name: "Chicken Hot Garlic/Manchurian", price: 289, description: "Popular chicken preparations in flavorful sauces", image: "/6.jpg" },
+    { name: "Chicken Hunan Sauce", price: 309, description: "Chicken in traditional Hunan style sauce", image: "/7.jpg" },
+    { name: "Chicken Hong Kong Gravy", price: 289, description: "Chicken in Hong Kong style gravy", image: "/8.jpg" },
+    { name: "Chicken Chilli Basil Sauce", price: 299, description: "Dice chicken mingled with Bell Pepper in medium spicy Chilli Basil sauce", image: "/9.jpg" },
+    { name: "Mongolian Claypot Chicken", price: 299, description: "Diced Glazed Chicken With Ginger, Dark Light Soy, Chinese Vinegar And Nuts, Sweet n Spicy", image: "/10.jpg" },
+    { name: "Chicken Madras Curry", price: 409, description: "Sliced Chicken prepared in Madras curry paste along with Curry leaf and flavoured with Coconut Milk", image: "/11.jpg" },
+    { name: "Chicken in Black Bean Sauce", price: 309, description: "A Classic Chinese Preparation With Chicken Chunks Cooked In Fresh Spicy Bean Sauce Made By Our Chef", image: "/12.jpg" }
   ],
   seafoodGravy: [
-    { name: "Hong Kong Gravy", price: 409, description: "Premium seafood in Hong Kong style gravy", image: "/20.jpg" },
-    { name: "Chilly Peking", price: 409, description: "Spicy Peking style seafood preparation", image: "/21.jpg" },
-    { name: "Madras Curry", price: 439, description: "Fresh prawns prepared in Madras curry paste with curry leaf and coconut", image: "/22.jpg" },
-    { name: "Pomfret (Choice of Sauce)", price: 569, description: "Fresh pomfret with choice of Schezwan or Soya sauce", image: "/23.jpg" }
+    { name: "Hong Kong Gravy", price: 409, description: "Premium seafood in Hong Kong style gravy", image: "/13.jpg" },
+    { name: "Chilly Peking", price: 409, description: "Spicy Peking style seafood preparation", image: "/14.jpg" },
+    { name: "Madras Curry", price: 439, description: "Fresh prawns prepared in Madras curry paste along with curry leaf and flavoured with coconut", image: "/15.jpg" },
+    { name: "Chilli Basil Sauce (Prawns/Fish)", price: 409, description: "Fresh Prawns/fish mingled with bell pepper in medium spicy chilli basil sauce", image: "/16.jpg" },
+    { name: "Wok Toss Sauce (Prawns/Fish)", price: 409, description: "Fresh prawns/Fish cooked with dark Wok sauce", image: "/17.jpg" },
+    { name: "Pomfret (Choice of Sauce)", price: 569, description: "Fresh pomfret with choice of Schezwan or Soya sauce", image: "/18.jpg" }
   ],
   curries: [
-    { name: "Malaysian Curry", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Traditional Malaysian curry with exotic herbs and nuts, fresh red chilly & coconut cream", image: "/24.jpg" },
-    { name: "Thai Red/Yellow/Green Curry", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Slow simmered spicy curry with Thai curry paste, fresh sweet coconut, sour tamarind and fresh herbs", image: "/25.jpg" },
-    { name: "Burmese Khow-suey", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Popular Burmese cuisine, burnt garlic rice/noodles with rich creamy curry", image: "/26.jpg" }
+    { name: "Malaysian Curry", price: { veg: 399, chicken: 419, prawns: 469 }, description: "A Traditional Malaysian Curry With The Blend Of Exotic Herbs And Nuts, Fresh Red Chilly & Coconut Cream comes along with Roti Kanai 2pc", image: "/19.jpg" },
+    { name: "Thai Red/Yellow/Green Curry", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Slow Simmered Spicy Curry With Thai Red Curry Paste, Fresh Sweet Coconut, Sour Tamarind And Fresh Herbs Served with a bowl of Steamed Rice", image: "/20.jpg" },
+    { name: "Burmese Khow-suey", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Popular Burmese Cuisine, Burnt Garlic Rice/Noodles Meldly With Rich Creamy Curry On The Side Cum With Garlic/Onion Flakes", image: "/21.jpg" },
+    { name: "Kari Kapitan (Malaysian)", price: { veg: 399, chicken: 419, prawns: 469 }, description: "Traditional Malaysian curry preparation", image: "/22.jpg" },
+    { name: "Pattaya (Thai)", price: { veg: 319, chicken: 389, prawns: 449 }, description: "Authentic Thai curry preparation", image: "/23.jpg" }
   ],
   vegRice: [
+    { name: "Roti Kanai (2Pcs)", price: 109, description: "Traditional Malaysian flatbread", image: "/24.jpg" },
+    { name: "Garlic Roti Kanai (2Pcs)", price: 129, description: "Traditional Malaysian flatbread with garlic", image: "/25.jpg" },
+    { name: "Steam Rice", price: 189, description: "Simple steamed rice", image: "/26.jpg" },
     { name: "Veg Fried Rice", price: 239, description: "Classic vegetable fried rice", image: "/27.jpg" },
     { name: "Veg Schezwan Fried Rice", price: 259, description: "Spicy Schezwan style fried rice", image: "/28.jpg" },
     { name: "Veg Burnt Garlic Rice", price: 269, description: "Aromatic burnt garlic flavored rice", image: "/29.jpg" },
-    { name: "Veg Thai Chilly Rice", price: 259, description: "Thai wok tossed rice with exotic herbs and Thai green chillies", image: "/1.jpg" },
-    { name: "Veg Singapore Chilly Rice", price: 269, description: "Singapore style spicy rice preparation", image: "/2.jpg" }
+    { name: "Veg Thai Chilly Rice", price: 259, description: "A Thai Wok Tossed Rice With Exotic Herbs And Julienne Thai Green Chillies", image: "/1.jpg" },
+    { name: "Veg Basil Rice", price: 259, description: "Aromatic basil flavored rice", image: "/2.jpg" }
   ],
   chickenRice: [
-    { name: "Chicken Fried Rice", price: 259, description: "Classic chicken fried rice", image: "/3.jpg" },
-    { name: "Chicken Schezwan Fried Rice", price: 279, description: "Spicy Schezwan chicken fried rice", image: "/4.jpg" },
-    { name: "Chicken Burnt Garlic Rice", price: 289, description: "Aromatic chicken rice with burnt garlic", image: "/5.jpg" },
-    { name: "Thai Chilly Chicken Rice", price: 279, description: "Thai wok tossed rice with chicken, exotic herbs and Thai green chillies", image: "/6.jpg" },
-    { name: "Indonesian Fried Chicken Rice", price: 289, description: "Indonesian rice tossed in sweet soya with diced chicken", image: "/7.jpg" }
+    { name: "Egg Fried Rice", price: 249, description: "Simple egg fried rice", image: "/3.jpg" },
+    { name: "Chicken Fried Rice", price: 259, description: "Classic chicken fried rice", image: "/4.jpg" },
+    { name: "Chicken Schezwan Fried Rice", price: 279, description: "Spicy Schezwan chicken fried rice", image: "/5.jpg" },
+    { name: "Chicken Burnt Garlic Rice", price: 289, description: "Aromatic chicken rice with burnt garlic", image: "/6.jpg" },
+    { name: "Chicken Thai Basil Rice", price: 279, description: "Basil and Garlic Flavoured Chicken Fried rice", image: "/7.jpg" },
+    { name: "Chicken Singapore Chilly Rice", price: 279, description: "Singapore style spicy chicken rice", image: "/8.jpg" }
+  ],
+  noodles: [
+    { name: "Veg Hakka Noodles", price: 239, description: "Classic vegetable hakka noodles", image: "/9.jpg" },
+    { name: "Chicken Hakka Noodles", price: 259, description: "Classic chicken hakka noodles", image: "/10.jpg" },
+    { name: "Veg Schezwan Noodles", price: 259, description: "Spicy Schezwan style noodles", image: "/11.jpg" },
+    { name: "Chicken Schezwan Noodles", price: 279, description: "Spicy Schezwan chicken noodles", image: "/12.jpg" },
+    { name: "Veg Pad Thai Noodles", price: 269, description: "Traditional Thai Noodles Tossed With Assorted Veg And Garnished With Crushed Peanuts", image: "/13.jpg" },
+    { name: "Chicken Pad Thai Noodles", price: 289, description: "Traditional Thai noodles tossed with chicken and garnished with crushed peanuts", image: "/14.jpg" },
+    { name: "Singapore Chilly Noodles", price: 269, description: "Thin Rice Noodles Wok Fried with Assorted Veggies And Fresh Chillies, Made Traditional", image: "/15.jpg" },
+    { name: "Dan Dan Noodles", price: 319, description: "Spicy Sichuan dish with Fresh noodles, Tossed in Peanuts Sesmi Paste and Red Yellow Pepper", image: "/16.jpg" }
   ],
   desserts: [
-    { name: "Brownie with Hot Chocolate Sauce", price: 169, description: "Rich chocolate brownie with warm chocolate sauce", image: "/8.jpg" },
-    { name: "Brownie with Vanilla Ice Cream", price: 169, description: "Decadent brownie served with creamy vanilla ice cream", image: "/9.jpg" },
-    { name: "Honey Noodle with Ice Cream", price: 169, description: "Sweet honey noodles served with ice cream", image: "/10.jpg" }
+    { name: "Brownie with Hot Chocolate Sauce", price: 169, description: "Rich chocolate brownie with warm chocolate sauce", image: "/17.jpg" },
+    { name: "Brownie with Vanilla Ice Cream", price: 169, description: "Decadent brownie served with creamy vanilla ice cream", image: "/18.jpg" },
+    { name: "Honey Noodle with Ice Cream", price: 169, description: "Sweet honey noodles served with ice cream", image: "/19.jpg" }
   ]
 };
 
-const categories = [
+const categories: Category[] = [
   { id: 'beverages', name: 'Beverages', icon: '🥤' },
   { id: 'mocktails', name: 'Mocktails', icon: '🍹' },
   { id: 'boba', name: 'Boba Tea', icon: '🧋' },
   { id: 'soups', name: 'Soups', icon: '🍲' },
   { id: 'momos', name: "Momo's", icon: '🥟' },
+  { id: 'grill', name: 'Grill', icon: '🔥' },
   { id: 'vegStarters', name: 'Veg Starters', icon: '🥗' },
+  { id: 'salads', name: 'Salads', icon: '🥙' },
   { id: 'nonVegStarters', name: 'Non-Veg Starters', icon: '🍗' },
   { id: 'seafoodStarters', name: 'Seafood Starters', icon: '🦐' },
   { id: 'vegGravy', name: 'Veg Gravy', icon: '🍛' },
   { id: 'nonVegGravy', name: 'Non-Veg Gravy', icon: '🍖' },
   { id: 'seafoodGravy', name: 'Seafood Gravy', icon: '🐟' },
   { id: 'curries', name: 'Curries', icon: '🍜' },
-  { id: 'vegRice', name: 'Veg Rice', icon: '🍚' },
-  { id: 'chickenRice', name: 'Chicken Rice', icon: '🍗' },
+  { id: 'vegRice', name: 'Veg Rice & Noodles', icon: '🍚' },
+  { id: 'chickenRice', name: 'Non-Veg Rice', icon: '🍗' },
+  { id: 'noodles', name: 'Noodles', icon: '🍝' },
   { id: 'desserts', name: 'Desserts', icon: '🍰' }
 ];
 
@@ -134,11 +228,9 @@ const RamenBowl3D = () => {
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Responsive sizing
     const width = mountRef.current.clientWidth;
     const height = mountRef.current.clientHeight;
 
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -150,7 +242,6 @@ const RamenBowl3D = () => {
     sceneRef.current = scene;
     rendererRef.current = renderer;
 
-    // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -161,8 +252,6 @@ const RamenBowl3D = () => {
     spotLight.position.set(-5, 5, 2);
     scene.add(spotLight);
 
-    // Load GLB model
-    const loader = new GLTFLoader();
     const createFallbackBowl = () => {
       const group = new THREE.Group();
       
@@ -217,11 +306,14 @@ const RamenBowl3D = () => {
 
       return group;
     };
+    
+    // Load GLB model like footer
+    const loader = new GLTFLoader();
     loader.load(
       '/stylized_ramen_bowl.glb',
       (gltf) => {
         const model = gltf.scene;
-        model.scale.setScalar(13); // Make model more bigger
+        model.scale.setScalar(12); // Match footer scale
         model.position.y = -1;
         model.rotation.x = 0.3; // Face up slightly
         scene.add(model);
@@ -230,16 +322,16 @@ const RamenBowl3D = () => {
       undefined,
       (error) => {
         const fallbackBowl = createFallbackBowl();
-        fallbackBowl.scale.setScalar(13); // Also scale fallback
+        fallbackBowl.scale.setScalar(12); // Also scale fallback to match footer
         fallbackBowl.rotation.x = 0.3; // Face up slightly
         scene.add(fallbackBowl);
         bowlRef.current = fallbackBowl;
       }
     );
+
     camera.position.z = 4;
     camera.position.y = 1;
 
-    // Handle resize
     const handleResize = () => {
       if (!mountRef.current || !rendererRef.current || !sceneRef.current) return;
       const width = mountRef.current.clientWidth;
@@ -250,7 +342,6 @@ const RamenBowl3D = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       if (bowlRef.current) {
@@ -260,7 +351,6 @@ const RamenBowl3D = () => {
     };
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
       const currentMount = mountRef.current;
@@ -274,52 +364,47 @@ const RamenBowl3D = () => {
   return <div ref={mountRef} className="w-full h-full" />;
 };
 
-// Enhanced Interactive Menu Item Component
+// Menu Item Component
 interface MenuItemProps {
-  item: {
-    name: string;
-    price: number | { veg?: number; chicken?: number; prawns?: number };
-    description: string;
-    image?: string;
-  };
+  item: MenuItem;
 }
 
 const MenuItem = ({ item }: MenuItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  
   const renderPrice = (price: number | { veg?: number; chicken?: number; prawns?: number }) => {
     if (typeof price === 'number') {
       return (
         <div className="flex items-center gap-2">
-          <span className="text-3xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text">₹{price}</span>
+          <span className="text-2xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text">₹{price}</span>
         </div>
       );
     }
     
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1">
         {price.veg && (
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-          <span className="text-lg font-semibold text-green-400">Veg: ₹{price.veg}</span>
+            <span className="text-sm font-semibold text-green-400">Veg: ₹{price.veg}</span>
           </div>
         )}
         {price.chicken && (
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
-          <span className="text-lg font-semibold text-orange-400">Chicken: ₹{price.chicken}</span>
+            <span className="text-sm font-semibold text-orange-400">Chicken: ₹{price.chicken}</span>
           </div>
         )}
         {price.prawns && (
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-red-400 rounded-full"></span>
-          <span className="text-lg font-semibold text-red-400">Prawns: ₹{price.prawns}</span>
+            <span className="text-sm font-semibold text-red-400">Prawns: ₹{price.prawns}</span>
           </div>
         )}
       </div>
     );
   };
 
-  // Get appropriate emoji and Asian elements based on item name
   const getItemEmoji = (name: string) => {
     const nameLower = name.toLowerCase();
     if (nameLower.includes('momo') || nameLower.includes('wonton')) return '🥟';
@@ -337,167 +422,80 @@ const MenuItem = ({ item }: MenuItemProps) => {
     return '🍽️';
   };
 
-  // Get Asian decorative elements
-  const getAsianElements = (name: string) => {
-    const nameLower = name.toLowerCase();
-    const elements = [];
-    
-    // Add pandas for special items
-    if (nameLower.includes('momo') || nameLower.includes('wonton') || nameLower.includes('curry')) {
-      elements.push('🐼');
-    }
-    
-    // Add bamboo for rice and noodle dishes
-    if (nameLower.includes('rice') || nameLower.includes('noodle')) {
-      elements.push('🎋');
-    }
-    
-    // Add chopsticks for main dishes
-    if (nameLower.includes('chicken') || nameLower.includes('prawn') || nameLower.includes('gravy')) {
-      elements.push('🥢');
-    }
-    
-    // Add lanterns for soups
-    if (nameLower.includes('soup')) {
-      elements.push('🏮');
-    }
-    
-    // Add fortune cookies for desserts
-    if (nameLower.includes('dessert') || nameLower.includes('brownie')) {
-      elements.push('🥠');
-    }
-    
-    // Add tea elements for beverages
-    if (nameLower.includes('tea') || nameLower.includes('beverage')) {
-      elements.push('🫖');
-    }
-    
-    return elements;
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.03, y: -8 }}
+      whileHover={{ scale: 1.02, y: -4 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 border border-gray-600/40 rounded-3xl p-8 hover:border-red-400/70 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/30 group overflow-hidden backdrop-blur-md cursor-pointer"
+      className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 border border-gray-600/30 rounded-2xl p-6 hover:border-red-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20 group overflow-hidden backdrop-blur-sm cursor-pointer"
     >
-      {/* Enhanced background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      {/* Decorative top accent */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      
-      
-      {/* Enhanced Content */}
       <div className="relative z-10">
-        {/* Header with emoji and name */}
-        <div className="flex items-start justify-between mb-8">
-          <div className="flex items-center gap-5 flex-1">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3 flex-1">
             <motion.div 
-              className="text-5xl group-hover:scale-110 transition-transform duration-300"
-              whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-              transition={{ duration: 0.5 }}
+              className="text-3xl group-hover:scale-110 transition-transform duration-300"
+              whileHover={{ rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 0.4 }}
             >
               {getItemEmoji(item.name)}
             </motion.div>
-            <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-300 group-hover:to-orange-300 group-hover:bg-clip-text transition-all duration-500">
+            <h3 className="text-lg font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-300 group-hover:to-orange-300 group-hover:bg-clip-text transition-all duration-300">
               {item.name}
             </h3>
           </div>
-          <div className="ml-6 text-right">
+          <div className="ml-4 text-right">
             {renderPrice(item.price)}
           </div>
         </div>
         
-        {/* Asian Decorative Elements */}
-        <motion.div 
-          className="flex items-center gap-4 mb-6 pl-20"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          {getAsianElements(item.name).map((element, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.4, rotate: 15 }}
-              transition={{ delay: index * 0.1, duration: 0.3 }}
-              className="text-2xl group-hover:scale-110 transition-transform duration-300 cursor-pointer"
-            >
-              {element}
-            </motion.span>
-          ))}
-        </motion.div>
-        
-        {/* Enhanced Description */}
         <motion.p 
-          className="text-gray-300 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-500 pl-20 mb-6"
+          className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-100 transition-colors duration-300 pl-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.1 }}
         >
           {item.description}
         </motion.p>
 
-        {/* Enhanced Spice level indicator */}
         {item.description.toLowerCase().includes('spicy') && (
           <motion.div 
-            className="flex items-center gap-3 mt-6 pl-20"
-            initial={{ opacity: 0, x: -20 }}
+            className="flex items-center gap-2 mt-3 pl-12"
+            initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
           >
             <motion.span 
-              className="text-red-400 text-lg"
-              animate={{ scale: [1, 1.3, 1] }}
+              className="text-red-400 text-sm"
+              animate={{ scale: [1, 1.2, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
               🌶️
             </motion.span>
-            <span className="text-red-400 text-base font-semibold">Spicy</span>
+            <span className="text-red-400 text-xs font-medium">Spicy</span>
           </motion.div>
         )}
       </div>
 
-      {/* Enhanced decorative corner elements */}
       <motion.div 
-        className="absolute top-8 right-8 w-24 h-24 bg-gradient-to-br from-red-500/20 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         animate={{ 
-          scale: isHovered ? [1, 1.3, 1] : 1,
+          scale: isHovered ? [1, 1.2, 1] : 1,
           rotate: isHovered ? [0, 180, 360] : 0
         }}
-        transition={{ duration: 3, repeat: isHovered ? Infinity : 0 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute bottom-8 left-8 w-20 h-20 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-        animate={{ 
-          scale: isHovered ? [1, 1.4, 1] : 1,
-          rotate: isHovered ? [0, -180, -360] : 0
-        }}
-        transition={{ duration: 3.5, repeat: isHovered ? Infinity : 0 }}
-      ></motion.div>
-      
-      {/* Additional decorative elements */}
-      <motion.div 
-        className="absolute top-1/2 right-4 w-12 h-12 bg-gradient-to-br from-yellow-500/15 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        animate={{ 
-          y: isHovered ? [0, -10, 0] : 0,
-          rotate: isHovered ? [0, 90, 180, 270, 360] : 0
-        }}
-        transition={{ duration: 4, repeat: isHovered ? Infinity : 0 }}
+        transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
       ></motion.div>
     </motion.div>
   );
 };
 
-// Enhanced Category Section with better styling
+// Category Section Component
 interface CategorySectionProps {
-  category: { id: string; name: string; icon: string };
-  items: any[];
+  category: Category;
+  items: MenuItem[];
 }
 
 const CategorySection = ({ category, items }: CategorySectionProps) => (
@@ -508,117 +506,86 @@ const CategorySection = ({ category, items }: CategorySectionProps) => (
     className="relative group"
     id={category.id}
   >
-    {/* Section Background */}
-    <div className="absolute inset-0 bg-gradient-to-r from-red-500/8 via-transparent to-orange-500/8 rounded-3xl -m-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-transparent to-orange-500/5 rounded-2xl -m-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     
-    {/* Category Header */}
-    <div className="relative z-10 flex items-center gap-8 mb-20">
+    <div className="relative z-10 flex items-center gap-6 mb-12">
       <div className="relative">
-        <div className="text-7xl group-hover:scale-110 transition-transform duration-300">
-          {category.icon}
-        </div>
-        <div className="absolute inset-0 text-7xl opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300">
+        <div className="text-5xl group-hover:scale-110 transition-transform duration-300">
           {category.icon}
         </div>
       </div>
       <div className="flex-1">
-        <div className="flex items-center gap-6 mb-4">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight font-brice uppercase">
+        <div className="flex items-center gap-4 mb-2">
+          <h2 className="text-2xl md:text-3xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight uppercase">
           {category.name}
         </h2>
-          <div className="flex-1 h-px bg-gradient-to-r from-red-500/60 via-orange-500/60 to-transparent"></div>
-          <span className="text-sm text-gray-500 bg-gray-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
+          <div className="flex-1 h-px bg-gradient-to-r from-red-500/40 via-orange-500/40 to-transparent"></div>
+          <span className="text-xs text-gray-500 bg-gray-800/60 px-3 py-1 rounded-full backdrop-blur-sm">
             {items.length} items
           </span>
       </div>
-        <div className="h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-transparent rounded-full"></div>
+        <div className="h-1 bg-gradient-to-r from-red-500 via-orange-500 to-transparent rounded-full"></div>
     </div>
     </div>
 
-    {/* Menu Items Grid */}
-    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-      {items.map((item, index) => (
+    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {items.map((item: MenuItem, index: number) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1, duration: 0.5 }}
+          transition={{ delay: index * 0.05, duration: 0.4 }}
         >
           <MenuItem item={item} />
         </motion.div>
       ))}
     </div>
 
-    {/* Enhanced Asian Decorative Elements */}
-    <div className="absolute -top-6 -right-6 w-40 h-40 bg-gradient-to-br from-red-500/12 to-transparent rounded-full blur-2xl opacity-60"></div>
-    <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-orange-500/12 to-transparent rounded-full blur-xl opacity-60"></div>
-    
-    {/* Floating Asian Elements */}
-    <div className="absolute top-12 right-16 text-3xl opacity-20 group-hover:opacity-50 transition-opacity duration-500">
-      🐼
-    </div>
-    <div className="absolute bottom-16 left-20 text-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-500">
-      🎋
-    </div>
-    <div className="absolute top-1/2 right-12 text-xl opacity-15 group-hover:opacity-40 transition-opacity duration-500">
-      🥢
-    </div>
+    <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-red-500/8 to-transparent rounded-full blur-2xl opacity-40"></div>
+    <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-tr from-orange-500/8 to-transparent rounded-full blur-xl opacity-40"></div>
   </motion.section>
 );
 
-// Main Menu Component with 3D integration
+// Main Menu Component
 const EnhancedMenuPage = () => {
-  const [activeCategory, setActiveCategory] = useState('beverages');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showSearch, setShowSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
+  const y = useTransform(scrollY, [0, 300], [0, -30]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.9]);
 
-  // Scroll detection
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToCategory = (categoryId: string) => {
-    setActiveCategory(categoryId);
-    setShowMobileMenu(false);
-    const element = document.getElementById(categoryId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  const openCategoryPopup = (categoryId: string) => {
+    setSelectedCategory(categoryId);
   };
 
-  const filteredCategories = categories.filter(category => {
-    if (!searchTerm) return true;
-    const items = menuData[category.id as keyof typeof menuData] || [];
-    return items.some((item: any) => 
+  const closeCategoryPopup = () => {
+    setSelectedCategory(null);
+  };
+
+  const selectedCategoryData = selectedCategory ? categories.find(cat => cat.id === selectedCategory) : null;
+  const selectedItems = selectedCategory ? menuData[selectedCategory] || [] : [];
+
+  const filteredItems = selectedItems.filter((item: MenuItem) => 
+    !searchTerm || 
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  });
 
   return (
-    <div className="min-h-screen bg-black text-white font-brice">
-      {/* Enhanced Hero Section with 3D Bowl */}
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section with 3D Bowl */}
       <motion.div 
         className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
         style={{ y, opacity }}
       >
-        {/* Interactive Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute top-20 left-20 text-6xl opacity-10"
+            className="absolute top-20 left-20 text-4xl opacity-5"
             animate={{ 
-              y: [0, -20, 0],
-              rotate: [0, 5, 0]
+              y: [0, -15, 0],
+              rotate: [0, 3, 0]
             }}
             transition={{ 
               duration: 4, 
@@ -629,25 +596,10 @@ const EnhancedMenuPage = () => {
             🐼
           </motion.div>
           <motion.div
-            className="absolute top-40 right-32 text-4xl opacity-10"
+            className="absolute bottom-32 right-1/4 text-3xl opacity-5"
             animate={{ 
-              y: [0, 15, 0],
-              rotate: [0, -5, 0]
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: 1
-            }}
-          >
-            🎋
-          </motion.div>
-          <motion.div
-            className="absolute bottom-32 left-1/4 text-5xl opacity-10"
-            animate={{ 
-              y: [0, -10, 0],
-              rotate: [0, 10, 0]
+              y: [0, -8, 0],
+              rotate: [0, 8, 0]
             }}
             transition={{ 
               duration: 5, 
@@ -660,69 +612,61 @@ const EnhancedMenuPage = () => {
           </motion.div>
         </div>
 
-        {/* Content Layout */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-          {/* Left side - Text content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left order-2 lg:order-1"
           >
-            <div className="mb-4 lg:mb-8">
               <motion.h1 
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight mb-2 lg:mb-4 font-brice"
-                initial={{ opacity: 0, y: 30 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
               >
-                <span className="bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text text-transparent">
+                <span className="text-white">
                   MENU
                 </span>
               </motion.h1>
               <motion.p 
-                className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 lg:mb-8 font-light font-brice"
+                className="text-lg text-gray-400 mb-8 font-light"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
               >
-                Authentic Thai & Chinese Cuisine
+                Authentic Thai & Chinese Cuisine Since 2000
               </motion.p>
-            </div>
             
-            {/* Restaurant stats */}
             <motion.div 
-              className="flex flex-wrap justify-center lg:justify-start gap-3 lg:gap-6 text-xs lg:text-sm text-gray-400 mb-4 lg:mb-0"
+              className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm text-gray-400 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <div className="flex items-center gap-1 lg:gap-2 bg-black/30 px-2 lg:px-4 py-1 lg:py-2 rounded-full backdrop-blur-sm">
-                <Clock className="w-3 h-3 lg:w-4 lg:h-4 text-red-400" />
-                <span>Since 2000</span>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700">
+                <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <span>25 Years</span>
               </div>
-              <div className="flex items-center gap-1 lg:gap-2 bg-black/30 px-2 lg:px-4 py-1 lg:py-2 rounded-full backdrop-blur-sm">
-                <MapPin className="w-3 h-3 lg:w-4 lg:h-4 text-red-400" />
-                <span>6 Locations in Pune</span>
-              </div>
-              <div className="flex items-center gap-1 lg:gap-2 bg-black/30 px-2 lg:px-4 py-1 lg:py-2 rounded-full backdrop-blur-sm">
-                <Star className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-500" />
-                <span>24 Years of Excellence</span>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700">
+                <MapPin className="w-4 h-4 text-red-400" />
+                <span>6 Locations</span>
               </div>
             </motion.div>
 
-            {/* Interactive CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="mt-4 lg:mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.button 
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToCategory('beverages')}
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-red-500/30 flex items-center justify-center gap-2"
+                onClick={() => openCategoryPopup('beverages')}
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <motion.span
                   animate={{ rotate: [0, 10, -10, 0] }}
@@ -734,49 +678,27 @@ const EnhancedMenuPage = () => {
               </motion.button>
               
               <motion.button 
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.open('/ucmenu1.pdf', '_blank')}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2"
-              >
-                <motion.div
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                onClick={() => window.open('#', '_blank')}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" />
-                </motion.div>
-                Quick Menu
-              </motion.button>
-              
-              <motion.button 
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.open('/uncmenu2.pdf', '_blank')}
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold transition-all duration-300 transform hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2"
-              >
-                <motion.div
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
-              >
-                <Download className="w-5 h-5" />
-                </motion.div>
-                Full Menu
+                Download Menu
               </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Right side - 3D Bowl */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="flex justify-center lg:justify-end order-1 lg:order-2"
           >
-            <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[700px] xl:h-[700px] 2xl:w-[800px] 2xl:h-[800px] relative -translate-y-12 lg:-translate-y-24 xl:-translate-y-32">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative">
               <Suspense fallback={
                 <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-4xl lg:text-6xl xl:text-8xl animate-spin">🍜</div>
+                  <div className="text-6xl animate-spin">🍜</div>
                 </div>
               }>
                 <RamenBowl3D />
@@ -786,108 +708,162 @@ const EnhancedMenuPage = () => {
         </div>
       </motion.div>
 
-      {/* Enhanced Navigation & Search */}
+      {/* Navigation - Minimal */}
       <motion.div 
-        className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800 overflow-hidden"
-        initial={{ y: -100 }}
+        className="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800/50"
+        initial={{ y: -50 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }}
       >
-        {/* Asian Background Elements */}
-        <div className="absolute top-2 left-4 text-lg opacity-10 animate-pulse">🐼</div>
-        <div className="absolute top-3 right-6 text-sm opacity-10 animate-bounce">🎋</div>
-        <div className="absolute bottom-2 left-1/4 text-base opacity-10 animate-pulse">🥢</div>
-        <div className="absolute bottom-1 right-1/3 text-sm opacity-10 animate-bounce">🏮</div>
-        
-        <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
-          {/* Search Bar */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <div className="flex items-center justify-between mb-3">
+            <div className="relative flex-1 max-w-sm">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
               <input
                 type="text"
-                placeholder="Search menu items... 🔍"
+                placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
+                className="w-full pl-9 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-full text-white text-sm placeholder-gray-500 focus:outline-none focus:border-red-500/50 transition-all"
               />
             </div>
-            
-            
-            <button
-              onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="lg:hidden p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
           </div>
 
-          {/* Interactive Category Navigation */}
-          <div className="flex flex-wrap gap-2 lg:gap-4">
+          <div className="flex flex-wrap gap-2">
             {categories.map((category, index) => (
               <motion.button
                 key={category.id}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToCategory(category.id)}
-                initial={{ opacity: 0, y: 20 }}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => openCategoryPopup(category.id)}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/30'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                transition={{ delay: index * 0.03 }}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all duration-200 ${
+                  selectedCategory === category.id
+                    ? 'bg-red-600 text-white'
+                    : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
                 }`}
               >
-                <motion.span 
-                  className="text-lg"
-                  whileHover={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {category.icon}
-                </motion.span>
-                <span className="hidden sm:inline">{category.name}</span>
+                <span className="text-sm">{category.icon}</span>
+                <span className="hidden sm:inline text-xs">{category.name}</span>
               </motion.button>
             ))}
           </div>
         </div>
       </motion.div>
 
-      {/* Enhanced Menu Items Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Section Header */}
+      {/* Menu Items Section */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-4 font-brice uppercase">
-            Explore Our Menu
+          <h2 className="text-2xl lg:text-3xl font-light text-white tracking-tight mb-3">
+            EXPLORE OUR MENU
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            From traditional momos to authentic Thai curries, discover flavors that tell a story
+          <p className="text-gray-400 text-sm max-w-xl mx-auto">
+            Click on any category to discover our authentic dishes and flavors
           </p>
         </motion.div>
 
-        {/* Menu Categories */}
-        <div className="space-y-24">
-          {filteredCategories.map((category) => {
-            const items = menuData[category.id as keyof typeof menuData] || [];
-            const filteredItems = items.filter((item: any) => 
-              !searchTerm || 
-              item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              item.description.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-
-            if (filteredItems.length === 0) return null;
+        {/* Creative Category Boxes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {categories.map((category, index) => {
+            const items = menuData[category.id] || [];
+            const itemCount = items.length;
+            
+            // Unique image mapping for each category
+            const categoryImages: { [key: string]: string } = {
+              'beverages': '/1.jpg',
+              'mocktails': '/5.jpg', 
+              'boba': '/11.jpg',
+              'soups': '/13.jpg',
+              'momos': '/2.jpg',
+              'grill': '/14.jpg',
+              'vegStarters': '/19.jpg',
+              'salads': '/3.jpg',
+              'nonVegStarters': '/8.jpg',
+              'seafoodStarters': '/17.jpg',
+              'vegGravy': '/26.jpg',
+              'nonVegGravy': '/6.jpg',
+              'seafoodGravy': '/15.jpg',
+              'curries': '/20.jpg',
+              'vegRice': '/27.jpg',
+              'chickenRice': '/4.jpg',
+              'noodles': '/9.jpg',
+              'desserts': '/18.jpg'
+            };
+            
+            const sampleImage = categoryImages[category.id] || '/1.jpg';
 
             return (
-              <CategorySection key={category.id} category={category} items={filteredItems} />
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ scale: 1.03, y: -8 }}
+                onClick={() => openCategoryPopup(category.id)}
+                className="group relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 rounded-3xl overflow-hidden cursor-pointer border border-gray-700/50 hover:border-red-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/20"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={sampleImage}
+                    alt={category.name}
+                    className="w-full h-full object-cover opacity-30 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60"></div>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 p-6 h-48 flex flex-col justify-between">
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <motion.div 
+                      className="text-4xl group-hover:scale-110 transition-transform duration-300"
+                      whileHover={{ rotate: [0, -10, 10, 0] }}
+                    >
+                      {category.icon}
+                    </motion.div>
+                    <div className="bg-red-600/20 backdrop-blur-sm px-3 py-1 rounded-full border border-red-500/30">
+                      <span className="text-red-300 text-xs font-semibold">{itemCount} items</span>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-300 group-hover:to-orange-300 group-hover:bg-clip-text transition-all duration-500 mb-2"
+                        style={{ fontFamily: 'Playfair Display, serif' }}>
+                      {category.name}
+                    </h3>
+                    <div className="w-full h-px bg-gradient-to-r from-red-500/50 to-transparent"></div>
+                  </div>
+
+                  {/* Action */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300 text-sm group-hover:text-gray-100 transition-colors"
+                          style={{ fontFamily: 'Poppins, sans-serif' }}>
+                      Click to explore
+                    </span>
+                    <motion.div
+                      className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-500 transition-colors duration-300"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <span className="text-white text-lg">→</span>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </motion.div>
             );
           })}
         </div>
 
-        {filteredCategories.length === 0 && searchTerm && (
+        {categories.length === 0 && searchTerm && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -898,7 +874,7 @@ const EnhancedMenuPage = () => {
             <p className="text-gray-500 mb-6">Try searching with different keywords</p>
           <button 
               onClick={() => setSearchTerm('')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 rounded-full text-white font-medium transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 rounded-full text-white font-medium transition-all duration-300"
           >
               Clear Search
           </button>
@@ -906,172 +882,222 @@ const EnhancedMenuPage = () => {
         )}
         </div>
 
-      {/* Enhanced Menu Summary Section */}
-      <div className="relative w-full bg-gradient-to-b from-black via-gray-900 to-black py-20">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 left-10 text-6xl opacity-5 animate-pulse">🐼</div>
-          <div className="absolute top-20 right-20 text-4xl opacity-5 animate-bounce">🎋</div>
-          <div className="absolute bottom-20 left-1/4 text-5xl opacity-5 animate-pulse">🥢</div>
-          <div className="absolute bottom-10 right-1/3 text-3xl opacity-5 animate-bounce">🏮</div>
-      </div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Section Header */}
+      {/* Category Popup Modal */}
+      <AnimatePresence>
+        {selectedCategory && selectedCategoryData && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={closeCategoryPopup}
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-transparent bg-gradient-to-r from-white via-red-300 to-orange-300 bg-clip-text tracking-tight mb-6 font-brice uppercase">
-              Our Culinary Journey
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full max-h-[80vh] overflow-hidden border border-gray-700"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Popup Header */}
+              <div className="relative p-6 border-b border-gray-700">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="text-4xl">{selectedCategoryData.icon}</div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+                        {selectedCategoryData.name}
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Discover the rich tapestry of flavors that have made Uncle&apos;s Chinese a beloved destination for authentic Asian cuisine
-            </p>
-          </motion.div>
-
-          {/* Menu Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            {[
-              { number: "15+", label: "Categories", icon: "🍽️" },
-              { number: "100+", label: "Dishes", icon: "🥟" },
-              { number: "24", label: "Years", icon: "⭐" },
-              { number: "6", label: "Locations", icon: "📍" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="text-center group"
-              >
-                <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {stat.icon}
+                      <p className="text-gray-400 text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        {selectedItems.length} delicious options
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={closeCategoryPopup}
+                    className="w-10 h-10 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors duration-300"
+                  >
+                    <span className="text-white text-xl">×</span>
+                  </button>
             </div>
-                <div className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text mb-1">
-                  {stat.number}
+
+                {/* Search within category */}
+                <div className="mt-4">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="text"
+                      placeholder={`Search in ${selectedCategoryData.name}...`}
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-600 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
+                      style={{ fontFamily: 'Poppins, sans-serif' }}
+                    />
           </div>
-                <div className="text-gray-400 text-sm font-medium">
-                  {stat.label}
         </div>
-              </motion.div>
-            ))}
           </div>
 
-          {/* Featured Categories Preview */}
+              {/* Popup Content - Enhanced Layout */}
+              <div className="p-6 overflow-y-auto max-h-[60vh]">
+                <div className="space-y-3">
+                  {filteredItems.map((item: MenuItem, index: number) => {
+                    // Function to get appropriate emoji based on dish name
+                    const getItemEmoji = (name: string) => {
+                      const lowerName = name.toLowerCase();
+                      if (lowerName.includes('noodle') || lowerName.includes('hakka') || lowerName.includes('chow mein')) return '🍜';
+                      if (lowerName.includes('rice') || lowerName.includes('fried rice')) return '🍚';
+                      if (lowerName.includes('soup')) return '🍲';
+                      if (lowerName.includes('chicken') && lowerName.includes('lollypop')) return '🍗';
+                      if (lowerName.includes('chicken')) return '🐔';
+                      if (lowerName.includes('prawns') || lowerName.includes('shrimp')) return '🦐';
+                      if (lowerName.includes('fish')) return '🐟';
+                      if (lowerName.includes('momo') || lowerName.includes('dumpling')) return '🥟';
+                      if (lowerName.includes('spring roll')) return '🌯';
+                      if (lowerName.includes('manchurian')) return '🥢';
+                      if (lowerName.includes('curry')) return '🍛';
+                      if (lowerName.includes('satay')) return '🍢';
+                      if (lowerName.includes('tofu') || lowerName.includes('paneer')) return '🧈';
+                      if (lowerName.includes('corn')) return '🌽';
+                      if (lowerName.includes('mushroom')) return '🍄';
+                      if (lowerName.includes('salad')) return '🥗';
+                      if (lowerName.includes('beverage') || lowerName.includes('drink') || lowerName.includes('tea') || lowerName.includes('soda')) return '🥤';
+                      if (lowerName.includes('mocktail') || lowerName.includes('mojito')) return '🍹';
+                      if (lowerName.includes('boba')) return '🧋';
+                      if (lowerName.includes('dessert') || lowerName.includes('brownie') || lowerName.includes('ice cream')) return '🍰';
+                      if (lowerName.includes('grill')) return '🔥';
+                      return '🥢'; // Default Chinese food emoji
+                    };
+
+                    return (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-          >
-            {[
-              { 
-                title: "Signature Momos", 
-                description: "Handcrafted dumplings with authentic flavors", 
-                icon: "🥟",
-                count: "5 varieties",
-                color: "from-red-500 to-red-600"
-              },
-              { 
-                title: "Thai Curries", 
-                description: "Aromatic curries with fresh coconut milk", 
-                icon: "🍛",
-                count: "3 styles",
-                color: "from-orange-500 to-orange-600"
-              },
-              { 
-                title: "Chinese Specialties", 
-                description: "Traditional wok-tossed dishes", 
-                icon: "🍜",
-                count: "20+ dishes",
-                color: "from-yellow-500 to-yellow-600"
-              }
-            ].map((feature, index) => (
-              <div
                 key={index}
-                className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-2xl p-6 hover:border-red-500/50 transition-all duration-300 group backdrop-blur-sm"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.03, duration: 0.3 }}
+                        className="relative bg-gradient-to-r from-gray-800/40 to-gray-700/40 rounded-xl p-4 border border-gray-600/20 hover:border-red-500/40 hover:from-gray-800/60 hover:to-gray-700/60 transition-all duration-300 group overflow-hidden"
+                      >
+                        {/* Background Pattern */}
+                        <div className="absolute top-0 right-0 text-6xl opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+                          {getItemEmoji(item.name)}
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white group-hover:text-red-300 transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-400">{feature.count}</p>
+                        
+                        <div className="relative z-10 flex items-center justify-between">
+                          <div className="flex items-center gap-3 flex-1">
+                            {/* Item Emoji */}
+                            <div className="text-xl group-hover:scale-110 transition-transform duration-300">
+                              {getItemEmoji(item.name)}
                   </div>
+                            
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-white font-medium text-sm group-hover:text-red-300 transition-colors mb-1"
+                                  style={{ fontFamily: 'Playfair Display, serif' }}>
+                                {item.name}
+                              </h4>
+                              
+                              {/* Tags */}
+                              <div className="flex items-center gap-2 flex-wrap">
+                                {item.description.toLowerCase().includes('spicy') && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-500/20 text-red-400 text-xs rounded-full">
+                                    🌶️ Spicy
+                                  </span>
+                                )}
+                                {item.description.toLowerCase().includes('thai') && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">
+                                    🇹🇭 Thai
+                                  </span>
+                                )}
+                                {item.description.toLowerCase().includes('chinese') && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-500/20 text-yellow-400 text-xs rounded-full">
+                                    🇨🇳 Chinese
+                                  </span>
+                                )}
+                                {item.description.toLowerCase().includes('malaysian') && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">
+                                    🇲🇾 Malaysian
+                                  </span>
+                                )}
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-                <div className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br ${feature.color} rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
               </div>
-            ))}
+                          </div>
+                          
+                          {/* Price Section */}
+                          <div className="flex-shrink-0 ml-4 text-right">
+                            {typeof item.price === 'number' ? (
+                              <div className="bg-red-500/20 px-3 py-1.5 rounded-lg border border-red-500/30">
+                                <span className="text-red-300 font-bold text-sm">₹{item.price}</span>
+                              </div>
+                            ) : (
+                              <div className="space-y-1">
+                                {item.price.veg && (
+                                  <div className="bg-green-500/20 px-2 py-1 rounded text-green-300 text-xs border border-green-500/30">
+                                    Veg ₹{item.price.veg}
+                                  </div>
+                                )}
+                                {item.price.chicken && (
+                                  <div className="bg-orange-500/20 px-2 py-1 rounded text-orange-300 text-xs border border-orange-500/30">
+                                    Chicken ₹{item.price.chicken}
+                                  </div>
+                                )}
+                                {item.price.prawns && (
+                                  <div className="bg-red-500/20 px-2 py-1 rounded text-red-300 text-xs border border-red-500/30">
+                                    Prawns ₹{item.price.prawns}
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {/* Subtle hover glow */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
           </motion.div>
+                    );
+                  })}
+                </div>
 
-          {/* Download Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
+                {filteredItems.length === 0 && searchTerm && (
+                  <div className="text-center py-12">
+                    <div className="text-4xl mb-4">🔍</div>
+                    <h3 className="text-xl text-gray-300 mb-2">No items found</h3>
+                    <p className="text-gray-500 mb-4">Try searching with different keywords</p>
           <button 
-            onClick={() => window.open('/ucmenu1.pdf', '_blank')}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-3"
+                      onClick={() => setSearchTerm('')}
+                      className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-full text-white text-sm transition-colors"
           >
-            <Download className="w-5 h-5" />
-              <span>Quick Menu PDF</span>
+                      Clear Search
           </button>
-          <button 
-            onClick={() => window.open('/uncmenu2.pdf', '_blank')}
-              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 flex items-center gap-3"
-          >
-            <Download className="w-5 h-5" />
-              <span>Full Menu PDF</span>
-          </button>
-          </motion.div>
         </div>
+                )}
       </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Enhanced Happy Hours Banner */}
+
+      {/* Happy Hours Banner */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative bg-gradient-to-r from-red-600 via-red-700 to-orange-600 py-12 overflow-hidden"
+        className="relative bg-gradient-to-r from-red-600 via-red-700 to-orange-600 py-12"
       >
-        {/* Asian Background decorations */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-4 left-4 text-6xl animate-bounce">🎉</div>
-          <div className="absolute top-8 right-8 text-4xl animate-pulse">⏰</div>
-          <div className="absolute bottom-4 left-1/4 text-5xl animate-spin">💰</div>
-          <div className="absolute bottom-8 right-1/4 text-3xl animate-bounce">🍜</div>
-          <div className="absolute top-1/2 left-8 text-4xl animate-bounce">🐼</div>
-          <div className="absolute top-1/3 right-12 text-3xl animate-pulse">🎋</div>
-          <div className="absolute bottom-1/3 left-1/3 text-2xl animate-spin">🥢</div>
-          <div className="absolute top-2/3 right-1/4 text-3xl animate-bounce">🏮</div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
+            <h3 className="text-4xl font-light text-white mb-4 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
               🎊 HAPPY HOURS 🎊
             </h3>
-            <div className="text-3xl md:text-4xl font-medium text-yellow-300 mb-2 animate-pulse">
+            <div className="text-3xl font-medium text-yellow-300 mb-2 animate-pulse">
               20% OFF
             </div>
-            <p className="text-xl text-red-100 mb-2">
+            <p className="text-xl text-red-100 mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Valid on bills ₹350/- and above
             </p>
-            <p className="text-lg text-red-200 flex items-center justify-center gap-2">
+            <p className="text-lg text-red-200 flex items-center justify-center gap-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
               <Clock className="w-5 h-5" />
               3:30 PM - 6:30 PM Daily
             </p>
@@ -1080,23 +1106,15 @@ const EnhancedMenuPage = () => {
       </motion.div>
 
       {/* Footer */}
-      <div className="bg-black border-t border-gray-800 py-8 relative overflow-hidden">
-        {/* Asian Footer Elements */}
-        <div className="absolute top-2 left-8 text-lg opacity-10 animate-pulse">🐼</div>
-        <div className="absolute top-4 right-12 text-base opacity-10 animate-bounce">🎋</div>
-        <div className="absolute bottom-3 left-1/4 text-sm opacity-10 animate-pulse">🥢</div>
-        <div className="absolute bottom-2 right-1/3 text-base opacity-10 animate-bounce">🏮</div>
-        
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+      <div className="bg-black border-t border-gray-800 py-8">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-3 text-gray-400 mb-4">
             <span className="text-2xl">🍜</span>
             <span className="text-lg font-semibold">Experience Authentic Asian Flavors</span>
             <span className="text-2xl">🥢</span>
           </div>
-          <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
-            <span>🐼</span>
-            <span>Crafted with love • Fresh ingredients • 24 years of culinary excellence</span>
-            <span>🎋</span>
+          <p className="text-gray-500 text-sm">
+            Crafted with love • Fresh ingredients • 25 years of culinary excellence
           </p>
         </div>
       </div>

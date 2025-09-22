@@ -143,11 +143,9 @@ function GalleryMarquee({
         .map((_, i) => (
           <div
             key={i}
-            className={`flex shrink-0 justify-around [gap:var(--gap)] ${
-              vertical ? "animate-marquee-vertical flex-col" : "animate-marquee flex-row"
-            } ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""} ${
-              reverse ? "[animation-direction:reverse]" : ""
-            }`}
+            className={`flex shrink-0 justify-around [gap:var(--gap)] gallery-row ${
+              vertical ? "flex-col" : "flex-row"
+            } ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""}`}
             style={{
               animation: `${reverse ? 'gallery-marquee-reverse' : 'gallery-marquee'} var(--duration) linear infinite`,
             }}
@@ -162,7 +160,7 @@ function GalleryMarquee({
 // Gallery Image Component
 const GalleryImage = ({ src, alt }: { src: string; alt: string }) => {
   return (
-    <div className="relative w-80 h-64 cursor-pointer overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 shadow-lg">
+    <div className="relative w-72 h-56 cursor-pointer overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 shadow-lg flex-shrink-0">
       <img
         className="w-full h-full object-cover"
         src={src}
@@ -211,41 +209,65 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Three Row Gallery */}
+        {/* Three Row Gallery - Fixed Animation */}
         <div className="relative flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-lg">
           
           {/* First Row - Left to Right */}
-          <GalleryMarquee pauseOnHover className="[--duration:30s] mb-4">
-            {firstRowImages.map((image, index) => (
-              <GalleryImage 
-                key={`row1-${index}`}
-                src={`/${image}`} 
-                alt={`Delicious dish ${index + 1}`} 
-              />
-            ))}
-          </GalleryMarquee> 
+          <div className="flex overflow-hidden w-full mb-4 group" style={{ '--duration': '30s' } as React.CSSProperties}>
+            <div 
+              className="flex shrink-0 gap-4 animate-scroll-left group-hover:[animation-play-state:paused]"
+              style={{ 
+                animation: 'gallery-marquee 30s linear infinite',
+                minWidth: '100%'
+              }}
+            >
+              {firstRowImages.concat(firstRowImages).map((image, index) => (
+                <GalleryImage 
+                  key={`row1-${index}`}
+                  src={`/${image}`} 
+                  alt={`Delicious dish ${index + 1}`} 
+                />
+              ))}
+            </div>
+          </div>
           
           {/* Second Row - Right to Left */}
-          <GalleryMarquee reverse pauseOnHover className="[--duration:35s] mb-4">
-            {secondRowImages.map((image, index) => (
-              <GalleryImage 
-                key={`row2-${index}`}
-                src={`/${image}`} 
-                alt={`Delicious dish ${index + 11}`} 
-              />
-            ))}
-          </GalleryMarquee>
+          <div className="flex overflow-hidden w-full mb-4 group" style={{ '--duration': '35s' } as React.CSSProperties}>
+            <div 
+              className="flex shrink-0 gap-4 animate-scroll-right group-hover:[animation-play-state:paused]"
+              style={{ 
+                animation: 'gallery-marquee-reverse 35s linear infinite',
+                minWidth: '100%'
+              }}
+            >
+              {secondRowImages.concat(secondRowImages).map((image, index) => (
+                <GalleryImage 
+                  key={`row2-${index}`}
+                  src={`/${image}`} 
+                  alt={`Delicious dish ${index + 11}`} 
+                />
+              ))}
+            </div>
+          </div>
           
           {/* Third Row - Left to Right */}
-          <GalleryMarquee pauseOnHover className="[--duration:40s]">
-            {thirdRowImages.map((image, index) => (
-              <GalleryImage 
-                key={`row3-${index}`}
-                src={`/${image}`} 
-                alt={`Delicious dish ${index + 21}`} 
-              />
-            ))}
-          </GalleryMarquee>
+          <div className="flex overflow-hidden w-full group" style={{ '--duration': '40s' } as React.CSSProperties}>
+            <div 
+              className="flex shrink-0 gap-4 animate-scroll-left group-hover:[animation-play-state:paused]"
+              style={{ 
+                animation: 'gallery-marquee 40s linear infinite',
+                minWidth: '100%'
+              }}
+            >
+              {thirdRowImages.concat(thirdRowImages).map((image, index) => (
+                <GalleryImage 
+                  key={`row3-${index}`}
+                  src={`/${image}`} 
+                  alt={`Delicious dish ${index + 21}`} 
+                />
+              ))}
+            </div>
+          </div>
 
           {/* Gradient overlays for smooth edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#5A5455]"></div>
@@ -483,13 +505,13 @@ export default function UnclesChineseWebsite() {
         }
 
         @keyframes gallery-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-100%); }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
         }
         
         @keyframes gallery-marquee-reverse {
-          from { transform: translateX(-100%); }
-          to { transform: translateX(0); }
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(0); }
         }
 
         .scrollbar-hide {
@@ -499,6 +521,13 @@ export default function UnclesChineseWebsite() {
         
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
+        }
+
+        /* Ensure animations work properly */
+        .gallery-row {
+          animation-fill-mode: both;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
         }
       `}</style>
      </div>
